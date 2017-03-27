@@ -13,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 
 @Entity
 @Table(name = "PROJET")
@@ -43,12 +45,16 @@ public class Projet implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
 	private Responsable responsable;
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
+	@JoinColumn(name = "ID_PROPOSITION")
+	@Null
+	private Proposition proposition;
 
 	public Projet() {
 	}
 
 	public Projet(String intitule, String description, Date dateDebut, Date dateFin, String categorie,
-			Administrateur administrateur, Responsable responsable) {
+			Administrateur administrateur, Responsable responsable, Proposition proposition) {
 		super();
 		this.intitule = intitule;
 		this.description = description;
@@ -57,6 +63,7 @@ public class Projet implements Serializable {
 		this.categorie = categorie;
 		this.administrateur = administrateur;
 		this.responsable = responsable;
+		this.proposition = proposition;
 	}
 
 	public int getIdProjet() {
@@ -107,14 +114,6 @@ public class Projet implements Serializable {
 		this.categorie = categorie;
 	}
 
-	public List<Activite> getActivites() {
-		return this.activites;
-	}
-
-	public void setActivites(List<Activite> activites) {
-		this.activites = activites;
-	}
-
 	public Administrateur getAdministrateur() {
 		return this.administrateur;
 	}
@@ -123,20 +122,28 @@ public class Projet implements Serializable {
 		this.administrateur = administrateur;
 	}
 
-	public void setResponsable(Responsable responsable) {
-		this.responsable = responsable;
+	public List<Activite> getActivites() {
+		return this.activites;
+	}
+
+	public void setActivites(List<Activite> activites) {
+		this.activites = activites;
 	}
 
 	public Responsable getResponsable() {
 		return this.responsable;
 	}
 
-	@Override
-	public String toString() {
-		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
-				+ ", administrateur=" + this.administrateur + ", activites=" + this.activites + ", responsable="
-				+ this.responsable + "]";
+	public void setResponsable(Responsable responsable) {
+		this.responsable = responsable;
+	}
+
+	public Proposition getProposition() {
+		return this.proposition;
+	}
+
+	public void setProposition(Proposition proposition) {
+		this.proposition = proposition;
 	}
 
 	@Override
@@ -203,6 +210,13 @@ public class Projet implements Serializable {
 		} else if (!this.intitule.equals(other.intitule)) {
 			return false;
 		}
+		if (this.proposition == null) {
+			if (other.proposition != null) {
+				return false;
+			}
+		} else if (!this.proposition.equals(other.proposition)) {
+			return false;
+		}
 		if (this.responsable == null) {
 			if (other.responsable != null) {
 				return false;
@@ -211,6 +225,14 @@ public class Projet implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
+				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
+				+ ", administrateur=" + this.administrateur + ", activites=" + this.activites + ", responsable="
+				+ this.responsable + ", proposition=" + this.proposition + "]";
 	}
 
 }
