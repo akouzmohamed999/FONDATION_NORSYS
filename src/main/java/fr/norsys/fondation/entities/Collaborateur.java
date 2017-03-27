@@ -43,7 +43,7 @@ public class Collaborateur implements Serializable {
 	private Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
 	private String lieuNaissance;
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "collaborateurs")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "collaborateurs")
 	private List<Activite> activites;
 
 	public int getIdCollaborateur() {
