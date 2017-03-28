@@ -93,6 +93,19 @@ public class PorteurProjet {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
+		result = prime * result + this.idPorteur;
+		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
+		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
+		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		result = prime * result + (this.propositions == null ? 0 : this.propositions.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

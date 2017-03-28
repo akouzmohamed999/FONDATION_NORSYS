@@ -23,12 +23,12 @@ public class Administrateur extends Collaborateur {
 		super(cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
 	}
 
-	public List<Projet> getProjets() {
-		return this.projets;
-	}
-
-	public void setProjets(List<Projet> projets) {
-		this.projets = projets;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + (this.projets == null ? 0 : this.projets.hashCode());
+		return result;
 	}
 
 	@Override

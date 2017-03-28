@@ -147,6 +147,23 @@ public class Projet implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
+		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
+		result = prime * result + (this.categorie == null ? 0 : this.categorie.hashCode());
+		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
+		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
+		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
+		result = prime * result + this.idProjet;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.proposition == null ? 0 : this.proposition.hashCode());
+		result = prime * result + (this.responsable == null ? 0 : this.responsable.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

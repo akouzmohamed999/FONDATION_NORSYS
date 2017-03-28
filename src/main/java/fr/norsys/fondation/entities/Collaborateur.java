@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "COLLABORATEUR")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE_COLLABORATOR")
+@DiscriminatorColumn(name = "TYPE_COLLABORATEUR")
 public class Collaborateur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -140,6 +140,23 @@ public class Collaborateur implements Serializable {
 	}
 
 	public Collaborateur() {
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
+		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
+		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
+		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
+		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
+		result = prime * result + this.idCollaborateur;
+		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
+		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
+		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
+		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		return result;
 	}
 
 	@Override

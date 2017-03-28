@@ -102,12 +102,12 @@ public class Activite implements Serializable {
 		this.lieu = lieu;
 	}
 
-	public List<Collaborateur> getCollaborateurs() {
-		return this.collaborateurs;
+	public Collaborateur getGerant() {
+		return this.gerant;
 	}
 
-	public void setCollaborateurs(List<Collaborateur> collaborateurs) {
-		this.collaborateurs = collaborateurs;
+	public void setGerant(Collaborateur gerant) {
+		this.gerant = gerant;
 	}
 
 	public Projet getProjet() {
@@ -118,15 +118,12 @@ public class Activite implements Serializable {
 		this.projet = projet;
 	}
 
-	public Activite() {
+	public List<Collaborateur> getCollaborateurs() {
+		return this.collaborateurs;
 	}
 
-	public Collaborateur getGerant() {
-		return this.gerant;
-	}
-
-	public void setGerant(Collaborateur gerant) {
-		this.gerant = gerant;
+	public void setCollaborateurs(List<Collaborateur> collaborateurs) {
+		this.collaborateurs = collaborateurs;
 	}
 
 	public List<Contact> getContatcs() {
@@ -137,8 +134,11 @@ public class Activite implements Serializable {
 		this.contatcs = contatcs;
 	}
 
+	public Activite() {
+	}
+
 	public Activite(String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
-			Collaborateur gerant, Projet projet, List<Collaborateur> collaborateurs) {
+			Collaborateur gerant, Projet projet, List<Collaborateur> collaborateurs, List<Contact> contatcs) {
 		super();
 		this.intitule = intitule;
 		this.dateActivite = dateActivite;
@@ -148,6 +148,24 @@ public class Activite implements Serializable {
 		this.gerant = gerant;
 		this.projet = projet;
 		this.collaborateurs = collaborateurs;
+		this.contatcs = contatcs;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.collaborateurs == null ? 0 : this.collaborateurs.hashCode());
+		result = prime * result + (this.contatcs == null ? 0 : this.contatcs.hashCode());
+		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
+		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
+		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
+		result = prime * result + (this.gerant == null ? 0 : this.gerant.hashCode());
+		result = prime * result + this.idActivite;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
+		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
+		return result;
 	}
 
 	@Override
@@ -229,14 +247,6 @@ public class Activite implements Serializable {
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Activite [idActivite=" + this.idActivite + ", intitule=" + this.intitule + ", dateActivite="
-				+ this.dateActivite + ", dureeActivite=" + this.dureeActivite + ", etat=" + this.etat + ", lieu="
-				+ this.lieu + ", gerant=" + this.gerant + ", projet=" + this.projet + ", collaborateurs="
-				+ this.collaborateurs + ", contatcs=" + this.contatcs + "]";
 	}
 
 }
