@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +37,7 @@ public class Contact {
 	private String adresse;
 	@Column(name = "TYPE_CONTACT")
 	private String typeContact;
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "contatcs")
+	@ManyToMany(mappedBy = "contatcs")
 	private List<Activite> activites;
 
 	public int getIdContact() {
@@ -130,24 +129,6 @@ public class Contact {
 	}
 
 	public Contact() {
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
-		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
-		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
-		result = prime * result + this.idContact;
-		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numTelephone == null ? 0 : this.numTelephone.hashCode());
-		result = prime * result + (this.pays == null ? 0 : this.pays.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		result = prime * result + (this.typeContact == null ? 0 : this.typeContact.hashCode());
-		return result;
 	}
 
 	@Override
@@ -243,7 +224,22 @@ public class Contact {
 		return "Contact [idContact=" + this.idContact + ", CIN=" + this.CIN + ", nom=" + this.nom + ", prenom="
 				+ this.prenom + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance=" + this.lieuNaissance
 				+ ", numTelephone=" + this.numTelephone + ", pays=" + this.pays + ", adresse=" + this.adresse
-				+ ", typeContact=" + this.typeContact + ", activites=" + this.activites + "]";
+				+ ", typeContact=" + this.typeContact + ", activites number=" + this.activites.size() + "]";
+	}
+
+	public Contact(int idContact, String cIN, String nom, String prenom, Date dateNaissance, String lieuNaissance,
+			String numTelephone, String pays, String adresse, String typeContact) {
+		super();
+		this.idContact = idContact;
+		this.CIN = cIN;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.lieuNaissance = lieuNaissance;
+		this.numTelephone = numTelephone;
+		this.pays = pays;
+		this.adresse = adresse;
+		this.typeContact = typeContact;
 	}
 
 }

@@ -2,23 +2,34 @@
 <dataset>
 	
 	<COLLABORATEUR ID_COLLABORATEUR="1" CIN="J4879584" NOM="akouz" PRENOM="mohamed" ADRESSE="Rue 14 Hay massira"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
-	 <COLLABORATEUR ID_COLLABORATEUR="2" CIN="J4879584" NOM="akouz" PRENOM="morad" ADRESSE="Rue 14 Hay massira"
+	 TYPE_COLLABORATEUR="Administrateur"/>
+	 
+	 <COLLABORATEUR ID_COLLABORATEUR="2" CIN="J222222" NOM="elkhaily" PRENOM="morad" ADRESSE="Rue 14 Hay massira"
+	 TYPE_COLLABORATEUR="Responsable"/>
+	 
+	 <COLLABORATEUR ID_COLLABORATEUR="3" CIN="J333333" NOM="youssfi" PRENOM="yousef" ADRESSE="Rue 14 Hay massira"
 	 TYPE_COLLABORATEUR="Collaborateur"/>
 	 
-	 <PROJET ID_PROJET="1" INTITULE="formation professeur en informatique" DESCRIPTION="lobjectif de ce projet cest de former 
-	 les professeur sur les outils informatiques" DUREE_ACTIVITE="Matinee"
-	  ETAT="En Cours" LIEU=ecole x place y" ID_GERANT="1" ID_PROJET="1"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="4" CIN="J444444" NOM="karami" PRENOM="karim" ADRESSE="Rue 14 Hay massira"
+	 TYPE_COLLABORATEUR="Collaborateur"/>
+	  
 	 
-	 <ACTIVITE ID_ACTIVITE="1" INTITULE="Visite des de lieu" DATE_ACTIVITE="2017-02-01" DUREE_ACTIVITE="Matinee"
-	  ETAT="En Cours" LIEU=ecole x place y" ID_GERANT="1" ID_PROJET="1"/>
+	 <PROJET ID_PROJET="1" INTITULE="formation professeur en informatique" DESCRIPTION="lobjectif de ce projet cest de former les professeur sur les outils informatiques" DATE_DEBUT="2017-02-01" 
+	  DATE_FIN="2017-02-03" CATEGORIE="Education" ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
+	 
+	 <ACTIVITE ID_ACTIVITE="1" INTITULE="Visite des lieux" DATE_ACTIVITE="2017-02-01" DUREE_ACTIVITE="Matinee"
+	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
 	  <ACTIVITE ID_ACTIVITE="2" INTITULE="Reunion avec professeur" DATE_ACTIVITE="2017-02-02" DUREE_ACTIVITE="Matinee"
-	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="1" ID_PROJET="1"/>
+	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
 	  <ACTIVITE ID_ACTIVITE="3" INTITULE="Recontre des étudiant" DATE_ACTIVITE="2017-02-03" DUREE_ACTIVITE="Matinee"
-	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="1" ID_PROJET="1"/>
+	   ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
+	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="3" />
+	  
+	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="4" />	
+	  	  
 </dataset>
 
 

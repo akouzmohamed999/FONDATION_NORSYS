@@ -36,19 +36,19 @@ public class Activite implements Serializable {
 	private String etat;
 	@Column(name = "LIEU")
 	private String lieu;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Collaborateur.class)
+	@ManyToOne(targetEntity = Collaborateur.class)
 	@JoinColumn(name = "ID_GERANT")
 	private Collaborateur gerant;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Projet.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Projet.class)
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
-			@JoinColumn(referencedColumnName = "ID_ACTIVITE") }, inverseJoinColumns = {
-					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR") })
+			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
+					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") })
 	private List<Collaborateur> collaborateurs;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "CONATCT_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_CONTACT") })
@@ -137,9 +137,10 @@ public class Activite implements Serializable {
 	public Activite() {
 	}
 
-	public Activite(String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
-			Collaborateur gerant, Projet projet, List<Collaborateur> collaborateurs, List<Contact> contatcs) {
+	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
+			Collaborateur gerant, Projet projet) {
 		super();
+		this.idActivite = idActivite;
 		this.intitule = intitule;
 		this.dateActivite = dateActivite;
 		this.dureeActivite = dureeActivite;
@@ -147,25 +148,6 @@ public class Activite implements Serializable {
 		this.lieu = lieu;
 		this.gerant = gerant;
 		this.projet = projet;
-		this.collaborateurs = collaborateurs;
-		this.contatcs = contatcs;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.collaborateurs == null ? 0 : this.collaborateurs.hashCode());
-		result = prime * result + (this.contatcs == null ? 0 : this.contatcs.hashCode());
-		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
-		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
-		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
-		result = prime * result + (this.gerant == null ? 0 : this.gerant.hashCode());
-		result = prime * result + this.idActivite;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		return result;
 	}
 
 	@Override

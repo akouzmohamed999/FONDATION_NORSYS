@@ -1,6 +1,8 @@
-package fr.norsys.fondation.services.collaborateur;
+package fr.norsys.fondation.services.projet;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +15,8 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+import fr.norsys.fondation.entities.Projet;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/Test/ApplicationContextTest.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class,
@@ -20,13 +24,12 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 
 @DatabaseSetup("/dataset.xml")
 
-public class FindCollaborateurByNameTest extends ACollaborateurTest {
+public class FindAllProjetsTest extends AProjectTest {
 
 	@Test
-	public void shouldReturnMohamedwhenNomIsAkouz() {
-		assertThat(this.collaborateurService.findCollaborateurByName("akouz").getPrenom()).isEqualTo("mohamed");
-		assertThat(this.collaborateurService.findCollaborateurByName("akouz").getCIN()).isEqualTo("J4879584");
-		assertThat(this.collaborateurService.findCollaborateurByName("akouz").getAdresse())
-				.isEqualTo("Rue 14 Hay massira");
+	public void shouldReturnEcoleProjet() {
+		List<Projet> projets = this.projectService.findAllProjets();
+		assertThat(projets.size()).isEqualTo(1);
+		assertThat(projets.get(0)).isEqualTo(this.projet);
 	}
 }

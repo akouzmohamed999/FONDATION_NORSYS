@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +42,7 @@ public class Collaborateur implements Serializable {
 	private Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
 	private String lieuNaissance;
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "collaborateurs")
+	@ManyToMany(mappedBy = "collaborateurs")
 	private List<Activite> activites;
 
 	public int getIdCollaborateur() {
@@ -126,9 +125,10 @@ public class Collaborateur implements Serializable {
 		this.activites = activites;
 	}
 
-	public Collaborateur(String cIN, String nom, String prenom, String adresse, String numeroTelephone, String email,
-			Date dateNaissance, String lieuNaissance) {
+	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
 		super();
+		this.idCollaborateur = idCollaborateur;
 		this.CIN = cIN;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -140,23 +140,6 @@ public class Collaborateur implements Serializable {
 	}
 
 	public Collaborateur() {
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
-		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
-		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
-		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
-		result = prime * result + this.idCollaborateur;
-		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		return result;
 	}
 
 	@Override
@@ -245,7 +228,7 @@ public class Collaborateur implements Serializable {
 		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
 				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
 				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
-				+ this.lieuNaissance + ", activites=" + this.activites + "]";
+				+ this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
 	}
 
 }

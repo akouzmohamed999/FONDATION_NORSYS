@@ -4,31 +4,26 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Administrateur extends Collaborateur {
 
 	private static final long serialVersionUID = 1L;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "administrateur")
+	@OneToMany(mappedBy = "administrateur")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Projet> projets;
 
 	public Administrateur() {
 		super();
 	}
 
-	public Administrateur(String cIN, String nom, String prenom, String adresse, String numeroTelephone, String email,
-			Date dateNaissance, String lieuNaissance) {
-		super(cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + (this.projets == null ? 0 : this.projets.hashCode());
-		return result;
+	public Administrateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
+		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
 	}
 
 	@Override
@@ -56,6 +51,14 @@ public class Administrateur extends Collaborateur {
 	@Override
 	public String toString() {
 		return "Administrateur [projets=" + this.projets + "]";
+	}
+
+	public List<Projet> getProjets() {
+		return this.projets;
+	}
+
+	public void setProjets(List<Projet> projets) {
+		this.projets = projets;
 	}
 
 }

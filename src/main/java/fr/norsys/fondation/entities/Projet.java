@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Null;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "PROJET")
 public class Projet implements Serializable {
@@ -37,10 +40,11 @@ public class Projet implements Serializable {
 	private Date dateFin;
 	@Column(name = "CATEGORIE")
 	private String categorie;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Administrateur.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
 	private Administrateur administrateur;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projet")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "projet")
 	private List<Activite> activites;
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
@@ -53,9 +57,10 @@ public class Projet implements Serializable {
 	public Projet() {
 	}
 
-	public Projet(String intitule, String description, Date dateDebut, Date dateFin, String categorie,
+	public Projet(int idProjet, String intitule, String description, Date dateDebut, Date dateFin, String categorie,
 			Administrateur administrateur, Responsable responsable, Proposition proposition) {
 		super();
+		this.idProjet = idProjet;
 		this.intitule = intitule;
 		this.description = description;
 		this.dateDebut = dateDebut;
@@ -147,23 +152,6 @@ public class Projet implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
-		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
-		result = prime * result + (this.categorie == null ? 0 : this.categorie.hashCode());
-		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
-		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
-		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
-		result = prime * result + this.idProjet;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.proposition == null ? 0 : this.proposition.hashCode());
-		result = prime * result + (this.responsable == null ? 0 : this.responsable.hashCode());
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -248,8 +236,7 @@ public class Projet implements Serializable {
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
 				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
-				+ ", administrateur=" + this.administrateur + ", activites=" + this.activites + ", responsable="
-				+ this.responsable + ", proposition=" + this.proposition + "]";
+				+ ", activites number= " + this.activites.size() +  "]";
 	}
 
 }

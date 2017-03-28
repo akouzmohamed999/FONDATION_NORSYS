@@ -4,22 +4,25 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Responsable extends Collaborateur {
 	private static final long serialVersionUID = 1L;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "responsable")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "responsable")
 	private List<Projet> projets;
 
 	public Responsable() {
 		super();
 	}
 
-	public Responsable(String cIN, String nom, String prenom, String adresse, String numeroTelephone, String email,
-			Date dateNaissance, String lieuNaissance) {
-		super(cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
+	public Responsable(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
+		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
 	}
 
 	public List<Projet> getProjets() {
@@ -28,14 +31,6 @@ public class Responsable extends Collaborateur {
 
 	public void setProjets(List<Projet> projets) {
 		this.projets = projets;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + (this.projets == null ? 0 : this.projets.hashCode());
-		return result;
 	}
 
 	@Override
