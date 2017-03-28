@@ -1,5 +1,6 @@
 package fr.norsys.fondation.repositories;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,5 +15,7 @@ public interface ProjetRepository extends JpaRepository<Projet, Integer> {
 	List<Projet> findByCategorie(String categorie);
 
 	List<Projet> findByResponsable(Responsable responsable);
+
+	List<Projet> findByDateDebut(Date date);
 
 }

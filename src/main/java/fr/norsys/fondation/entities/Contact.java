@@ -132,6 +132,24 @@ public class Contact {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
+		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
+		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
+		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
+		result = prime * result + this.idContact;
+		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
+		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
+		result = prime * result + (this.numTelephone == null ? 0 : this.numTelephone.hashCode());
+		result = prime * result + (this.pays == null ? 0 : this.pays.hashCode());
+		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		result = prime * result + (this.typeContact == null ? 0 : this.typeContact.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

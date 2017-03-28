@@ -26,7 +26,7 @@
 	</bean>
 	<bean name="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
-		<property name="persistenceUnitName" value="fondationNorsys"></property>
+		<property name="persistenceUnitName" value="fondationNorsysTest"></property>
 	</bean>
 	<bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"></property>

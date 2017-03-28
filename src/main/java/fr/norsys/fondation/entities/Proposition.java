@@ -166,6 +166,25 @@ public class Proposition {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.budgetPrevisionnel == null ? 0 : this.budgetPrevisionnel.hashCode());
+		result = prime * result + (this.datePrevision == null ? 0 : this.datePrevision.hashCode());
+		result = prime * result + (this.dureeAction == null ? 0 : this.dureeAction.hashCode());
+		result = prime * result + this.idProposition;
+		result = prime * result + (this.objectif == null ? 0 : this.objectif.hashCode());
+		result = prime * result + (this.populationCible == null ? 0 : this.populationCible.hashCode());
+		result = prime * result + (this.porteurProjet == null ? 0 : this.porteurProjet.hashCode());
+		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
+		result = prime * result + (this.thematique == null ? 0 : this.thematique.hashCode());
+		result = prime * result + (this.typeAction == null ? 0 : this.typeAction.hashCode());
+		result = prime * result + (this.typeSoutien == null ? 0 : this.typeSoutien.hashCode());
+		result = prime * result + (this.zoneGeographiqe == null ? 0 : this.zoneGeographiqe.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

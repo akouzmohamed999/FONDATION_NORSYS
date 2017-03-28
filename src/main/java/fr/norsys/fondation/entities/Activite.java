@@ -151,6 +151,23 @@ public class Activite implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.collaborateurs == null ? 0 : this.collaborateurs.hashCode());
+		result = prime * result + (this.contatcs == null ? 0 : this.contatcs.hashCode());
+		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
+		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
+		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
+		result = prime * result + (this.gerant == null ? 0 : this.gerant.hashCode());
+		result = prime * result + this.idActivite;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
+		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

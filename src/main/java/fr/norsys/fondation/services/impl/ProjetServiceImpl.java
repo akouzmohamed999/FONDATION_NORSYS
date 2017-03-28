@@ -1,5 +1,6 @@
 package fr.norsys.fondation.services.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,13 @@ public class ProjetServiceImpl implements ProjetService {
 		return this.projetRepository.findByCategorie(categorie);
 	}
 
-	public List<Projet> findProjetByResponsable(Responsable responsable) {
+	@Override
+	public List<Projet> findProjetsByResponsable(Responsable responsable) {
 		return this.projetRepository.findByResponsable(responsable);
+	}
+
+	@Override
+	public List<Projet> findProjetsByDateDebut(Date date) {
+		return this.projetRepository.findByDateDebut(date);
 	}
 }

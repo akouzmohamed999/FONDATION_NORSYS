@@ -46,7 +46,7 @@ public class Projet implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	private List<Activite> activites;
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Responsable.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
 	private Responsable responsable;
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
@@ -152,6 +152,19 @@ public class Projet implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.categorie == null ? 0 : this.categorie.hashCode());
+		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
+		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
+		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
+		result = prime * result + this.idProjet;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -163,20 +176,6 @@ public class Projet implements Serializable {
 			return false;
 		}
 		Projet other = (Projet) obj;
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
-			return false;
-		}
-		if (this.administrateur == null) {
-			if (other.administrateur != null) {
-				return false;
-			}
-		} else if (!this.administrateur.equals(other.administrateur)) {
-			return false;
-		}
 		if (this.categorie == null) {
 			if (other.categorie != null) {
 				return false;
@@ -215,20 +214,6 @@ public class Projet implements Serializable {
 		} else if (!this.intitule.equals(other.intitule)) {
 			return false;
 		}
-		if (this.proposition == null) {
-			if (other.proposition != null) {
-				return false;
-			}
-		} else if (!this.proposition.equals(other.proposition)) {
-			return false;
-		}
-		if (this.responsable == null) {
-			if (other.responsable != null) {
-				return false;
-			}
-		} else if (!this.responsable.equals(other.responsable)) {
-			return false;
-		}
 		return true;
 	}
 
@@ -236,7 +221,7 @@ public class Projet implements Serializable {
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
 				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
-				+ ", activites number= " + this.activites.size() +  "]";
+				+ ", activites number= " + this.activites.size() + "]";
 	}
 
 }
