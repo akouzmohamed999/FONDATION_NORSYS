@@ -13,16 +13,27 @@ import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.h2.tools.RunScript;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class DBunitTest {
 
+	private static final String PATH = "src/test/resources";
 	private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
-	private static final String JDBC_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
+	private static final String JDBC_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE";
 	private static final String USER = "sa";
 	private static final String PASSWORD = "";
 
+	public DBunitTest() throws Exception {
+
+		RunScript.execute(JDBC_URL, USER, PASSWORD, PATH + "/fondationSQL.sql", Charset.defaultCharset(), false);
+		IDataSet dataSet = this.readDataSet();
+		this.cleanlyInsert(dataSet);
+
+	}
+
 	public static void createSchema() throws Exception {
-		RunScript.execute(JDBC_URL, USER, PASSWORD, "schema.sql", Charset.defaultCharset(), false);
+
 	}
 
 	public void importDataSet() throws Exception {
@@ -31,7 +42,7 @@ public class DBunitTest {
 	}
 
 	private IDataSet readDataSet() throws Exception {
-		return new FlatXmlDataSetBuilder().build(new File("dataset.xml"));
+		return new FlatXmlDataSetBuilder().build(new File(PATH + "/dataset.xml"));
 	}
 
 	private void cleanlyInsert(IDataSet dataSet) throws Exception {
@@ -42,7 +53,7 @@ public class DBunitTest {
 	}
 
 	@Bean(name = "TestDataSource")
-	private DataSource dataSource() {
+	private static DataSource dataSource() {
 		JdbcDataSource dataSource = new JdbcDataSource();
 		dataSource.setURL(JDBC_URL);
 		dataSource.setUser(USER);
