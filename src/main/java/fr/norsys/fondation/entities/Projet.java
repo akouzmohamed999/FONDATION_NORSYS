@@ -2,6 +2,7 @@ package fr.norsys.fondation.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +12,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Null;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "PROJET")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idProjet")
 public class Projet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,6 +47,9 @@ public class Projet implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
 	private Administrateur administrateur;
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "projet")
+	private List<Activite> activites;
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
 	private Responsable responsable;
@@ -117,6 +129,14 @@ public class Projet implements Serializable {
 
 	public void setAdministrateur(Administrateur administrateur) {
 		this.administrateur = administrateur;
+	}
+
+	public List<Activite> getActivites() {
+		return this.activites;
+	}
+
+	public void setActivites(List<Activite> activites) {
+		this.activites = activites;
 	}
 
 	public Responsable getResponsable() {
@@ -204,7 +224,8 @@ public class Projet implements Serializable {
 	@Override
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie + "]";
+				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
+				+ ", activites number= " + this.activites.size() + "]";
 	}
 
 }

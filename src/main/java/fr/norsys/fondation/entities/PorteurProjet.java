@@ -1,14 +1,24 @@
 package fr.norsys.fondation.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "PORTEUR_PROJET")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idPorteur")
 public class PorteurProjet {
 
 	@Id
@@ -23,6 +33,9 @@ public class PorteurProjet {
 	private String email;
 	@Column(name = "NUMERO_TELEPHONE")
 	private String numeroTelephone;
+	@OneToMany(mappedBy = "porteurProjet")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Proposition> propositions;
 
 	public PorteurProjet() {
 		super();
@@ -77,6 +90,14 @@ public class PorteurProjet {
 		this.numeroTelephone = numeroTelephone;
 	}
 
+	public List<Proposition> getPropositions() {
+		return this.propositions;
+	}
+
+	public void setPropositions(List<Proposition> propositions) {
+		this.propositions = propositions;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +107,7 @@ public class PorteurProjet {
 		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
 		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
 		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		result = prime * result + (this.propositions == null ? 0 : this.propositions.hashCode());
 		return result;
 	}
 
@@ -132,13 +154,21 @@ public class PorteurProjet {
 		} else if (!this.prenom.equals(other.prenom)) {
 			return false;
 		}
+		if (this.propositions == null) {
+			if (other.propositions != null) {
+				return false;
+			}
+		} else if (!this.propositions.equals(other.propositions)) {
+			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "PorteurProjet [idPorteur=" + this.idPorteur + ", nom=" + this.nom + ", prenom=" + this.prenom
-				+ ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone + "]";
+				+ ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone + ", propositions="
+				+ this.propositions + "]";
 	}
 
 }
