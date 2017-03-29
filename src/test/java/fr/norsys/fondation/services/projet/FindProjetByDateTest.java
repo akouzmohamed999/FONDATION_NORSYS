@@ -21,7 +21,7 @@ public class FindProjetByDateTest extends AProjectTest {
 
 		LocalDate lTestDateFin = LocalDate.of(2017, 2, 3);
 		Date testDateFin = Date.valueOf(lTestDateFin);
-		assertThat(this.projectService.findProjetsByDateDebut(testDateFin).get(0)).isEqualTo(this.projet);
+		assertThat(this.projectService.findProjetsByDateFin(testDateFin).get(0)).isEqualTo(this.projet);
 
 	}
 }

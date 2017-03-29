@@ -2,7 +2,6 @@ package fr.norsys.fondation.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -12,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,8 +40,6 @@ public class Collaborateur implements Serializable {
 	private Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
 	private String lieuNaissance;
-	@ManyToMany(mappedBy = "collaborateurs")
-	private List<Activite> activites;
 
 	public int getIdCollaborateur() {
 		return this.idCollaborateur;
@@ -117,14 +113,6 @@ public class Collaborateur implements Serializable {
 		this.lieuNaissance = lieuNaissance;
 	}
 
-	public List<Activite> getActivites() {
-		return this.activites;
-	}
-
-	public void setActivites(List<Activite> activites) {
-		this.activites = activites;
-	}
-
 	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
 			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
 		super();
@@ -147,7 +135,6 @@ public class Collaborateur implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
 		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
 		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
 		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
@@ -176,13 +163,6 @@ public class Collaborateur implements Serializable {
 				return false;
 			}
 		} else if (!this.CIN.equals(other.CIN)) {
-			return false;
-		}
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
 			return false;
 		}
 		if (this.adresse == null) {
@@ -245,7 +225,7 @@ public class Collaborateur implements Serializable {
 		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
 				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
 				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
-				+ this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
+				+ this.lieuNaissance + "]";
 	}
 
 }

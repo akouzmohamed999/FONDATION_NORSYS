@@ -2,6 +2,8 @@ package fr.norsys.fondation.connection;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.sql.DataSource;
 
@@ -18,7 +20,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DBunitTest {
 
-	private static final String PATH = "src/test/resources";
+	private static final String PATH = "src/main/resources";
+	Path resourceDirectory = Paths.get("src/main/resources");
 	private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
 	private static final String JDBC_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE";
 	private static final String USER = "sa";
@@ -26,7 +29,8 @@ public class DBunitTest {
 
 	public DBunitTest() throws Exception {
 
-		RunScript.execute(JDBC_URL, USER, PASSWORD, PATH + "/fondationSQL.sql", Charset.defaultCharset(), false);
+		RunScript.execute(JDBC_URL, USER, PASSWORD, this.resourceDirectory + "/fondationSQL.sql",
+				Charset.defaultCharset(), false);
 		IDataSet dataSet = this.readDataSet();
 		this.cleanlyInsert(dataSet);
 
@@ -42,7 +46,7 @@ public class DBunitTest {
 	}
 
 	private IDataSet readDataSet() throws Exception {
-		return new FlatXmlDataSetBuilder().build(new File(PATH + "/dataset.xml"));
+		return new FlatXmlDataSetBuilder().build(new File(this.resourceDirectory + "/dataset.xml"));
 	}
 
 	private void cleanlyInsert(IDataSet dataSet) throws Exception {

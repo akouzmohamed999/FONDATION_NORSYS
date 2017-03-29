@@ -1,14 +1,12 @@
 package fr.norsys.fondation.entities;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,8 +35,6 @@ public class Contact {
 	private String adresse;
 	@Column(name = "TYPE_CONTACT")
 	private String typeContact;
-	@ManyToMany(mappedBy = "contatcs")
-	private List<Activite> activites;
 
 	public int getIdContact() {
 		return this.idContact;
@@ -120,14 +116,6 @@ public class Contact {
 		this.typeContact = typeContact;
 	}
 
-	public List<Activite> getActivites() {
-		return this.activites;
-	}
-
-	public void setActivites(List<Activite> activites) {
-		this.activites = activites;
-	}
-
 	public Contact() {
 	}
 
@@ -136,7 +124,6 @@ public class Contact {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
 		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
 		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
 		result = prime * result + this.idContact;
@@ -166,13 +153,6 @@ public class Contact {
 				return false;
 			}
 		} else if (!this.CIN.equals(other.CIN)) {
-			return false;
-		}
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
 			return false;
 		}
 		if (this.adresse == null) {
@@ -242,7 +222,7 @@ public class Contact {
 		return "Contact [idContact=" + this.idContact + ", CIN=" + this.CIN + ", nom=" + this.nom + ", prenom="
 				+ this.prenom + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance=" + this.lieuNaissance
 				+ ", numTelephone=" + this.numTelephone + ", pays=" + this.pays + ", adresse=" + this.adresse
-				+ ", typeContact=" + this.typeContact + ", activites number=" + this.activites.size() + "]";
+				+ ", typeContact=" + this.typeContact + "]";
 	}
 
 	public Contact(int idContact, String cIN, String nom, String prenom, Date dateNaissance, String lieuNaissance,

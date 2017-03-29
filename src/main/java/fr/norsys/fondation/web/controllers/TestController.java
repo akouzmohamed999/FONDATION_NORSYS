@@ -6,18 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.norsys.fondation.entities.Collaborateur;
-import fr.norsys.fondation.services.CollaborateurService;
+import fr.norsys.fondation.entities.Projet;
+import fr.norsys.fondation.services.ProjetService;
 
 @RestController
 public class TestController {
 
 	@Autowired
-	CollaborateurService collaborateurService;
+	ProjetService projetService;
 
-	@RequestMapping(value = "/test")
-	public List<Collaborateur> test() {
-		this.collaborateurService.AddCollaborateur("AKOUZ", "MOHAMED");
-		return this.collaborateurService.findAllCollaborateur();
+	@RequestMapping(value = "/")
+	public List<Projet> test() {
+		return this.projetService.findAllProjets();
 	}
 }

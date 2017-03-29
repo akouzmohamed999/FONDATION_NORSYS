@@ -21,4 +21,6 @@ public interface ProjetService {
 
 	List<Projet> findProjetsByDateDebut(Date date);
 
+	List<Projet> findProjetsByDateFin(Date testDateFin);
+
 }

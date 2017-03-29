@@ -2,7 +2,6 @@ package fr.norsys.fondation.services.projet;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -75,10 +74,6 @@ public abstract class AProjectTest {
 
 		this.activite3 = new Activite(3, "Recontre des étudiant", dateDebutActivite3, "Matinee", "En Cours",
 				"ecole x place y", this.collaborateur1, this.projet);
-		this.projet.setActivites(Arrays.asList(this.activite1, this.activite2, this.activite3));
-		this.administrateur.setProjets(Arrays.asList(this.projet));
-		this.responsable.setProjets(Arrays.asList(this.projet));
-		this.collaborateur1.setActivites(Arrays.asList(this.activite1, this.activite2, this.activite3));
-		this.collaborateur2.setActivites(Arrays.asList(this.activite1, this.activite2, this.activite3));
+
 	}
 }
