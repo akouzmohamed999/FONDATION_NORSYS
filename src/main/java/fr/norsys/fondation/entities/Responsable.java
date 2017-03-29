@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@responsableidCollaborateur")
 public class Responsable extends Collaborateur {
+
 	private static final long serialVersionUID = 1L;
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "responsable")
 	private List<Projet> projets;

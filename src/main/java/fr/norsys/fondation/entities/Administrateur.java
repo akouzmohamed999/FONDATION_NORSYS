@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Administrateur extends Collaborateur {
 
 	private static final long serialVersionUID = 1L;
+
 	@OneToMany(mappedBy = "administrateur")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Projet> projets;

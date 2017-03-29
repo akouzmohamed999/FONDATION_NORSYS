@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Collaborateur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ID_COLLABORATEUR")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

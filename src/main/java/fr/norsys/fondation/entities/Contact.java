@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -11,13 +12,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "CONTACT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idContact")
-public class Contact {
+public class Contact implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "ID_CONTACT")
@@ -41,6 +47,7 @@ public class Contact {
 	private String adresse;
 	@Column(name = "TYPE_CONTACT")
 	private String typeContact;
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "contatcs")
 	private List<Activite> activites;
 

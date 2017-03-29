@@ -56,11 +56,10 @@ public class Activite implements Serializable {
 					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") })
 	private List<Collaborateur> collaborateurs;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "CONATCT_ACTIVITE", joinColumns = {
-			@JoinColumn(referencedColumnName = "ID_ACTIVITE") }, inverseJoinColumns = {
-					@JoinColumn(referencedColumnName = "ID_CONTACT") })
+			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
+					@JoinColumn(referencedColumnName = "ID_CONTACT", name = "ID_CONTACT") })
 	private List<Contact> contatcs;
 
 	public int getIdActivite() {
