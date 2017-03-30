@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
+import fr.norsys.fondation.entities.Projet;
 
 @Service
 public interface ActiviteService {
@@ -15,5 +16,7 @@ public interface ActiviteService {
 	List<Activite> findActivitiesByDateActivite(Date dateDebutActivite);
 
 	List<Activite> findActivitiesByEtat(String etat);
+
+	List<Activite> findActivitiesByProjet(Projet projet);
 
 }

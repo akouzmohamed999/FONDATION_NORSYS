@@ -15,9 +15,8 @@ import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.h2.tools.RunScript;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class DBunitTest {
 
 	Path resourceDirectory = Paths.get("src/main/resources");
@@ -33,11 +32,6 @@ public class DBunitTest {
 		IDataSet dataSet = this.readDataSet();
 		this.cleanlyInsert(dataSet);
 
-	}
-
-	public void importDataSet() throws Exception {
-		IDataSet dataSet = this.readDataSet();
-		this.cleanlyInsert(dataSet);
 	}
 
 	private IDataSet readDataSet() throws Exception {

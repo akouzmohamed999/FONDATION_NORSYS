@@ -19,6 +19,14 @@ public class FindActivitiesByEtat extends AActiviteTest {
 	@Test
 	public void shouldReturnActivite3WithEnCoursEtat() {
 		assertThat(this.activiteService.findActivitiesByEtat("En Cours").size()).isEqualTo(4);
+		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(0))
+				.isEqualTo(this.activiteProjet1EnCours1);
+		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(1))
+				.isEqualTo(this.activiteProjet1EnCours2);
+		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(2))
+				.isEqualTo(this.activiteProjet2EnCours4);
+		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(3))
+				.isEqualTo(this.activiteProjet2EnCours5);
 	}
 
 }
