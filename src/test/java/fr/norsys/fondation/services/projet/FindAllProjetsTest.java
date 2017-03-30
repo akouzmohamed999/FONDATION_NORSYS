@@ -13,7 +13,8 @@ public class FindAllProjetsTest extends AProjectTest {
 	@Test
 	public void shouldReturnAllProjets() {
 		List<Projet> projets = this.projectService.findAllProjets();
-		assertThat(projets.size()).isEqualTo(1);
-		assertThat(projets.get(0)).isEqualTo(this.projet);
+		assertThat(projets.size()).isEqualTo(2);
+		assertThat(projets.get(0)).isEqualTo(this.projet1);
+		assertThat(projets.get(1)).isEqualTo(this.projet2);
 	}
 }

@@ -35,10 +35,6 @@ public class DBunitTest {
 
 	}
 
-	public static void createSchema() throws Exception {
-
-	}
-
 	public void importDataSet() throws Exception {
 		IDataSet dataSet = this.readDataSet();
 		this.cleanlyInsert(dataSet);

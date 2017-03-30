@@ -9,7 +9,9 @@ public class FindProjetByIntitule extends AProjectTest {
 	@Test
 	public void shouldReturnFormationProjetUsingIntitule() {
 		assertThat(this.projectService.findProjetsByIntitule("formation professeur en informatique").get(0))
-				.isEqualTo(this.projet);
+				.isEqualTo(this.projet1);
+		assertThat(this.projectService.findProjetsByIntitule("devlopement du lieu educatif d'une ecole").get(0))
+				.isEqualTo(this.projet2);
 
 	}
 }

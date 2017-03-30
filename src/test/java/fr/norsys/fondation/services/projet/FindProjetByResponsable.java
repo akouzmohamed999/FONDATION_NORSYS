@@ -9,7 +9,8 @@ public class FindProjetByResponsable extends AProjectTest {
 	@Test
 	public void souldReturnFormationProjetUsingResponsable() {
 
-		assertThat(this.projectService.findProjetsByResponsable(this.responsable).get(0)).isEqualTo(this.projet);
+		assertThat(this.projectService.findProjetsByResponsable(this.responsable).get(0)).isEqualTo(this.projet1);
+		assertThat(this.projectService.findProjetsByResponsable(this.responsable).get(1)).isEqualTo(this.projet2);
 
 	}
 }

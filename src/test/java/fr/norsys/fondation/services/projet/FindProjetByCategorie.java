@@ -9,6 +9,7 @@ public class FindProjetByCategorie extends AProjectTest {
 	@Test
 	public void shouldReturnFormationProjetUsingCategorie() {
 
-		assertThat(this.projectService.findProjetsByCategorie("Education").get(0)).isEqualTo(this.projet);
+		assertThat(this.projectService.findProjetsByCategorie("Education").get(0)).isEqualTo(this.projet1);
+		assertThat(this.projectService.findProjetsByCategorie("developement").get(0)).isEqualTo(this.projet2);
 	}
 }

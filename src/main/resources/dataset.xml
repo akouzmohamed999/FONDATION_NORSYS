@@ -11,26 +11,52 @@
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="4" CIN="J444444" NOM="karami" PRENOM="karim" ADRESSE="Rue 14 Hay massira"
 	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 
+	 <COLLABORATEUR ID_COLLABORATEUR="5" CIN="EB5678" NOM="samir" PRENOM="bennareg" ADRESSE="Rue 14 Hay agadir"
+	TYPE_COLLABORATEUR="Collaborateur"/> -->
+		 
+	<COLLABORATEUR ID_COLLABORATEUR="6" CIN="EB5679" NOM="elkhaily" PRENOM="smail" ADRESSE="Rue 14 Hay daoudiat" 
+	 TYPE_COLLABORATEUR="Collaborateur"/> -->
+		 
+	 <COLLABORATEUR ID_COLLABORATEUR="7" CIN="J333333" NOM="youssfi" PRENOM="yousef" ADRESSE="Rue 14 Hay massira" 
+	 TYPE_COLLABORATEUR="Collaborateur"/> -->
+		 
+	 <COLLABORATEUR ID_COLLABORATEUR="8" CIN="J444444" NOM="karami" PRENOM="karim" ADRESSE="Rue 14 Hay massira" 
+	 TYPE_COLLABORATEUR="Collaborateur"/> 
 	  
 	 
-	 <PROJET ID_PROJET="1" INTITULE="formation professeur en informatique" DESCRIPTION="lobjectif de ce projet cest de former les professeur sur les outils informatiques" DATE_DEBUT="2017-02-01" 
-	  DATE_FIN="2017-02-03" CATEGORIE="Education" ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
+	 <PROJET ID_PROJET="1" INTITULE="formation professeur en informatique" DESCRIPTION="lobjectif de ce projet cest de former les professeur sur les outils informatiques" 
+	 DATE_DEBUT="2017-03-11" DATE_FIN="2017-03-16" CATEGORIE="Education" ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
 	 
-	 <ACTIVITE ID_ACTIVITE="1" INTITULE="Visite des lieux" DATE_ACTIVITE="2017-02-01" DUREE_ACTIVITE="Matinee"
+	 <ACTIVITE ID_ACTIVITE="1" INTITULE="Visite des lieux" DATE_ACTIVITE="2017-03-12" DUREE_ACTIVITE="Matinee"
 	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
-	  <ACTIVITE ID_ACTIVITE="2" INTITULE="Reunion avec professeur" DATE_ACTIVITE="2017-02-02" DUREE_ACTIVITE="Matinee"
+	  <ACTIVITE ID_ACTIVITE="2" INTITULE="Reunion avec professeur" DATE_ACTIVITE="2017-03-14" DUREE_ACTIVITE="Matinee"
 	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
-	  <ACTIVITE ID_ACTIVITE="3" INTITULE="Recontre des étudiant" DATE_ACTIVITE="2017-02-03" DUREE_ACTIVITE="Matinee"
+	  <ACTIVITE ID_ACTIVITE="3" INTITULE="Recontre des étudiant" DATE_ACTIVITE="2017-03-15" DUREE_ACTIVITE="Matinee"
 	   ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
 	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="3" />
 	  
-	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="4" />	
+	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="4" />
+	   
+	<!-- dataset2 -->
+	  
+	 <PROJET ID_PROJET="2" INTITULE="devlopement du lieu educatif d'une ecole" DESCRIPTION="lobjectif de ce projet c'est de proposer des cour de soir pour une ecole"
+	  DATE_DEBUT="2017-05-11" DATE_FIN="2017-05-20" CATEGORIE="developement" ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
+	 
+	 <ACTIVITE ID_ACTIVITE="4" INTITULE="jjjjjjjj" DATE_ACTIVITE="2017-05-12" DUREE_ACTIVITE="2h"
+	  ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	  
+	  <ACTIVITE ID_ACTIVITE="5" INTITULE="ffffffffff" DATE_ACTIVITE="2017-05-13" DUREE_ACTIVITE="4h"
+	  ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	  
+	  <ACTIVITE ID_ACTIVITE="6" INTITULE="kkkkkkkk" DATE_ACTIVITE="2017-05-14" DUREE_ACTIVITE="1h"
+	   ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	  
+	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="4" ID_COLLABORATEUR="3" />
+	  
+	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="4" ID_COLLABORATEUR="5" />		
 	  	  
 </dataset>
-
-
-
-
