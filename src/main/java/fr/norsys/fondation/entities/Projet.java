@@ -147,14 +147,6 @@ public class Projet implements Serializable {
 		this.responsable = responsable;
 	}
 
-	public Proposition getProposition() {
-		return this.proposition;
-	}
-
-	public void setProposition(Proposition proposition) {
-		this.proposition = proposition;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -224,8 +216,7 @@ public class Projet implements Serializable {
 	@Override
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
-				+ ", activites number= " + this.activites.size() + "]";
+				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie + "]";
 	}
 
 }

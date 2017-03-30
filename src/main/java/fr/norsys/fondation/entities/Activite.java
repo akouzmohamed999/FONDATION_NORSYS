@@ -49,6 +49,7 @@ public class Activite implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Projet.class)
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
@@ -56,11 +57,28 @@ public class Activite implements Serializable {
 					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") })
 	private List<Collaborateur> collaborateurs;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "CONATCT_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_CONTACT", name = "ID_CONTACT") })
 	private List<Contact> contatcs;
+
+	public Activite() {
+	}
+
+	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
+			Collaborateur gerant, Projet projet) {
+		super();
+		this.idActivite = idActivite;
+		this.intitule = intitule;
+		this.dateActivite = dateActivite;
+		this.dureeActivite = dureeActivite;
+		this.etat = etat;
+		this.lieu = lieu;
+		this.gerant = gerant;
+		this.projet = projet;
+	}
 
 	public int getIdActivite() {
 		return this.idActivite;
@@ -142,39 +160,6 @@ public class Activite implements Serializable {
 		this.contatcs = contatcs;
 	}
 
-	public Activite() {
-	}
-
-	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
-			Collaborateur gerant, Projet projet) {
-		super();
-		this.idActivite = idActivite;
-		this.intitule = intitule;
-		this.dateActivite = dateActivite;
-		this.dureeActivite = dureeActivite;
-		this.etat = etat;
-		this.lieu = lieu;
-		this.gerant = gerant;
-		this.projet = projet;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.collaborateurs == null ? 0 : this.collaborateurs.hashCode());
-		result = prime * result + (this.contatcs == null ? 0 : this.contatcs.hashCode());
-		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
-		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
-		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
-		result = prime * result + (this.gerant == null ? 0 : this.gerant.hashCode());
-		result = prime * result + this.idActivite;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		return result;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -187,20 +172,6 @@ public class Activite implements Serializable {
 			return false;
 		}
 		Activite other = (Activite) obj;
-		if (this.collaborateurs == null) {
-			if (other.collaborateurs != null) {
-				return false;
-			}
-		} else if (!this.collaborateurs.equals(other.collaborateurs)) {
-			return false;
-		}
-		if (this.contatcs == null) {
-			if (other.contatcs != null) {
-				return false;
-			}
-		} else if (!this.contatcs.equals(other.contatcs)) {
-			return false;
-		}
 		if (this.dateActivite == null) {
 			if (other.dateActivite != null) {
 				return false;
@@ -222,13 +193,6 @@ public class Activite implements Serializable {
 		} else if (!this.etat.equals(other.etat)) {
 			return false;
 		}
-		if (this.gerant == null) {
-			if (other.gerant != null) {
-				return false;
-			}
-		} else if (!this.gerant.equals(other.gerant)) {
-			return false;
-		}
 		if (this.idActivite != other.idActivite) {
 			return false;
 		}
@@ -246,14 +210,14 @@ public class Activite implements Serializable {
 		} else if (!this.lieu.equals(other.lieu)) {
 			return false;
 		}
-		if (this.projet == null) {
-			if (other.projet != null) {
-				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
-			return false;
-		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Activite [idActivite=" + this.idActivite + ", intitule=" + this.intitule + ", dateActivite="
+				+ this.dateActivite + ", dureeActivite=" + this.dureeActivite + ", etat=" + this.etat + ", lieu="
+				+ this.lieu + "]";
 	}
 
 }

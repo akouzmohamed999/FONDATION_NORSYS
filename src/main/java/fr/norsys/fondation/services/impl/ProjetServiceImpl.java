@@ -46,4 +46,10 @@ public class ProjetServiceImpl implements ProjetService {
 	public List<Projet> findProjetsByDateFin(Date dateFin) {
 		return this.projetRepository.findByDateFin(dateFin);
 	}
+
+	@Override
+	public Projet addProjet(Projet projet) {
+		return this.projetRepository.save(projet);
+	}
+
 }

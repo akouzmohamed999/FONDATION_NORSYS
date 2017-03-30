@@ -156,7 +156,6 @@ public class Collaborateur implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
 		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
 		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
 		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
@@ -185,13 +184,6 @@ public class Collaborateur implements Serializable {
 				return false;
 			}
 		} else if (!this.CIN.equals(other.CIN)) {
-			return false;
-		}
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
 			return false;
 		}
 		if (this.adresse == null) {
@@ -247,14 +239,6 @@ public class Collaborateur implements Serializable {
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
-				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
-				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
-				+ this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
 	}
 
 }

@@ -43,7 +43,7 @@ public class Contact implements Serializable {
 	private String numTelephone;
 	@Column(name = "PAYS")
 	private String pays;
-	@Column(name = "ADRESSe")
+	@Column(name = "ADRESSE")
 	private String adresse;
 	@Column(name = "TYPE_CONTACT")
 	private String typeContact;
@@ -51,83 +51,22 @@ public class Contact implements Serializable {
 	@ManyToMany(mappedBy = "contatcs")
 	private List<Activite> activites;
 
-	public int getIdContact() {
-		return this.idContact;
+	public Contact() {
+
 	}
 
-	public void setIdContact(int idContact) {
+	public Contact(int idContact, String cIN, String nom, String prenom, Date dateNaissance, String lieuNaissance,
+			String numTelephone, String pays, String adresse, String typeContact) {
+		super();
 		this.idContact = idContact;
-	}
-
-	public String getCIN() {
-		return this.CIN;
-	}
-
-	public void setCIN(String cIN) {
 		this.CIN = cIN;
-	}
-
-	public String getNom() {
-		return this.nom;
-	}
-
-	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return this.prenom;
-	}
-
-	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public Date getDateNaissance() {
-		return this.dateNaissance;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
-	}
-
-	public String getLieuNaissance() {
-		return this.lieuNaissance;
-	}
-
-	public void setLieuNaissance(String lieuNaissance) {
 		this.lieuNaissance = lieuNaissance;
-	}
-
-	public String getNumTelephone() {
-		return this.numTelephone;
-	}
-
-	public void setNumTelephone(String numTelephone) {
 		this.numTelephone = numTelephone;
-	}
-
-	public String getPays() {
-		return this.pays;
-	}
-
-	public void setPays(String pays) {
 		this.pays = pays;
-	}
-
-	public String getAdresse() {
-		return this.adresse;
-	}
-
-	public void setAdresse(String adresse) {
 		this.adresse = adresse;
-	}
-
-	public String getTypeContact() {
-		return this.typeContact;
-	}
-
-	public void setTypeContact(String typeContact) {
 		this.typeContact = typeContact;
 	}
 
@@ -139,7 +78,44 @@ public class Contact implements Serializable {
 		this.activites = activites;
 	}
 
-	public Contact() {
+	public int getIdContact() {
+		return this.idContact;
+	}
+
+	public String getCIN() {
+		return this.CIN;
+	}
+
+	public String getNom() {
+		return this.nom;
+	}
+
+	public String getPrenom() {
+		return this.prenom;
+	}
+
+	public Date getDateNaissance() {
+		return this.dateNaissance;
+	}
+
+	public String getLieuNaissance() {
+		return this.lieuNaissance;
+	}
+
+	public String getNumTelephone() {
+		return this.numTelephone;
+	}
+
+	public String getPays() {
+		return this.pays;
+	}
+
+	public String getAdresse() {
+		return this.adresse;
+	}
+
+	public String getTypeContact() {
+		return this.typeContact;
 	}
 
 	@Override
@@ -147,7 +123,6 @@ public class Contact implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
 		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
 		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
 		result = prime * result + this.idContact;
@@ -177,13 +152,6 @@ public class Contact implements Serializable {
 				return false;
 			}
 		} else if (!this.CIN.equals(other.CIN)) {
-			return false;
-		}
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
 			return false;
 		}
 		if (this.adresse == null) {
@@ -253,22 +221,7 @@ public class Contact implements Serializable {
 		return "Contact [idContact=" + this.idContact + ", CIN=" + this.CIN + ", nom=" + this.nom + ", prenom="
 				+ this.prenom + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance=" + this.lieuNaissance
 				+ ", numTelephone=" + this.numTelephone + ", pays=" + this.pays + ", adresse=" + this.adresse
-				+ ", typeContact=" + this.typeContact + ", activites number=" + this.activites.size() + "]";
-	}
-
-	public Contact(int idContact, String cIN, String nom, String prenom, Date dateNaissance, String lieuNaissance,
-			String numTelephone, String pays, String adresse, String typeContact) {
-		super();
-		this.idContact = idContact;
-		this.CIN = cIN;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.lieuNaissance = lieuNaissance;
-		this.numTelephone = numTelephone;
-		this.pays = pays;
-		this.adresse = adresse;
-		this.typeContact = typeContact;
+				+ ", typeContact=" + this.typeContact + "]";
 	}
 
 }

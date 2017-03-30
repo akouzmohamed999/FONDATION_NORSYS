@@ -182,8 +182,6 @@ public class Proposition implements Serializable {
 		result = prime * result + this.idProposition;
 		result = prime * result + (this.objectif == null ? 0 : this.objectif.hashCode());
 		result = prime * result + (this.populationCible == null ? 0 : this.populationCible.hashCode());
-		result = prime * result + (this.porteurProjet == null ? 0 : this.porteurProjet.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
 		result = prime * result + (this.thematique == null ? 0 : this.thematique.hashCode());
 		result = prime * result + (this.typeAction == null ? 0 : this.typeAction.hashCode());
 		result = prime * result + (this.typeSoutien == null ? 0 : this.typeSoutien.hashCode());
@@ -241,20 +239,6 @@ public class Proposition implements Serializable {
 		} else if (!this.populationCible.equals(other.populationCible)) {
 			return false;
 		}
-		if (this.porteurProjet == null) {
-			if (other.porteurProjet != null) {
-				return false;
-			}
-		} else if (!this.porteurProjet.equals(other.porteurProjet)) {
-			return false;
-		}
-		if (this.projet == null) {
-			if (other.projet != null) {
-				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
-			return false;
-		}
 		if (this.thematique == null) {
 			if (other.thematique != null) {
 				return false;
@@ -292,8 +276,7 @@ public class Proposition implements Serializable {
 				+ this.objectif + ", typeAction=" + this.typeAction + ", datePrevision=" + this.datePrevision
 				+ ", populationCible=" + this.populationCible + ", zoneGeographiqe=" + this.zoneGeographiqe
 				+ ", dureeAction=" + this.dureeAction + ", budgetPrevisionnel=" + this.budgetPrevisionnel
-				+ ", typeSoutien=" + this.typeSoutien + ", porteurProjet=" + this.porteurProjet + ", projet ID="
-				+ this.projet.getIdProjet() + "]";
+				+ ", typeSoutien=" + this.typeSoutien + "]";
 	}
 
 }

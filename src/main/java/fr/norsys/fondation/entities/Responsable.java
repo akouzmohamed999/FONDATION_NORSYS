@@ -40,38 +40,8 @@ public class Responsable extends Collaborateur {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + (this.projets == null ? 0 : this.projets.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
-			return false;
-		}
-		Responsable other = (Responsable) obj;
-		if (this.projets == null) {
-			if (other.projets != null) {
-				return false;
-			}
-		} else if (!this.projets.equals(other.projets)) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
 	public String toString() {
-		return "Responsable [projets=" + this.projets + "]";
+		return "Responsable [projets Number =" + this.projets.size() + "]";
 	}
 
 }

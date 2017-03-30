@@ -2,6 +2,7 @@ package fr.norsys.fondation.services.projet;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Administrateur;
 import fr.norsys.fondation.entities.Collaborateur;
+import fr.norsys.fondation.entities.Contact;
 import fr.norsys.fondation.entities.Projet;
 import fr.norsys.fondation.entities.Responsable;
 import fr.norsys.fondation.services.ProjetService;
@@ -29,6 +31,8 @@ public abstract class AProjectTest {
 
 	Administrateur administrateur;
 	Responsable responsable;
+	Contact contact1;
+	Contact contact2;
 
 	Collaborateur collaborateur1;
 	Collaborateur collaborateur2;
@@ -46,6 +50,11 @@ public abstract class AProjectTest {
 	Activite activite4;
 	Activite activite5;
 	Activite activite6;
+
+	Projet projet3;
+	Activite activite7;
+	Activite activite8;
+	Activite activite9;
 
 	@Before
 	public void setUp() {
@@ -69,7 +78,7 @@ public abstract class AProjectTest {
 				null, null);
 		this.responsable = new Responsable(2, "J222222", "elkhaily", "morad", "Rue 14 Hay massira", null, null, null,
 				null);
-		this.collaborateur1 = new Collaborateur(3, "J333333", "youssfi", "youssef", "Rue 14 Hay massira", null, null,
+		this.collaborateur1 = new Collaborateur(3, "J333333", "youssfi", "yousef", "Rue 14 Hay massira", null, null,
 				null, null);
 		this.collaborateur2 = new Collaborateur(4, "J444444", "karami", "karim", "Rue 14 Hay massira", null, null, null,
 				null);
@@ -81,6 +90,10 @@ public abstract class AProjectTest {
 				null, null);
 		this.collaborateur6 = new Collaborateur(8, "J444444", "youssfi", "smail", "Rue 14 Hay fffddff", null, null,
 				null, null);
+
+		this.contact1 = new Contact(1, "CO1111", "ihsany", "ihsane", null, null, null, null, null, "PARTENAIRE");
+
+		this.contact2 = new Contact(2, "CO2222", "aymany", "aymane", null, null, null, null, null, "BENIFICIAIRE");
 
 		// ---------------------------------projet1----------------------------------
 
@@ -97,6 +110,11 @@ public abstract class AProjectTest {
 		this.activite3 = new Activite(3, "Recontre des étudiant", dateDebutActivite3, "Matinee", "En Cours",
 				"ecole x place y", this.collaborateur1, this.projet1);
 
+		this.activite1.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur2));
+		this.activite1.setContatcs(Arrays.asList(this.contact1, this.contact2));
+
+		this.collaborateur1.setActivites(Arrays.asList(this.activite1));
+		this.collaborateur2.setActivites(Arrays.asList(this.activite1));
 		// ---------------------------------projet2----------------------------------
 
 		LocalDate lDateDebutProjet2 = LocalDate.of(2017, 05, 11);
@@ -118,14 +136,52 @@ public abstract class AProjectTest {
 				"lobjectif de ce projet c'est de proposer des cour de soir pour une ecole", dateDebutProjet2,
 				dateFinProjet2, "developement", this.administrateur, this.responsable, null);
 
-		this.activite4 = new Activite(4, "jjjjjjjjj", dateDebutActivite4, "Matinee", "En Cour", "ecole x place y",
+		this.activite4 = new Activite(4, "jjjjjjjj", dateDebutActivite4, "2h", "En Cour", "ecole x place y",
 				this.collaborateur1, this.projet2);
 
-		this.activite5 = new Activite(5, "ffffffff", dateDebutActivite5, "Matinee", "En Cour", "ecole x place y",
+		this.activite5 = new Activite(5, "ffffffff", dateDebutActivite5, "4h", "En Cour", "ecole x place y",
 				this.collaborateur3, this.projet2);
 
-		this.activite6 = new Activite(6, "jjjjjjjjjj", dateDebutActivite6, "Matinee", "En Cour", "ecole x place y",
+		this.activite6 = new Activite(6, "kkkkkkkk", dateDebutActivite6, "1h", "En Cour", "ecole x place y",
 				this.collaborateur4, this.projet2);
 
+		this.activite4.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur3));
+		this.activite4.setContatcs(Arrays.asList(this.contact1, this.contact2));
+
+		this.responsable.setProjets(Arrays.asList(this.projet1));
+		this.collaborateur1.setActivites(Arrays.asList(this.activite4));
+		this.collaborateur3.setActivites(Arrays.asList(this.activite4));
+
+		// ---------------------------------projet3----------------------------------
+
+		LocalDate lDateDebutProjet3 = LocalDate.of(2017, 06, 20);
+		Date dateDebutProjet3 = Date.valueOf(lDateDebutProjet3);
+
+		LocalDate lDateFinProjet3 = LocalDate.of(2017, 06, 30);
+		Date dateFinProjet3 = Date.valueOf(lDateFinProjet3);
+
+		LocalDate lDateDebutActivite7 = LocalDate.of(2017, 06, 22);
+		Date dateDebutActivite7 = Date.valueOf(lDateDebutActivite7);
+
+		LocalDate lDateDebutActivite8 = LocalDate.of(2017, 06, 24);
+		Date dateDebutActivite8 = Date.valueOf(lDateDebutActivite8);
+
+		LocalDate lDateDebutActivite9 = LocalDate.of(2017, 06, 28);
+		Date dateDebutActivite9 = Date.valueOf(lDateDebutActivite9);
+
+		this.projet3 = new Projet(3, "Argan", "lobjectif de ce projet c'est de faire planter des arbre d'argan",
+				dateDebutProjet3, dateFinProjet3, "Environnement", this.administrateur, this.responsable, null);
+
+		this.activite7 = new Activite(7, "jjjjjjjjj", dateDebutActivite7, "Matinee", "En Cour", "place z",
+				this.collaborateur1, this.projet3);
+
+		this.activite8 = new Activite(8, "ffffffff", dateDebutActivite8, "Matinee", "En Cour", "place z",
+				this.collaborateur3, this.projet3);
+
+		this.activite9 = new Activite(9, "jjjjjjjjjj", dateDebutActivite9, "Matinee", "En Cour", "place n",
+				this.collaborateur4, this.projet3);
+
+		this.administrateur.setProjets(Arrays.asList(this.projet1, this.projet2));
+		this.responsable.setProjets(Arrays.asList(this.projet1, this.projet2));
 	}
 }

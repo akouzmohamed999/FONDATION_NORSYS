@@ -23,4 +23,6 @@ public interface ProjetService {
 
 	List<Projet> findProjetsByDateFin(Date testDateFin);
 
+	Projet addProjet(Projet projet);
+
 }

@@ -107,7 +107,6 @@ public class PorteurProjet {
 		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
 		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
 		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		result = prime * result + (this.propositions == null ? 0 : this.propositions.hashCode());
 		return result;
 	}
 
@@ -154,21 +153,13 @@ public class PorteurProjet {
 		} else if (!this.prenom.equals(other.prenom)) {
 			return false;
 		}
-		if (this.propositions == null) {
-			if (other.propositions != null) {
-				return false;
-			}
-		} else if (!this.propositions.equals(other.propositions)) {
-			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "PorteurProjet [idPorteur=" + this.idPorteur + ", nom=" + this.nom + ", prenom=" + this.prenom
-				+ ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone + ", propositions="
-				+ this.propositions + "]";
+				+ ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone + "]";
 	}
 
 }
