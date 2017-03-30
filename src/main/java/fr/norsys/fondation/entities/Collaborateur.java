@@ -241,4 +241,12 @@ public class Collaborateur implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
+				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
+				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
+				+ this.lieuNaissance + "]";
+	}
+
 }

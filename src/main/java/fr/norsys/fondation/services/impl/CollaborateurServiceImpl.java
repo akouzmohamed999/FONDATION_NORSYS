@@ -17,15 +17,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public Collaborateur findCollaborateurByName(String nom) {
-		return this.collaborateurRepository.findByNom(nom).get(0);
-	}
-
-	@Override
-	public Collaborateur AddCollaborateur(String nom, String prenom) {
-		Collaborateur collaborateur = new Collaborateur();
-		collaborateur.setNom(nom);
-		collaborateur.setPrenom(prenom);
-		return this.collaborateurRepository.save(collaborateur);
+		return this.collaborateurRepository.findOneByNom(nom);
 	}
 
 	@Override

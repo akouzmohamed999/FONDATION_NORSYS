@@ -38,7 +38,7 @@
 	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
 	  <ACTIVITE ID_ACTIVITE="3" INTITULE="Recontre des étudiant" DATE_ACTIVITE="2017-03-15" DUREE_ACTIVITE="Matinee"
-	   ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
+	   ETAT="Termine" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="1" />
 	  
 	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="3" />
 	  
@@ -54,13 +54,13 @@
 	  DATE_DEBUT="2017-05-11" DATE_FIN="2017-05-20" CATEGORIE="developement" ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
 	 
 	 <ACTIVITE ID_ACTIVITE="4" INTITULE="jjjjjjjj" DATE_ACTIVITE="2017-05-12" DUREE_ACTIVITE="2h"
-	  ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	  ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
 	  
 	  <ACTIVITE ID_ACTIVITE="5" INTITULE="ffffffff" DATE_ACTIVITE="2017-05-13" DUREE_ACTIVITE="4h"
-	  ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	  ETAT="Cloture" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
 	  
 	  <ACTIVITE ID_ACTIVITE="6" INTITULE="kkkkkkkk" DATE_ACTIVITE="2017-05-14" DUREE_ACTIVITE="1h"
-	   ETAT="En Cour" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
+	   ETAT="En Cours" LIEU="ecole x place y" ID_GERANT="3" ID_PROJET="2" />
 	  
 	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="4" ID_COLLABORATEUR="3" />
 	  

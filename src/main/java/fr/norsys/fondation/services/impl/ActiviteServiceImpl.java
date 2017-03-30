@@ -1,5 +1,6 @@
 package fr.norsys.fondation.services.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,16 @@ public class ActiviteServiceImpl implements ActiviteService {
 	@Override
 	public List<Activite> findAllActivities() {
 		return this.activiteRepository.findAll();
+	}
+
+	@Override
+	public List<Activite> findActivitiesByDateActivite(Date dateDebutActivite) {
+		return this.activiteRepository.findByDateActivite(dateDebutActivite);
+	}
+
+	@Override
+	public List<Activite> findActivitiesByEtat(String etat) {
+		return this.activiteRepository.findByEtat(etat);
 	}
 
 }
