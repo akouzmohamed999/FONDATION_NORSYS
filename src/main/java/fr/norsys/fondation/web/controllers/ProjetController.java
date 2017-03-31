@@ -15,7 +15,7 @@ public class ProjetController {
 	@Autowired
 	ProjetService projetService;
 
-	@RequestMapping(value = "{'/','/projet'}")
+	@RequestMapping(value = { "/", "/projet" })
 	public List<Projet> test() {
 		return this.projetService.findAllProjets();
 	}
