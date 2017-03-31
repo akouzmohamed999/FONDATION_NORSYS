@@ -43,4 +43,9 @@ public class ActiviteServiceImpl implements ActiviteService {
 		return this.activiteRepository.findByCollaborateurs(collaborateur);
 	}
 
+	@Override
+	public List<Activite> findActivitiesByGerant(Collaborateur collaborateur) {
+		return this.activiteRepository.findByGerant(collaborateur);
+	}
+
 }

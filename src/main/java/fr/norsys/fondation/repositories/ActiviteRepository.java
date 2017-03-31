@@ -19,4 +19,6 @@ public interface ActiviteRepository extends JpaRepository<Activite, Integer> {
 
 	List<Activite> findByCollaborateurs(Collaborateur collaborateur);
 
+	List<Activite> findByGerant(Collaborateur collaborateur);
+
 }

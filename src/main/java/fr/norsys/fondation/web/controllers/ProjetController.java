@@ -10,12 +10,12 @@ import fr.norsys.fondation.entities.Projet;
 import fr.norsys.fondation.services.ProjetService;
 
 @RestController
-public class TestController {
+public class ProjetController {
 
 	@Autowired
 	ProjetService projetService;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "{'/','/projet'}")
 	public List<Projet> test() {
 		return this.projetService.findAllProjets();
 	}

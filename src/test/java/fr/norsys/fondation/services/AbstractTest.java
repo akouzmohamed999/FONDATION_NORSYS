@@ -21,7 +21,7 @@ import fr.norsys.fondation.entities.Projet;
 import fr.norsys.fondation.entities.Responsable;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/Test/ApplicationContextTest.xml")
+@ContextConfiguration("file:src/test/resources/ApplicationContextTest.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class })
 public abstract class AbstractTest {
 
@@ -183,4 +183,5 @@ public abstract class AbstractTest {
 		this.administrateur.setProjets(Arrays.asList(this.projet1, this.projet2));
 		this.responsable.setProjets(Arrays.asList(this.projet1, this.projet2));
 	}
+
 }
