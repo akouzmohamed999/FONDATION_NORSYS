@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
+import fr.norsys.fondation.entities.Collaborateur;
 import fr.norsys.fondation.entities.Projet;
 import fr.norsys.fondation.repositories.ActiviteRepository;
 import fr.norsys.fondation.services.ActiviteService;
@@ -35,6 +36,11 @@ public class ActiviteServiceImpl implements ActiviteService {
 	@Override
 	public List<Activite> findActivitiesByProjet(Projet projet) {
 		return this.activiteRepository.findByProjet(projet);
+	}
+
+	@Override
+	public List<Activite> findActivitiesByCollaborateur(Collaborateur collaborateur) {
+		return this.activiteRepository.findByCollaborateurs(collaborateur);
 	}
 
 }

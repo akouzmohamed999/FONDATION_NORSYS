@@ -15,8 +15,9 @@ import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.h2.tools.RunScript;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class DBunitTest {
 
 	Path resourceDirectory = Paths.get("src/main/resources");

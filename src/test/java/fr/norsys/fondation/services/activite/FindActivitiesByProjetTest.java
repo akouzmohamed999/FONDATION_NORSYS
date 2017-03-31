@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class FindActivitieByProjetTest extends AActiviteTest {
+public class FindActivitiesByProjetTest extends AActiviteTest {
 
 	@Test
 	public void shouldReturnProjet1Activities() {

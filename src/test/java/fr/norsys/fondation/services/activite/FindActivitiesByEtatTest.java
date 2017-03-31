@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class FindActivitiesByEtat extends AActiviteTest {
+public class FindActivitiesByEtatTest extends AActiviteTest {
 
 	@Test
 	public void shouldReturnActivite3WithTermineEtat() {
