@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -44,15 +45,26 @@ public class Projet implements Serializable {
 	private Date dateFin;
 	@Column(name = "CATEGORIE")
 	private String categorie;
+
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
 	private Administrateur administrateur;
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
-	private List<Activite> activites;
+	private List<Composante> composantes;
+
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
 	private Responsable responsable;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "projet")
+	private List<Publication> publications;
+
+	@ManyToMany(mappedBy = "projets")
+	private List<Partenaire> partenaires;
+
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
 	@JoinColumn(name = "ID_PROPOSITION")
 	@Null
@@ -131,12 +143,12 @@ public class Projet implements Serializable {
 		this.administrateur = administrateur;
 	}
 
-	public List<Activite> getActivites() {
-		return this.activites;
+	public List<Composante> getComposantes() {
+		return this.composantes;
 	}
 
-	public void setActivites(List<Activite> activites) {
-		this.activites = activites;
+	public void setComposantes(List<Composante> composantes) {
+		this.composantes = composantes;
 	}
 
 	public Responsable getResponsable() {
@@ -145,6 +157,30 @@ public class Projet implements Serializable {
 
 	public void setResponsable(Responsable responsable) {
 		this.responsable = responsable;
+	}
+
+	public List<Publication> getPublications() {
+		return this.publications;
+	}
+
+	public void setPublications(List<Publication> publications) {
+		this.publications = publications;
+	}
+
+	public Proposition getProposition() {
+		return this.proposition;
+	}
+
+	public void setProposition(Proposition proposition) {
+		this.proposition = proposition;
+	}
+
+	public List<Partenaire> getPartenaires() {
+		return this.partenaires;
+	}
+
+	public void setPartenaires(List<Partenaire> partenaires) {
+		this.partenaires = partenaires;
 	}
 
 	@Override

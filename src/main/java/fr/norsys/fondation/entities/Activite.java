@@ -44,11 +44,11 @@ public class Activite implements Serializable {
 	@Column(name = "LIEU")
 	private String lieu;
 	@ManyToOne(targetEntity = Collaborateur.class)
-	@JoinColumn(name = "ID_GERANT")
-	private Collaborateur gerant;
+	@JoinColumn(name = "ID_ANIMATEUR")
+	private Collaborateur animateurTerrain;
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Projet.class)
-	@JoinColumn(name = "ID_PROJET")
-	private Projet projet;
+	@JoinColumn(name = "ID_COMPOSANTE")
+	private Composante composante;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
@@ -59,16 +59,16 @@ public class Activite implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
-	@JoinTable(name = "CONATCT_ACTIVITE", joinColumns = {
+	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_CONTACT", name = "ID_CONTACT") })
-	private List<Contact> contatcs;
+	private List<Benificiaire> benificiaires;
 
 	public Activite() {
 	}
 
 	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
-			Collaborateur gerant, Projet projet) {
+			Collaborateur animateurTerrain, Composante composante) {
 		super();
 		this.idActivite = idActivite;
 		this.intitule = intitule;
@@ -76,8 +76,8 @@ public class Activite implements Serializable {
 		this.dureeActivite = dureeActivite;
 		this.etat = etat;
 		this.lieu = lieu;
-		this.gerant = gerant;
-		this.projet = projet;
+		this.animateurTerrain = animateurTerrain;
+		this.composante = composante;
 	}
 
 	public int getIdActivite() {
@@ -128,20 +128,20 @@ public class Activite implements Serializable {
 		this.lieu = lieu;
 	}
 
-	public Collaborateur getGerant() {
-		return this.gerant;
+	public Collaborateur getAnimateurTerrain() {
+		return this.animateurTerrain;
 	}
 
-	public void setGerant(Collaborateur gerant) {
-		this.gerant = gerant;
+	public void setAnimateurTerrain(Collaborateur animateurTerrain) {
+		this.animateurTerrain = animateurTerrain;
 	}
 
-	public Projet getProjet() {
-		return this.projet;
+	public Composante getComposante() {
+		return this.composante;
 	}
 
-	public void setProjet(Projet projet) {
-		this.projet = projet;
+	public void setComposante(Composante composante) {
+		this.composante = composante;
 	}
 
 	public List<Collaborateur> getCollaborateurs() {
@@ -152,12 +152,12 @@ public class Activite implements Serializable {
 		this.collaborateurs = collaborateurs;
 	}
 
-	public List<Contact> getContatcs() {
-		return this.contatcs;
+	public List<Benificiaire> getBenificiaires() {
+		return this.benificiaires;
 	}
 
-	public void setContatcs(List<Contact> contatcs) {
-		this.contatcs = contatcs;
+	public void setBenificiaires(List<Benificiaire> benificiaires) {
+		this.benificiaires = benificiaires;
 	}
 
 	@Override

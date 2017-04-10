@@ -55,6 +55,8 @@ public abstract class AbstractTest {
 	protected Activite activiteProjet3EnCours7;
 	protected Activite activiteProjet3Cloturee2;
 
+	protected Activite addedActivite;
+
 	@Before
 	public void setUp() {
 
@@ -182,6 +184,9 @@ public abstract class AbstractTest {
 
 		this.administrateur.setProjets(Arrays.asList(this.projet1, this.projet2));
 		this.responsable.setProjets(Arrays.asList(this.projet1, this.projet2));
+
+		this.addedActivite = new Activite(7, "Added activitie", dateDebutActivite9, "Matinee", "Termine",
+				"added activite place", this.collaborateur1, this.projet1);
 	}
 
 }

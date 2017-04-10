@@ -48,4 +48,9 @@ public class ActiviteServiceImpl implements ActiviteService {
 		return this.activiteRepository.findByGerant(collaborateur);
 	}
 
+	@Override
+	public Activite addActivite(Activite activite) {
+		return this.activiteRepository.save(activite);
+	}
+
 }

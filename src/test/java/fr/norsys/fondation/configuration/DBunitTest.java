@@ -29,7 +29,7 @@ public class DBunitTest {
 	public DBunitTest() throws Exception {
 
 		RunScript.execute(JDBC_URL, USER, PASSWORD, this.resourceDirectory + "/fondationSQL.sql",
-				Charset.defaultCharset(), false);
+				Charset.forName("utf8"), false);
 		IDataSet dataSet = this.readDataSet();
 		this.cleanlyInsert(dataSet);
 

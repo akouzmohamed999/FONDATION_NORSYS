@@ -24,4 +24,6 @@ public interface ActiviteService {
 
 	List<Activite> findActivitiesByGerant(Collaborateur collaborateur);
 
+	Activite addActivite(Activite activite);
+
 }
