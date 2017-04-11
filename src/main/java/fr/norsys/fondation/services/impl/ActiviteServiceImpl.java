@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Collaborateur;
-import fr.norsys.fondation.entities.Projet;
+import fr.norsys.fondation.entities.Composante;
 import fr.norsys.fondation.repositories.ActiviteRepository;
 import fr.norsys.fondation.services.ActiviteService;
 
@@ -34,23 +34,18 @@ public class ActiviteServiceImpl implements ActiviteService {
 	}
 
 	@Override
-	public List<Activite> findActivitiesByProjet(Projet projet) {
-		return this.activiteRepository.findByProjet(projet);
-	}
-
-	@Override
 	public List<Activite> findActivitiesByCollaborateur(Collaborateur collaborateur) {
 		return this.activiteRepository.findByCollaborateurs(collaborateur);
 	}
 
 	@Override
-	public List<Activite> findActivitiesByGerant(Collaborateur collaborateur) {
-		return this.activiteRepository.findByGerant(collaborateur);
+	public Activite addActivite(Activite activite) {
+		return this.activiteRepository.save(activite);
 	}
 
 	@Override
-	public Activite addActivite(Activite activite) {
-		return this.activiteRepository.save(activite);
+	public List<Activite> findActivitiesByComposante(Composante composante) {
+		return this.activiteRepository.findByComposante(composante);
 	}
 
 }

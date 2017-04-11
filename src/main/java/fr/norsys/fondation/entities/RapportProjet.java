@@ -27,14 +27,13 @@ public class RapportProjet {
 	@Column(name = "TYPE")
 	private String type;
 	@Lob
-	@Column(name = "fichierRapport")
+	@Column(name = "FICHIER_RAPPORT")
 	private byte[] fichierRapport;
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
 
 	public RapportProjet() {
-		super();
 	}
 
 	public RapportProjet(int idRapport, String intitule, String type, byte[] fichierRapport, Projet projet) {

@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,18 +31,16 @@ public class Thematique {
 	private String description;
 
 	@OneToMany(mappedBy = "thematique")
-	private List<Composante> composante;
+	private List<Composante> composantes = new ArrayList<Composante>();
 
 	public Thematique() {
-		super();
 	}
 
-	public Thematique(int idThematique, String intitule, String description, List<Composante> composante) {
+	public Thematique(int idThematique, String intitule, String description) {
 		super();
 		this.idThematique = idThematique;
 		this.intitule = intitule;
 		this.description = description;
-		this.composante = composante;
 	}
 
 	public int getIdThematique() {
@@ -69,18 +68,17 @@ public class Thematique {
 	}
 
 	public List<Composante> getComposante() {
-		return this.composante;
+		return this.composantes;
 	}
 
 	public void setComposante(List<Composante> composante) {
-		this.composante = composante;
+		this.composantes = composante;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.composante == null ? 0 : this.composante.hashCode());
 		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
 		result = prime * result + this.idThematique;
 		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
@@ -99,13 +97,6 @@ public class Thematique {
 			return false;
 		}
 		Thematique other = (Thematique) obj;
-		if (this.composante == null) {
-			if (other.composante != null) {
-				return false;
-			}
-		} else if (!this.composante.equals(other.composante)) {
-			return false;
-		}
 		if (this.description == null) {
 			if (other.description != null) {
 				return false;
@@ -129,7 +120,7 @@ public class Thematique {
 	@Override
 	public String toString() {
 		return "Thematique [idThematique=" + this.idThematique + ", intitule=" + this.intitule + ", description="
-				+ this.description + ", composante=" + this.composante + "]";
+				+ this.description + ", composantes number=" + this.composantes.size() + "]";
 	}
 
 }

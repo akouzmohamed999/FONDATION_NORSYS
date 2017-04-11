@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Collaborateur;
-import fr.norsys.fondation.entities.Projet;
+import fr.norsys.fondation.entities.Composante;
 
 @Service
 public interface ActiviteService {
@@ -18,12 +18,12 @@ public interface ActiviteService {
 
 	List<Activite> findActivitiesByEtat(String etat);
 
-	List<Activite> findActivitiesByProjet(Projet projet);
-
 	List<Activite> findActivitiesByCollaborateur(Collaborateur collaborateur);
 
-	List<Activite> findActivitiesByGerant(Collaborateur collaborateur);
-
 	Activite addActivite(Activite activite);
+
+	List<Activite> findActivitiesByComposante(Composante composante);
+
+	List<Activite> findActivitiesByAnimateurTerrain(Collaborateur collaborateur);
 
 }

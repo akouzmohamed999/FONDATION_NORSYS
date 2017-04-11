@@ -7,26 +7,19 @@ import org.junit.Test;
 public class FindActivitiesByEtatTest extends AActiviteTest {
 
 	@Test
-	public void shouldReturnActivite3WithTermineEtat() {
-		assertThat(this.activiteService.findActivitiesByEtat("Termine").get(0)).isEqualTo(this.activiteProjet1Termine1);
-	}
+	public void shouldReturnActivitesWithRequestedEtat() {
 
-	@Test
-	public void shouldReturnActivite5WithTermineEtat() {
-		assertThat(this.activiteService.findActivitiesByEtat("Cloture").get(0)).isEqualTo(this.activiteProjet2Cloture1);
-	}
+		assertThat(this.activiteService.findActivitiesByEtat("Termine").size()).isEqualTo(1);
+		assertThat(this.activiteService.findActivitiesByEtat("En Cours").size()).isEqualTo(1);
+		assertThat(this.activiteService.findActivitiesByEtat("Annule").size()).isEqualTo(1);
 
-	@Test
-	public void shouldReturnActivite3WithEnCoursEtat() {
-		assertThat(this.activiteService.findActivitiesByEtat("En Cours").size()).isEqualTo(4);
+		assertThat(this.activiteService.findActivitiesByEtat("Termine").get(0))
+				.isEqualTo(this.activite1Composante1Projet1Termine);
 		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(0))
-				.isEqualTo(this.activiteProjet1EnCours1);
-		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(1))
-				.isEqualTo(this.activiteProjet1EnCours2);
-		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(2))
-				.isEqualTo(this.activiteProjet2EnCours4);
-		assertThat(this.activiteService.findActivitiesByEtat("En Cours").get(3))
-				.isEqualTo(this.activiteProjet2EnCours5);
+				.isEqualTo(this.activite2Composante1Projet1EnCours);
+		assertThat(this.activiteService.findActivitiesByEtat("Annule").get(0))
+				.isEqualTo(this.activite3Composante1Projet1Annule);
+
 	}
 
 }

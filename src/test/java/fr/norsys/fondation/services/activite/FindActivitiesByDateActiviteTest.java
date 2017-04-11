@@ -12,9 +12,9 @@ public class FindActivitiesByDateActiviteTest extends AActiviteTest {
 	@Test
 	public void shouldReturnthingActivite4UsingDate20170512() {
 
-		LocalDate lDateDebut = LocalDate.of(2017, 05, 12);
+		LocalDate lDateDebut = LocalDate.of(2017, 03, 13);
 		Date dateDebutActivite = Date.valueOf(lDateDebut);
 		assertThat(this.activiteService.findActivitiesByDateActivite(dateDebutActivite).get(0))
-				.isEqualTo(this.activiteProjet2EnCours4);
+				.isEqualTo(this.activite2Composante1Projet1EnCours);
 	}
 }

@@ -2,6 +2,7 @@ package fr.norsys.fondation.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -52,14 +53,13 @@ public class Collaborateur implements Serializable {
 	private String lieuNaissance;
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "collaborateurs")
-	private List<Activite> activites;
+	private List<Activite> activites = new ArrayList<Activite>();
 
 	public Collaborateur() {
-		super();
 	}
 
 	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance, List<Activite> activites) {
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
 		super();
 		this.idCollaborateur = idCollaborateur;
 		this.CIN = cIN;
@@ -70,7 +70,6 @@ public class Collaborateur implements Serializable {
 		this.email = email;
 		this.dateNaissance = dateNaissance;
 		this.lieuNaissance = lieuNaissance;
-		this.activites = activites;
 	}
 
 	public int getIdCollaborateur() {

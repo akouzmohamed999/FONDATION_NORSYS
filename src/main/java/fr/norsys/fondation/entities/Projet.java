@@ -2,6 +2,7 @@ package fr.norsys.fondation.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -52,7 +53,7 @@ public class Projet implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
-	private List<Composante> composantes;
+	private List<Composante> composantes = new ArrayList<Composante>();
 
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
@@ -60,16 +61,16 @@ public class Projet implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
-	private List<Publication> publications;
+	private List<Publication> publications = new ArrayList<Publication>();
 
 	@ManyToMany(mappedBy = "projets")
-	private List<Partenaire> partenaires;
+	private List<Partenaire> partenaires = new ArrayList<Partenaire>();
 
 	@OneToMany(mappedBy = "projet")
-	private List<RapportProjet> rapports;
+	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
 
 	@OneToMany(mappedBy = "projet")
-	private List<BilanProjet> bilans;
+	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();
 
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
 	@JoinColumn(name = "ID_PROPOSITION")
@@ -81,7 +82,6 @@ public class Projet implements Serializable {
 
 	public Projet(int idProjet, String intitule, String description, Date dateDebut, Date dateFin, String categorie,
 			Administrateur administrateur, Responsable responsable, Proposition proposition) {
-		super();
 		this.idProjet = idProjet;
 		this.intitule = intitule;
 		this.description = description;
@@ -89,7 +89,9 @@ public class Projet implements Serializable {
 		this.dateFin = dateFin;
 		this.categorie = categorie;
 		this.administrateur = administrateur;
+		administrateur.getProjets().add(this);
 		this.responsable = responsable;
+		responsable.getProjets().add(this);
 		this.proposition = proposition;
 	}
 
@@ -300,9 +302,7 @@ public class Projet implements Serializable {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
 				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
 				+ ", administrateur=" + this.administrateur + ", composantes number=" + this.composantes.size()
-				+ ", responsable=" + this.responsable + ", publications number=" + this.publications.size()
-				+ ", partenaires number=" + this.partenaires.size() + ", rapports number=" + this.rapports.size()
-				+ ", bilans number=" + this.bilans.size() + ", proposition=" + this.proposition + "]";
+				+ ", responsable=" + this.responsable + ", proposition=" + this.proposition + "]";
 	}
 
 }

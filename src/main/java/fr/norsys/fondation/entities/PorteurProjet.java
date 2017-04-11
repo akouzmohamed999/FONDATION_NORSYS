@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,10 +36,9 @@ public class PorteurProjet {
 	private String numeroTelephone;
 	@OneToMany(mappedBy = "porteurProjet")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Proposition> propositions;
+	private List<Proposition> propositions = new ArrayList<Proposition>();
 
 	public PorteurProjet() {
-		super();
 	}
 
 	public PorteurProjet(int idPorteur, String nom, String prenom, String email, String numeroTelephone) {

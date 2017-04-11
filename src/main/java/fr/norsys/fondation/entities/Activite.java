@@ -2,6 +2,7 @@ package fr.norsys.fondation.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class Activite implements Serializable {
 	@ManyToOne(targetEntity = Collaborateur.class)
 	@JoinColumn(name = "ID_ANIMATEUR")
 	private Collaborateur animateurTerrain;
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Projet.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Composante.class)
 	@JoinColumn(name = "ID_COMPOSANTE")
 	private Composante composante;
 
@@ -55,14 +56,14 @@ public class Activite implements Serializable {
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") })
-	private List<Collaborateur> collaborateurs;
+	private List<Collaborateur> collaborateurs = new ArrayList<Collaborateur>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_BENIFICIAIRE", name = "ID_BENIFICIAIRE") })
-	private List<Benificiaire> benificiaires;
+	private List<Benificiaire> benificiaires = new ArrayList<Benificiaire>();
 
 	public Activite() {
 	}
@@ -78,6 +79,22 @@ public class Activite implements Serializable {
 		this.lieu = lieu;
 		this.animateurTerrain = animateurTerrain;
 		this.composante = composante;
+		composante.getActivites().add(this);
+	}
+
+	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
+			Collaborateur animateurTerrain, Composante composante, List<Benificiaire> benificiaire) {
+		super();
+		this.idActivite = idActivite;
+		this.intitule = intitule;
+		this.dateActivite = dateActivite;
+		this.dureeActivite = dureeActivite;
+		this.etat = etat;
+		this.lieu = lieu;
+		this.animateurTerrain = animateurTerrain;
+		this.composante = composante;
+		composante.getActivites().add(this);
+		this.benificiaires = benificiaire;
 	}
 
 	public int getIdActivite() {

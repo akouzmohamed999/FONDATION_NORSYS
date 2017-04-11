@@ -29,11 +29,14 @@ public class BilanProjet {
 	@Column(name = "TYPE")
 	private String type;
 	@Lob
-	@Column(name = "fichierBilan")
+	@Column(name = "FICHIER_BILAN")
 	private byte[] fichierBilan;
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
+
+	public BilanProjet() {
+	}
 
 	public int getIdBilan() {
 		return this.idBilan;

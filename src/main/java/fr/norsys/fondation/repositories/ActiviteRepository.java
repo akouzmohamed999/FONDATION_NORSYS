@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Collaborateur;
-import fr.norsys.fondation.entities.Projet;
+import fr.norsys.fondation.entities.Composante;
 
 public interface ActiviteRepository extends JpaRepository<Activite, Integer> {
 
@@ -15,10 +15,8 @@ public interface ActiviteRepository extends JpaRepository<Activite, Integer> {
 
 	List<Activite> findByEtat(String etat);
 
-	List<Activite> findByProjet(Projet projet);
-
 	List<Activite> findByCollaborateurs(Collaborateur collaborateur);
 
-	List<Activite> findByGerant(Collaborateur collaborateur);
+	List<Activite> findByComposante(Composante composante);
 
 }

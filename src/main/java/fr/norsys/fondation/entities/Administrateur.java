@@ -1,6 +1,7 @@
 package fr.norsys.fondation.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,16 +21,15 @@ public class Administrateur extends Collaborateur {
 
 	@OneToMany(mappedBy = "administrateur")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Projet> projets;
+	private List<Projet> projets = new ArrayList<Projet>();
 
 	public Administrateur() {
 		super();
 	}
 
 	public Administrateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance, List<Activite> activites) {
-		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance,
-				activites);
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
+		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
 	}
 
 	public List<Projet> getProjets() {

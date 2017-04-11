@@ -18,14 +18,11 @@ public class FindAllActivitiesTest extends AActiviteTest {
 	@Test
 	public void shouldReturnAllActivities() {
 
-		assertThat(this.activiteService.findAllActivities().size()).isEqualTo(6);
+		assertThat(this.activiteService.findAllActivities().size()).isEqualTo(3);
 
-		assertThat(this.activiteService.findAllActivities().get(0)).isEqualTo(this.activiteProjet1EnCours1);
-		assertThat(this.activiteService.findAllActivities().get(1)).isEqualTo(this.activiteProjet1EnCours2);
-		assertThat(this.activiteService.findAllActivities().get(2)).isEqualTo(this.activiteProjet1Termine1);
-		assertThat(this.activiteService.findAllActivities().get(3)).isEqualTo(this.activiteProjet2EnCours4);
-		assertThat(this.activiteService.findAllActivities().get(4)).isEqualTo(this.activiteProjet2Cloture1);
-		assertThat(this.activiteService.findAllActivities().get(5)).isEqualTo(this.activiteProjet2EnCours5);
+		assertThat(this.activiteService.findAllActivities().get(0)).isEqualTo(this.activite1Composante1Projet1Termine);
+		assertThat(this.activiteService.findAllActivities().get(1)).isEqualTo(this.activite2Composante1Projet1EnCours);
+		assertThat(this.activiteService.findAllActivities().get(2)).isEqualTo(this.activite3Composante1Projet1Annule);
 
 	}
 }

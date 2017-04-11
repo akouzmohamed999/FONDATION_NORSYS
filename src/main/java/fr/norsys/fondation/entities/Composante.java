@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -37,7 +38,20 @@ public class Composante {
 	private Projet projet;
 
 	@OneToMany(mappedBy = "composante")
-	private List<Activite> activites;
+	private List<Activite> activites = new ArrayList<Activite>();
+
+	public Composante() {
+	}
+
+	public Composante(int idComposante, String intitule, Thematique thematique, Projet projet) {
+		super();
+		this.idComposante = idComposante;
+		this.intitule = intitule;
+		this.thematique = thematique;
+		thematique.getComposante().add(this);
+		this.projet = projet;
+		projet.getComposantes().add(this);
+	}
 
 	public int getIdComposante() {
 		return this.idComposante;
@@ -83,7 +97,6 @@ public class Composante {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
 		result = prime * result + this.idComposante;
 		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
 		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
@@ -103,13 +116,6 @@ public class Composante {
 			return false;
 		}
 		Composante other = (Composante) obj;
-		if (this.activites == null) {
-			if (other.activites != null) {
-				return false;
-			}
-		} else if (!this.activites.equals(other.activites)) {
-			return false;
-		}
 		if (this.idComposante != other.idComposante) {
 			return false;
 		}

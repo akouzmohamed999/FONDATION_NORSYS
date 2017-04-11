@@ -1,5 +1,7 @@
 package fr.norsys.fondation.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,7 +18,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "BENIFICIAIRE")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idBenificiaire")
-public class Benificiaire {
+public class Benificiaire implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "ID_BENIFICIAIRE")
@@ -29,7 +33,7 @@ public class Benificiaire {
 	@Column(name = "CIN")
 	private String CIN;
 	@Column(name = "AGE")
-	private int age;
+	private Integer age;
 	@Column(name = "PAYS")
 	private String pays;
 	@Column(name = "VILLE")
@@ -39,7 +43,36 @@ public class Benificiaire {
 	@Column(name = "NUMERO_TELEPHONE")
 	private String numeroTelephone;
 	@ManyToMany(mappedBy = "benificiaires")
-	private List<Activite> activites;
+	private List<Activite> activites = new ArrayList<Activite>();
+
+	public Benificiaire() {
+	}
+
+	public Benificiaire(int idBenificiaire, String nom, String prenom, String cIN, int age, String pays, String ville,
+			String adresse, String numeroTelephone) {
+		super();
+		this.idBenificiaire = idBenificiaire;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.CIN = cIN;
+		this.age = age;
+		this.pays = pays;
+		this.ville = ville;
+		this.adresse = adresse;
+		this.numeroTelephone = numeroTelephone;
+	}
+
+	public Benificiaire(int idBenificiaire, String nom, String prenom, String cIN, String pays, String ville,
+			String adresse) {
+		super();
+		this.idBenificiaire = idBenificiaire;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.CIN = cIN;
+		this.pays = pays;
+		this.ville = ville;
+		this.adresse = adresse;
+	}
 
 	public int getIdBenificiaire() {
 		return this.idBenificiaire;
@@ -73,11 +106,11 @@ public class Benificiaire {
 		this.CIN = cIN;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return this.age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

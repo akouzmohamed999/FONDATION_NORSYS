@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -44,13 +45,12 @@ public class Partenaire {
 	@JoinTable(name = "PARTENAIRE_PROJET", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_PARTENAIRE", name = "ID_PARTENAIRE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_PROJET", name = "ID_PROJET") })
-	private List<Projet> projets;
+	private List<Projet> projets = new ArrayList<Projet>();
 
 	public Partenaire() {
 	}
 
-	public Partenaire(int idPartenaire, String nom, String type, String adresse, String email, String numeroTelephone,
-			List<Projet> projets) {
+	public Partenaire(int idPartenaire, String nom, String type, String adresse, String email, String numeroTelephone) {
 		super();
 		this.idPartenaire = idPartenaire;
 		this.nom = nom;
@@ -58,7 +58,6 @@ public class Partenaire {
 		this.adresse = adresse;
 		this.email = email;
 		this.numeroTelephone = numeroTelephone;
-		this.projets = projets;
 	}
 
 	public int getIdPartenaire() {

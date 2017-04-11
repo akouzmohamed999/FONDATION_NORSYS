@@ -11,27 +11,36 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Administrateur;
+import fr.norsys.fondation.entities.Benificiaire;
 import fr.norsys.fondation.entities.Collaborateur;
-import fr.norsys.fondation.entities.Contact;
+import fr.norsys.fondation.entities.Composante;
+import fr.norsys.fondation.entities.Partenaire;
 import fr.norsys.fondation.entities.Projet;
 import fr.norsys.fondation.entities.Responsable;
+import fr.norsys.fondation.entities.Thematique;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/test/resources/ApplicationContextTest.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class })
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional
 public abstract class AbstractTest {
 
 	@Autowired
 	protected ActiviteService activiteService;
 
-	protected Administrateur administrateur;
-	protected Responsable responsable;
-	protected Contact contact1;
-	protected Contact contact2;
+	protected Administrateur administrateur1;
+	protected Responsable responsableProjet1;
+	protected Benificiaire benificiaire1Activite1And2Projet1;
+	protected Benificiaire benificiaire2Activite1And2Projet1;
+	protected Partenaire partenaire1Projet1;
+	protected Partenaire partenaire2Projet1;
 
 	protected Collaborateur collaborateur1;
 	protected Collaborateur collaborateur2;
@@ -40,22 +49,14 @@ public abstract class AbstractTest {
 	protected Collaborateur collaborateur5;
 	protected Collaborateur collaborateur6;
 
+	protected Thematique ThematiqueSensiblisation;
+	protected Thematique ThematiqueAgriculture;
+
 	protected Projet projet1;
-	protected Activite activiteProjet1EnCours1;
-	protected Activite activiteProjet1EnCours2;
-	protected Activite activiteProjet1Termine1;
-
-	protected Projet projet2;
-	protected Activite activiteProjet2EnCours4;
-	protected Activite activiteProjet2Cloture1;
-	protected Activite activiteProjet2EnCours5;
-
-	protected Projet projet3;
-	protected Activite activiteProjet3EnCours6;
-	protected Activite activiteProjet3EnCours7;
-	protected Activite activiteProjet3Cloturee2;
-
-	protected Activite addedActivite;
+	protected Composante composante1Projet1;
+	protected Activite activite1Composante1Projet1Termine;
+	protected Activite activite2Composante1Projet1EnCours;
+	protected Activite activite3Composante1Projet1Annule;
 
 	@Before
 	public void setUp() {
@@ -69,124 +70,76 @@ public abstract class AbstractTest {
 		LocalDate lDateDebutActivite1 = LocalDate.of(2017, 03, 12);
 		Date dateDebutActivite1 = Date.valueOf(lDateDebutActivite1);
 
-		LocalDate lDateDebutActivite2 = LocalDate.of(2017, 03, 14);
+		LocalDate lDateDebutActivite2 = LocalDate.of(2017, 03, 13);
 		Date dateDebutActivite2 = Date.valueOf(lDateDebutActivite2);
 
-		LocalDate lDateDebutActivite3 = LocalDate.of(2017, 03, 15);
+		LocalDate lDateDebutActivite3 = LocalDate.of(2017, 03, 14);
 		Date dateDebutActivite3 = Date.valueOf(lDateDebutActivite3);
 
-		this.administrateur = new Administrateur(1, "J4879584", "akouz", "mohamed", "Rue 14 Hay massira", null, null,
-				null, null);
-		this.responsable = new Responsable(2, "J222222", "elkhaily", "morad", "Rue 14 Hay massira", null, null, null,
-				null);
-		this.collaborateur1 = new Collaborateur(3, "J333333", "youssfi", "yousef", "Rue 14 Hay massira", null, null,
-				null, null);
-		this.collaborateur2 = new Collaborateur(4, "J444444", "karami", "karim", "Rue 14 Hay massira", null, null, null,
-				null);
-		this.collaborateur3 = new Collaborateur(5, "EB5678", "samir", "bennareg", "Rue 14 Hay agadir", null, null, null,
-				null);
-		this.collaborateur4 = new Collaborateur(6, "EB5679", "elkhaily", "smail", "Rue 14 Hay daoudiat", null, null,
-				null, null);
-		this.collaborateur5 = new Collaborateur(7, "J333333", "youssfi", "yousef", "Rue 14 Hay massira", null, null,
-				null, null);
-		this.collaborateur6 = new Collaborateur(8, "J444444", "karami", "karim", "Rue 14 Hay massira", null, null, null,
-				null);
+		this.administrateur1 = new Administrateur(1, "A1111", "nomAdministrateur1", "prenomAdministrateur1",
+				"adresseAdministrateur1", null, null, null, null);
 
-		this.contact1 = new Contact(1, "CO1111", "ihsany", "ihsane", null, null, null, null, null, "PARTENAIRE");
+		this.responsableProjet1 = new Responsable(2, "R1111", "nomResponsable1", "prenomResponsable1",
+				"adresseResponsable1", null, null, null, null, null);
+		this.collaborateur1 = new Collaborateur(3, "C1111", "nomCollaborateur1", "prenomCollaborateur1",
+				"adresseCollaborateur1", null, null, null, null);
+		this.collaborateur2 = new Collaborateur(4, "C2222", "nomCollaborateur2", "prenomCollaborateur2",
+				"adresseCollaborateur2", null, null, null, null);
+		this.collaborateur3 = new Collaborateur(5, "C3333", "nomCollaborateur3", "prenomCollaborateur3",
+				"adresseCollaborateur3", null, null, null, null);
+		this.collaborateur4 = new Collaborateur(6, "C4444", "nomCollaborateur4", "prenomCollaborateur4",
+				"adresseCollaborateur4", null, null, null, null);
+		this.collaborateur5 = new Collaborateur(7, "C5555", "nomCollaborateur5", "prenomCollaborateur",
+				"adresseCollaborateur5", null, null, null, null);
+		this.collaborateur6 = new Collaborateur(8, "C6666", "nomCollaborateur6", "prenomCollaborateur",
+				"adresseCollaborateyr6", null, null, null, null);
 
-		this.contact2 = new Contact(2, "CO2222", "aymany", "aymane", null, null, null, null, null, "BENIFICIAIRE");
+		this.partenaire1Projet1 = new Partenaire(1, "Partenaire1", "ASSOCIATION", "AdressePartenaire1",
+				"EmailPartenaire1", "06060606");
+
+		this.partenaire2Projet1 = new Partenaire(2, "Partenaire2", "ASSOCIATION", "AdressePartenaire2",
+				"EmailPartenaire2", "06060606");
+
+		this.benificiaire1Activite1And2Projet1 = new Benificiaire(1, "nomBenificaire1", "prenomBenificiaire1", "B1111",
+				"paysBenificiaire1", "villeBenificiaire1", "adresseBenificiaire1");
+
+		this.benificiaire2Activite1And2Projet1 = new Benificiaire(2, "nomBenificaire2", "prenomBenificiaire2", "B2222",
+				"paysBenificiaire2", "villeBenificiaire2", "adresseBenificiaire2");
 
 		// ---------------------------------projet1----------------------------------
 
-		this.projet1 = new Projet(1, "formation professeur en informatique",
-				"lobjectif de ce projet cest de former les professeur sur les outils informatiques", dateDebutProjet1,
-				dateFinProjet1, "Education", this.administrateur, this.responsable, null);
+		this.ThematiqueSensiblisation = new Thematique(1, "Sensibilisation", "descriptionThmatique1");
+		this.ThematiqueAgriculture = new Thematique(2, "Agriculture", "descriptionThmatique2");
 
-		this.activiteProjet1EnCours1 = new Activite(1, "Visite des lieux", dateDebutActivite1, "Matinee", "En Cours",
-				"ecole x place y", this.collaborateur1, this.projet1);
+		this.projet1 = new Projet(1, "intituleProjet1", "descriptionProjet1", dateDebutProjet1, dateFinProjet1,
+				"categorieProjet1", this.administrateur1, this.responsableProjet1, null);
 
-		this.activiteProjet1EnCours2 = new Activite(2, "Reunion avec professeur", dateDebutActivite2, "Matinee",
-				"En Cours", "ecole x place y", this.collaborateur1, this.projet1);
+		this.projet1.getPartenaires().addAll(Arrays.asList(this.partenaire1Projet1, this.partenaire2Projet1));
 
-		this.activiteProjet1Termine1 = new Activite(3, "Recontre des étudiant", dateDebutActivite3, "Matinee",
-				"Termine", "ecole x place y", this.collaborateur1, this.projet1);
+		this.composante1Projet1 = new Composante(1, "intituleComposante1", this.ThematiqueSensiblisation, this.projet1);
 
-		this.activiteProjet1EnCours1.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur2));
-		this.activiteProjet1EnCours1.setContatcs(Arrays.asList(this.contact1, this.contact2));
+		this.activite1Composante1Projet1Termine = new Activite(1, "intituleActivite1", dateDebutActivite1,
+				"dureeActivite1", "Termine", "lieuActivite1", this.collaborateur1, this.composante1Projet1,
+				Arrays.asList(this.benificiaire1Activite1And2Projet1, this.benificiaire2Activite1And2Projet1));
 
-		this.collaborateur1.setActivites(Arrays.asList(this.activiteProjet1EnCours1));
-		this.collaborateur2.setActivites(Arrays.asList(this.activiteProjet1EnCours1));
+		this.activite2Composante1Projet1EnCours = new Activite(2, "intituleActivite2", dateDebutActivite2,
+				"dureeActivite2", "En Cours", "lieuActivite2", this.collaborateur1, this.composante1Projet1,
+				Arrays.asList(this.benificiaire1Activite1And2Projet1, this.benificiaire2Activite1And2Projet1));
+
+		this.activite3Composante1Projet1Annule = new Activite(3, "intituleActivite3", dateDebutActivite3,
+				"dureeActivite3", "Annule", "lieuActivite3", this.collaborateur1, this.composante1Projet1);
+
+		this.activite1Composante1Projet1Termine
+				.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur2));
+
+		this.collaborateur2.getActivites().add(this.activite1Composante1Projet1Termine);
+		this.collaborateur3.getActivites().add(this.activite1Composante1Projet1Termine);
+
+		this.collaborateur4.getActivites().add(this.activite2Composante1Projet1EnCours);
+		this.collaborateur5.getActivites().add(this.activite2Composante1Projet1EnCours);
+
 		// ---------------------------------projet2----------------------------------
 
-		LocalDate lDateDebutProjet2 = LocalDate.of(2017, 05, 11);
-		Date dateDebutProjet2 = Date.valueOf(lDateDebutProjet2);
-
-		LocalDate lDateFinProjet2 = LocalDate.of(2017, 05, 20);
-		Date dateFinProjet2 = Date.valueOf(lDateFinProjet2);
-
-		LocalDate lDateDebutActivite4 = LocalDate.of(2017, 05, 12);
-		Date dateDebutActivite4 = Date.valueOf(lDateDebutActivite4);
-
-		LocalDate lDateDebutActivite5 = LocalDate.of(2017, 05, 13);
-		Date dateDebutActivite5 = Date.valueOf(lDateDebutActivite5);
-
-		LocalDate lDateDebutActivite6 = LocalDate.of(2017, 05, 14);
-		Date dateDebutActivite6 = Date.valueOf(lDateDebutActivite6);
-
-		this.projet2 = new Projet(2, "devlopement du lieu educatif d'une ecole",
-				"lobjectif de ce projet c'est de proposer des cour de soir pour une ecole", dateDebutProjet2,
-				dateFinProjet2, "developement", this.administrateur, this.responsable, null);
-
-		this.activiteProjet2EnCours4 = new Activite(4, "jjjjjjjj", dateDebutActivite4, "2h", "En Cours",
-				"ecole x place y", this.collaborateur1, this.projet2);
-
-		this.activiteProjet2Cloture1 = new Activite(5, "ffffffff", dateDebutActivite5, "4h", "Cloture",
-				"ecole x place y", this.collaborateur3, this.projet2);
-
-		this.activiteProjet2EnCours5 = new Activite(6, "kkkkkkkk", dateDebutActivite6, "1h", "En Cours",
-				"ecole x place y", this.collaborateur4, this.projet2);
-
-		this.activiteProjet2EnCours4.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur3));
-		this.activiteProjet2EnCours4.setContatcs(Arrays.asList(this.contact1, this.contact2));
-
-		this.responsable.setProjets(Arrays.asList(this.projet1));
-		this.collaborateur1.setActivites(Arrays.asList(this.activiteProjet2EnCours4));
-		this.collaborateur3.setActivites(Arrays.asList(this.activiteProjet2EnCours4));
-
-		// ---------------------------------projet3----------------------------------
-
-		LocalDate lDateDebutProjet3 = LocalDate.of(2017, 06, 20);
-		Date dateDebutProjet3 = Date.valueOf(lDateDebutProjet3);
-
-		LocalDate lDateFinProjet3 = LocalDate.of(2017, 06, 30);
-		Date dateFinProjet3 = Date.valueOf(lDateFinProjet3);
-
-		LocalDate lDateDebutActivite7 = LocalDate.of(2017, 06, 22);
-		Date dateDebutActivite7 = Date.valueOf(lDateDebutActivite7);
-
-		LocalDate lDateDebutActivite8 = LocalDate.of(2017, 06, 24);
-		Date dateDebutActivite8 = Date.valueOf(lDateDebutActivite8);
-
-		LocalDate lDateDebutActivite9 = LocalDate.of(2017, 06, 28);
-		Date dateDebutActivite9 = Date.valueOf(lDateDebutActivite9);
-
-		this.projet3 = new Projet(3, "Argan", "lobjectif de ce projet c'est de faire planter des arbre d'argan",
-				dateDebutProjet3, dateFinProjet3, "Environnement", this.administrateur, this.responsable, null);
-
-		this.activiteProjet3EnCours6 = new Activite(7, "jjjjjjjjj", dateDebutActivite7, "Matinee", "En Cour", "place z",
-				this.collaborateur1, this.projet3);
-
-		this.activiteProjet3EnCours7 = new Activite(8, "ffffffff", dateDebutActivite8, "Matinee", "En Cour", "place z",
-				this.collaborateur3, this.projet3);
-
-		this.activiteProjet3Cloturee2 = new Activite(9, "jjjjjjjjjj", dateDebutActivite9, "Matinee", "En Cour",
-				"place n", this.collaborateur4, this.projet3);
-
-		this.administrateur.setProjets(Arrays.asList(this.projet1, this.projet2));
-		this.responsable.setProjets(Arrays.asList(this.projet1, this.projet2));
-
-		this.addedActivite = new Activite(7, "Added activitie", dateDebutActivite9, "Matinee", "Termine",
-				"added activite place", this.collaborateur1, this.projet1);
 	}
 
 }
