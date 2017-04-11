@@ -18,4 +18,6 @@ public interface ProjetRepository extends JpaRepository<Projet, Integer> {
 
 	List<Projet> findByDateFin(Date dateFin);
 
+	Projet findOneByIdProjet(int idProjet);
+
 }

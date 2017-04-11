@@ -51,4 +51,14 @@ public class ProjetServiceImpl implements ProjetService {
 		return this.projetRepository.save(projet);
 	}
 
+	@Override
+	public Projet updateProjet(Projet projet) {
+		return this.projetRepository.saveAndFlush(projet);
+	}
+
+	@Override
+	public Projet findProjetById(int idProjet) {
+		return this.projetRepository.findOneByIdProjet(idProjet);
+	}
+
 }

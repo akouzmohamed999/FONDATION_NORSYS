@@ -22,4 +22,8 @@ public interface ProjetService {
 
 	Projet addProjet(Projet projet);
 
+	Projet updateProjet(Projet projet);
+
+	Projet findProjetById(int idProjet);
+
 }
