@@ -61,7 +61,7 @@ public class Activite implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
-					@JoinColumn(referencedColumnName = "ID_CONTACT", name = "ID_CONTACT") })
+					@JoinColumn(referencedColumnName = "ID_BENIFICIAIRE", name = "ID_BENIFICIAIRE") })
 	private List<Benificiaire> benificiaires;
 
 	public Activite() {
@@ -161,6 +161,21 @@ public class Activite implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.animateurTerrain == null ? 0 : this.animateurTerrain.hashCode());
+		result = prime * result + (this.composante == null ? 0 : this.composante.hashCode());
+		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
+		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
+		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
+		result = prime * result + this.idActivite;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -172,6 +187,20 @@ public class Activite implements Serializable {
 			return false;
 		}
 		Activite other = (Activite) obj;
+		if (this.animateurTerrain == null) {
+			if (other.animateurTerrain != null) {
+				return false;
+			}
+		} else if (!this.animateurTerrain.equals(other.animateurTerrain)) {
+			return false;
+		}
+		if (this.composante == null) {
+			if (other.composante != null) {
+				return false;
+			}
+		} else if (!this.composante.equals(other.composante)) {
+			return false;
+		}
 		if (this.dateActivite == null) {
 			if (other.dateActivite != null) {
 				return false;
@@ -217,7 +246,9 @@ public class Activite implements Serializable {
 	public String toString() {
 		return "Activite [idActivite=" + this.idActivite + ", intitule=" + this.intitule + ", dateActivite="
 				+ this.dateActivite + ", dureeActivite=" + this.dureeActivite + ", etat=" + this.etat + ", lieu="
-				+ this.lieu + "]";
+				+ this.lieu + ", animateurTerrain=" + this.animateurTerrain + ", composante=" + this.composante
+				+ ", collaborateurs number=" + this.collaborateurs.size() + ", benificiaires number="
+				+ this.benificiaires.size() + "]";
 	}
 
 }

@@ -10,10 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Null;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -50,17 +49,16 @@ public class Proposition implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = PorteurProjet.class)
 	@JoinColumn(name = "ID_PORTEUR_PROJET")
 	private PorteurProjet porteurProjet;
-	@OneToOne(fetch = FetchType.EAGER, targetEntity = Projet.class)
-	@JoinColumn(name = "ID_PROJET")
-	@Null
-	private Projet projet;
+	@Lob
+	@Column(name = "ANNEXE")
+	private byte[] Annexe;
 
 	public Proposition() {
 	}
 
 	public Proposition(int idProposition, String thematique, String objectif, String typeAction, Date datePrevision,
 			String populationCible, String zoneGeographiqe, String dureeAction, String budgetPrevisionnel,
-			String typeSoutien, PorteurProjet porteurProjet, Projet projet) {
+			String typeSoutien, PorteurProjet porteurProjet) {
 		super();
 		this.idProposition = idProposition;
 		this.thematique = thematique;
@@ -73,7 +71,6 @@ public class Proposition implements Serializable {
 		this.budgetPrevisionnel = budgetPrevisionnel;
 		this.typeSoutien = typeSoutien;
 		this.porteurProjet = porteurProjet;
-		this.projet = projet;
 	}
 
 	public int getIdProposition() {
@@ -164,12 +161,12 @@ public class Proposition implements Serializable {
 		this.porteurProjet = porteurProjet;
 	}
 
-	public Projet getProjets() {
-		return this.projet;
+	public byte[] getAnnexe() {
+		return this.Annexe;
 	}
 
-	public void setProjets(Projet projet) {
-		this.projet = projet;
+	public void setAnnexe(byte[] annexe) {
+		this.Annexe = annexe;
 	}
 
 	@Override

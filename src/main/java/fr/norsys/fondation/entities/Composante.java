@@ -39,4 +39,108 @@ public class Composante {
 	@OneToMany(mappedBy = "composante")
 	private List<Activite> activites;
 
+	public int getIdComposante() {
+		return this.idComposante;
+	}
+
+	public void setIdComposante(int idComposante) {
+		this.idComposante = idComposante;
+	}
+
+	public String getIntitule() {
+		return this.intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+	public Thematique getThematique() {
+		return this.thematique;
+	}
+
+	public void setThematique(Thematique thematique) {
+		this.thematique = thematique;
+	}
+
+	public Projet getProjet() {
+		return this.projet;
+	}
+
+	public void setProjet(Projet projet) {
+		this.projet = projet;
+	}
+
+	public List<Activite> getActivites() {
+		return this.activites;
+	}
+
+	public void setActivites(List<Activite> activites) {
+		this.activites = activites;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.activites == null ? 0 : this.activites.hashCode());
+		result = prime * result + this.idComposante;
+		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
+		result = prime * result + (this.thematique == null ? 0 : this.thematique.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (this.getClass() != obj.getClass()) {
+			return false;
+		}
+		Composante other = (Composante) obj;
+		if (this.activites == null) {
+			if (other.activites != null) {
+				return false;
+			}
+		} else if (!this.activites.equals(other.activites)) {
+			return false;
+		}
+		if (this.idComposante != other.idComposante) {
+			return false;
+		}
+		if (this.intitule == null) {
+			if (other.intitule != null) {
+				return false;
+			}
+		} else if (!this.intitule.equals(other.intitule)) {
+			return false;
+		}
+		if (this.projet == null) {
+			if (other.projet != null) {
+				return false;
+			}
+		} else if (!this.projet.equals(other.projet)) {
+			return false;
+		}
+		if (this.thematique == null) {
+			if (other.thematique != null) {
+				return false;
+			}
+		} else if (!this.thematique.equals(other.thematique)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Composante [idComposante=" + this.idComposante + ", intitule=" + this.intitule + ", thematique="
+				+ this.thematique + ", projet=" + this.projet + ", activites number=" + this.activites.size() + "]";
+	}
+
 }

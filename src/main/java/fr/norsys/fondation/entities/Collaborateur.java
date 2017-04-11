@@ -54,6 +54,25 @@ public class Collaborateur implements Serializable {
 	@ManyToMany(mappedBy = "collaborateurs")
 	private List<Activite> activites;
 
+	public Collaborateur() {
+		super();
+	}
+
+	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance, List<Activite> activites) {
+		super();
+		this.idCollaborateur = idCollaborateur;
+		this.CIN = cIN;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.numeroTelephone = numeroTelephone;
+		this.email = email;
+		this.dateNaissance = dateNaissance;
+		this.lieuNaissance = lieuNaissance;
+		this.activites = activites;
+	}
+
 	public int getIdCollaborateur() {
 		return this.idCollaborateur;
 	}
@@ -132,23 +151,6 @@ public class Collaborateur implements Serializable {
 
 	public void setActivites(List<Activite> activites) {
 		this.activites = activites;
-	}
-
-	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
-		super();
-		this.idCollaborateur = idCollaborateur;
-		this.CIN = cIN;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.numeroTelephone = numeroTelephone;
-		this.email = email;
-		this.dateNaissance = dateNaissance;
-		this.lieuNaissance = lieuNaissance;
-	}
-
-	public Collaborateur() {
 	}
 
 	@Override
@@ -246,7 +248,7 @@ public class Collaborateur implements Serializable {
 		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
 				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
 				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
-				+ this.lieuNaissance + "]";
+				+ this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
 	}
 
 }

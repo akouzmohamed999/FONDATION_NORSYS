@@ -65,6 +65,12 @@ public class Projet implements Serializable {
 	@ManyToMany(mappedBy = "projets")
 	private List<Partenaire> partenaires;
 
+	@OneToMany(mappedBy = "projet")
+	private List<RapportProjet> rapports;
+
+	@OneToMany(mappedBy = "projet")
+	private List<BilanProjet> bilans;
+
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
 	@JoinColumn(name = "ID_PROPOSITION")
 	@Null
@@ -167,14 +173,6 @@ public class Projet implements Serializable {
 		this.publications = publications;
 	}
 
-	public Proposition getProposition() {
-		return this.proposition;
-	}
-
-	public void setProposition(Proposition proposition) {
-		this.proposition = proposition;
-	}
-
 	public List<Partenaire> getPartenaires() {
 		return this.partenaires;
 	}
@@ -183,16 +181,43 @@ public class Projet implements Serializable {
 		this.partenaires = partenaires;
 	}
 
+	public List<RapportProjet> getRapports() {
+		return this.rapports;
+	}
+
+	public void setRapports(List<RapportProjet> rapports) {
+		this.rapports = rapports;
+	}
+
+	public List<BilanProjet> getBilans() {
+		return this.bilans;
+	}
+
+	public void setBilans(List<BilanProjet> bilans) {
+		this.bilans = bilans;
+	}
+
+	public Proposition getProposition() {
+		return this.proposition;
+	}
+
+	public void setProposition(Proposition proposition) {
+		this.proposition = proposition;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
 		result = prime * result + (this.categorie == null ? 0 : this.categorie.hashCode());
 		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
 		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
 		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
 		result = prime * result + this.idProjet;
 		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + (this.proposition == null ? 0 : this.proposition.hashCode());
+		result = prime * result + (this.responsable == null ? 0 : this.responsable.hashCode());
 		return result;
 	}
 
@@ -208,6 +233,13 @@ public class Projet implements Serializable {
 			return false;
 		}
 		Projet other = (Projet) obj;
+		if (this.administrateur == null) {
+			if (other.administrateur != null) {
+				return false;
+			}
+		} else if (!this.administrateur.equals(other.administrateur)) {
+			return false;
+		}
 		if (this.categorie == null) {
 			if (other.categorie != null) {
 				return false;
@@ -246,13 +278,31 @@ public class Projet implements Serializable {
 		} else if (!this.intitule.equals(other.intitule)) {
 			return false;
 		}
+		if (this.proposition == null) {
+			if (other.proposition != null) {
+				return false;
+			}
+		} else if (!this.proposition.equals(other.proposition)) {
+			return false;
+		}
+		if (this.responsable == null) {
+			if (other.responsable != null) {
+				return false;
+			}
+		} else if (!this.responsable.equals(other.responsable)) {
+			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie + "]";
+				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
+				+ ", administrateur=" + this.administrateur + ", composantes number=" + this.composantes.size()
+				+ ", responsable=" + this.responsable + ", publications number=" + this.publications.size()
+				+ ", partenaires number=" + this.partenaires.size() + ", rapports number=" + this.rapports.size()
+				+ ", bilans number=" + this.bilans.size() + ", proposition=" + this.proposition + "]";
 	}
 
 }

@@ -27,8 +27,9 @@ public class Responsable extends Collaborateur {
 	}
 
 	public Responsable(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
-		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
+			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance, List<Activite> activites) {
+		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance,
+				activites);
 	}
 
 	public List<Projet> getProjets() {

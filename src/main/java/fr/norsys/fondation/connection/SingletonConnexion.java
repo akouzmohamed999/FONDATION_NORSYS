@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SingletonConnexion {
+
 	private static final Logger logger = LoggerFactory.getLogger(SingletonConnexion.class);
 
 	@Bean(name = "dataSource")
