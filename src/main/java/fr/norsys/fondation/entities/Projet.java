@@ -44,8 +44,6 @@ public class Projet implements Serializable {
 	private Date dateDebut;
 	@Column(name = "DATE_FIN")
 	private Date dateFin;
-	@Column(name = "CATEGORIE")
-	private String categorie;
 
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
@@ -80,14 +78,13 @@ public class Projet implements Serializable {
 	public Projet() {
 	}
 
-	public Projet(int idProjet, String intitule, String description, Date dateDebut, Date dateFin, String categorie,
+	public Projet(int idProjet, String intitule, String description, Date dateDebut, Date dateFin,
 			Administrateur administrateur, Responsable responsable, Proposition proposition) {
 		this.idProjet = idProjet;
 		this.intitule = intitule;
 		this.description = description;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.categorie = categorie;
 		this.administrateur = administrateur;
 		administrateur.getProjets().add(this);
 		this.responsable = responsable;
@@ -133,14 +130,6 @@ public class Projet implements Serializable {
 
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
-	}
-
-	public String getCategorie() {
-		return this.categorie;
-	}
-
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
 	}
 
 	public Administrateur getAdministrateur() {
@@ -212,7 +201,6 @@ public class Projet implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
-		result = prime * result + (this.categorie == null ? 0 : this.categorie.hashCode());
 		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
 		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
 		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
@@ -240,13 +228,6 @@ public class Projet implements Serializable {
 				return false;
 			}
 		} else if (!this.administrateur.equals(other.administrateur)) {
-			return false;
-		}
-		if (this.categorie == null) {
-			if (other.categorie != null) {
-				return false;
-			}
-		} else if (!this.categorie.equals(other.categorie)) {
 			return false;
 		}
 		if (this.dateDebut == null) {
@@ -300,9 +281,9 @@ public class Projet implements Serializable {
 	@Override
 	public String toString() {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + this.categorie
-				+ ", administrateur=" + this.administrateur + ", composantes number=" + this.composantes.size()
-				+ ", responsable=" + this.responsable + ", proposition=" + this.proposition + "]";
+				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + ", administrateur="
+				+ this.administrateur + ", composantes number=" + this.composantes.size() + ", responsable="
+				+ this.responsable + ", proposition=" + this.proposition + "]";
 	}
 
 }

@@ -6,4 +6,6 @@ import fr.norsys.fondation.entities.Responsable;
 
 public interface ResponsableRepository extends JpaRepository<Responsable, Integer> {
 
+	Responsable findOneByIdCollaborateur(int idResponsable);
+
 }

@@ -58,6 +58,7 @@ public abstract class AbstractTest {
 	protected Activite activite2Composante1Projet1EnCours;
 	protected Activite activite3Composante1Projet1Annule;
 
+	protected Projet projetAAjoute;
 	protected Activite activteAAjoute;
 
 	@Before
@@ -68,6 +69,12 @@ public abstract class AbstractTest {
 
 		LocalDate lDateFinProjet1 = LocalDate.of(2017, 03, 16);
 		Date dateFinProjet1 = Date.valueOf(lDateFinProjet1);
+
+		LocalDate lDateDebutProjetAjoute = LocalDate.of(2017, 06, 06);
+		Date dateDebutProjetAjoute = Date.valueOf(lDateDebutProjetAjoute);
+
+		LocalDate lDateFinProjetAjoute = LocalDate.of(2017, 06, 16);
+		Date dateFinProjetAjoute = Date.valueOf(lDateFinProjetAjoute);
 
 		LocalDate lDateDebutActivite1 = LocalDate.of(2017, 03, 12);
 		Date dateDebutActivite1 = Date.valueOf(lDateDebutActivite1);
@@ -117,7 +124,7 @@ public abstract class AbstractTest {
 		this.ThematiqueAgriculture = new Thematique(2, "Agriculture", "descriptionThmatique2");
 
 		this.projet1 = new Projet(1, "intituleProjet1", "descriptionProjet1", dateDebutProjet1, dateFinProjet1,
-				"categorieProjet1", this.administrateur1, this.responsableProjet1, null);
+				this.administrateur1, this.responsableProjet1, null);
 
 		this.projet1.getPartenaires().addAll(Arrays.asList(this.partenaire1Projet1, this.partenaire2Projet1));
 
@@ -146,8 +153,10 @@ public abstract class AbstractTest {
 		this.collaborateur4.getActivites().add(this.activite2Composante1Projet1EnCours);
 		this.collaborateur5.getActivites().add(this.activite2Composante1Projet1EnCours);
 
-		// ---------------------------------projet2----------------------------------
+		// ---------------------------------ADDEDPORJET----------------------------------
 
+		this.projetAAjoute = new Projet(2, "intituleProjetAjoute", "descriptionProjetAjoute", dateDebutProjetAjoute,
+				dateFinProjetAjoute, this.administrateur1, this.responsableProjet1, null);
 	}
 
 }

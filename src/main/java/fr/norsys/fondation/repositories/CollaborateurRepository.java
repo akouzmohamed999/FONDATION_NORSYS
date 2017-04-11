@@ -8,4 +8,6 @@ public interface CollaborateurRepository extends JpaRepository<Collaborateur, In
 
 	Collaborateur findOneByNom(String nom);
 
+	Collaborateur findOneByIdCollaborateur(int idCollaborateur);
+
 }

@@ -12,8 +12,6 @@ public interface ProjetRepository extends JpaRepository<Projet, Integer> {
 
 	List<Projet> findByIntitule(String intitule);
 
-	List<Projet> findByCategorie(String categorie);
-
 	List<Projet> findByResponsable(Responsable responsable);
 
 	List<Projet> findByDateDebut(Date dateDebut);

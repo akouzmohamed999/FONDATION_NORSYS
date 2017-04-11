@@ -9,9 +9,10 @@ public class FindActivitiesByCollaborateurTest extends AActiviteTest {
 	@Test
 	public void shouldReturnActivite1And2UsingCollaborateur1() {
 
-		assertThat(this.activiteService.findActivitiesByCollaborateur(this.collaborateur2).size()).isEqualTo(1);
+		assertThat(this.activiteService.findActivitiesByCollaborateur(this.collaborateur2.getIdCollaborateur()).size())
+				.isEqualTo(1);
 
-		assertThat(this.activiteService.findActivitiesByCollaborateur(this.collaborateur2).get(0))
+		assertThat(this.activiteService.findActivitiesByCollaborateur(this.collaborateur2.getIdCollaborateur()).get(0))
 				.isEqualTo(this.activite1Composante1Projet1Termine);
 
 	}

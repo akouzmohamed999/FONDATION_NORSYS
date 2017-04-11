@@ -6,4 +6,6 @@ import fr.norsys.fondation.entities.Composante;
 
 public interface ComposanteRepository extends JpaRepository<Composante, IncompatibleClassChangeError> {
 
+	Composante findOneByIdComposante(int idComposante);
+
 }
