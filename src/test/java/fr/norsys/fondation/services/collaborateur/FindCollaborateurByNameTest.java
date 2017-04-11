@@ -8,6 +8,7 @@ public class FindCollaborateurByNameTest extends ACollaborateurTest {
 
 	@Test
 	public void shouldReturnMohamedwhenNomIsAkouz() {
-		assertThat(this.collaborateurService.findCollaborateurByName("akouz")).isEqualTo(this.administrateur);
+		assertThat(this.collaborateurService.findCollaborateurByName("nomAdministrateur1"))
+				.isEqualTo(this.administrateur1);
 	}
 }

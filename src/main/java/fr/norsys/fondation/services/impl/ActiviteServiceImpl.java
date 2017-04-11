@@ -48,4 +48,9 @@ public class ActiviteServiceImpl implements ActiviteService {
 		return this.activiteRepository.findByComposante(composante);
 	}
 
+	@Override
+	public List<Activite> findActivitiesByAnimateurTerrain(Collaborateur collaborateur) {
+		return this.activiteRepository.findByAnimateurTerrain(collaborateur);
+	}
+
 }

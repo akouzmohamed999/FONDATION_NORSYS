@@ -58,6 +58,8 @@ public abstract class AbstractTest {
 	protected Activite activite2Composante1Projet1EnCours;
 	protected Activite activite3Composante1Projet1Annule;
 
+	protected Activite activteAAjoute;
+
 	@Before
 	public void setUp() {
 
@@ -76,6 +78,9 @@ public abstract class AbstractTest {
 		LocalDate lDateDebutActivite3 = LocalDate.of(2017, 03, 14);
 		Date dateDebutActivite3 = Date.valueOf(lDateDebutActivite3);
 
+		LocalDate lDateDebutActiviteAjoute = LocalDate.of(2017, 03, 15);
+		Date dateDebutActiviteAjoute = Date.valueOf(lDateDebutActiviteAjoute);
+
 		this.administrateur1 = new Administrateur(1, "A1111", "nomAdministrateur1", "prenomAdministrateur1",
 				"adresseAdministrateur1", null, null, null, null);
 
@@ -89,10 +94,10 @@ public abstract class AbstractTest {
 				"adresseCollaborateur3", null, null, null, null);
 		this.collaborateur4 = new Collaborateur(6, "C4444", "nomCollaborateur4", "prenomCollaborateur4",
 				"adresseCollaborateur4", null, null, null, null);
-		this.collaborateur5 = new Collaborateur(7, "C5555", "nomCollaborateur5", "prenomCollaborateur",
+		this.collaborateur5 = new Collaborateur(7, "C5555", "nomCollaborateur5", "prenomCollaborateur5",
 				"adresseCollaborateur5", null, null, null, null);
-		this.collaborateur6 = new Collaborateur(8, "C6666", "nomCollaborateur6", "prenomCollaborateur",
-				"adresseCollaborateyr6", null, null, null, null);
+		this.collaborateur6 = new Collaborateur(8, "C6666", "nomCollaborateur6", "prenomCollaborateur6",
+				"adresseCollaborateur6", null, null, null, null);
 
 		this.partenaire1Projet1 = new Partenaire(1, "Partenaire1", "ASSOCIATION", "AdressePartenaire1",
 				"EmailPartenaire1", "06060606");
@@ -131,6 +136,9 @@ public abstract class AbstractTest {
 
 		this.activite1Composante1Projet1Termine
 				.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur2));
+
+		this.activteAAjoute = new Activite(1, "intituleActiviteAjoute", dateDebutActiviteAjoute, "dureeAcitiviteAjoute",
+				"En Cours", "lieu Activite Ajoute", this.collaborateur1, this.composante1Projet1);
 
 		this.collaborateur2.getActivites().add(this.activite1Composante1Projet1Termine);
 		this.collaborateur3.getActivites().add(this.activite1Composante1Projet1Termine);

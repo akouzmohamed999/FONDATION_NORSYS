@@ -1,5 +1,7 @@
 package fr.norsys.fondation.services.activite;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class FindActivitiesByAnimateurTest extends AActiviteTest {

@@ -20,8 +20,8 @@ public class FindAllCollaborateurTest extends ACollaborateurTest {
 
 		assertThat(this.collaborateurService.findAllCollaborateur().size()).isEqualTo(8);
 
-		assertThat(this.collaborateurService.findAllCollaborateur().get(0)).isEqualTo(this.administrateur);
-		assertThat(this.collaborateurService.findAllCollaborateur().get(1)).isEqualTo(this.responsable);
+		assertThat(this.collaborateurService.findAllCollaborateur().get(0)).isEqualTo(this.administrateur1);
+		assertThat(this.collaborateurService.findAllCollaborateur().get(1)).isEqualTo(this.responsableProjet1);
 		assertThat(this.collaborateurService.findAllCollaborateur().get(2)).isEqualTo(this.collaborateur1);
 		assertThat(this.collaborateurService.findAllCollaborateur().get(3)).isEqualTo(this.collaborateur2);
 		assertThat(this.collaborateurService.findAllCollaborateur().get(4)).isEqualTo(this.collaborateur3);
