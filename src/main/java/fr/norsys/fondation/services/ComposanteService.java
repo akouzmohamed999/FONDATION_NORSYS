@@ -15,4 +15,10 @@ public interface ComposanteService {
 
 	List<Composante> findCompetitionsByIdProjet(int idProjet);
 
+	Composante addComposante(Composante composante);
+
+	Composante updateComposante(Composante composante);
+
+	List<Composante> findComposanteByThematique(int idThematique);
+
 }

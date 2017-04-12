@@ -6,4 +6,6 @@ import fr.norsys.fondation.entities.Thematique;
 
 public interface ThematiqueRepository extends JpaRepository<Thematique, Integer> {
 
+	Thematique findByIdThematique(int idThematique);
+
 }
