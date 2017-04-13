@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -42,6 +45,8 @@ public class Benificiaire implements Serializable {
 	private String adresse;
 	@Column(name = "NUMERO_TELEPHONE")
 	private String numeroTelephone;
+
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "benificiaires")
 	private List<Activite> activites = new ArrayList<Activite>();
 

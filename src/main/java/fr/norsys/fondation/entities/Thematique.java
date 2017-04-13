@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -30,6 +33,7 @@ public class Thematique {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "thematique")
 	private List<Composante> composantes = new ArrayList<Composante>();
 

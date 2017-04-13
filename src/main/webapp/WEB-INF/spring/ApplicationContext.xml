@@ -14,7 +14,7 @@
 				<value>classpath*:META-INF/persistence.xml</value>
 			</list>
 		</property>
-		<property name="defaultDataSource" ref="dataSource"></property>
+		<property name="defaultDataSource" ref="DataSource"></property>
 	</bean>
 	<bean name="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>

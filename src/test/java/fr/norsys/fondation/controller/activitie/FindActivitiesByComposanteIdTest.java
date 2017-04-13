@@ -1,4 +1,4 @@
-package fr.norsys.fondation.controller;
+package fr.norsys.fondation.controller.activitie;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -11,17 +11,15 @@ import java.nio.charset.Charset;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-public class ProjetControllerTest extends AControllerTest {
+public class FindActivitiesByComposanteIdTest extends AActiviteControllerTest {
 
 	@Test
-	public void shouldReturnJsonWith2Projets() throws Exception {
-		this.mockMvc.perform(get("/")).andExpect(status().isOk())
+	public void shouldReturnJsonWithComposantesOfProjet1() throws Exception {
+		this.mockMvc.perform(get("/activite").param("idComposante", "1")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
-				.andExpect(jsonPath("$[0].idProjet", is(1)))
-				.andExpect(jsonPath("$[0].intitule", is("formation professeur en informatique")))
-				.andExpect(jsonPath("$[0].description",
-						is("lobjectif de ce projet cest de former les professeur sur les outils informatiques")));
+				.andExpect(jsonPath("$[0].idActivite", is(1)))
+				.andExpect(jsonPath("$[0].intitule", is("intituleActivite1")))
+				.andExpect(jsonPath("$[0].composante.idComposante", is(1)));
 	}
-
 }

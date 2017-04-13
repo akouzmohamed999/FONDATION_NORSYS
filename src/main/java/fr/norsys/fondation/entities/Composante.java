@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -37,6 +40,7 @@ public class Composante {
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "composante")
 	private List<Activite> activites = new ArrayList<Activite>();
 

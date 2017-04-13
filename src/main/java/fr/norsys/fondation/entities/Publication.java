@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -31,6 +32,7 @@ public class Publication {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
+	@Transient
 	@Lob
 	@Column(name = "PHOTO")
 	private byte[] photo;

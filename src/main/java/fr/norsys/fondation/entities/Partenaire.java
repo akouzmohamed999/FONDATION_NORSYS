@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -41,6 +44,7 @@ public class Partenaire {
 	@Column(name = "NUMERO_TELEPHONE")
 	private String numeroTelephone;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "PARTENAIRE_PROJET", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_PARTENAIRE", name = "ID_PARTENAIRE") }, inverseJoinColumns = {

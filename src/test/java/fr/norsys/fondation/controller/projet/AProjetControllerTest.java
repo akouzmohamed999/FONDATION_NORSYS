@@ -1,4 +1,4 @@
-package fr.norsys.fondation.controller;
+package fr.norsys.fondation.controller.projet;
 
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
@@ -10,7 +10,7 @@ import fr.norsys.fondation.services.AbstractTest;
 import fr.norsys.fondation.services.ProjetService;
 import fr.norsys.fondation.web.controllers.ProjetController;
 
-public abstract class AControllerTest extends AbstractTest {
+public abstract class AProjetControllerTest extends AbstractTest {
 
 	@Autowired
 	ProjetController projetController;

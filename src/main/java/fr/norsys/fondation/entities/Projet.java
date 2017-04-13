@@ -61,12 +61,15 @@ public class Projet implements Serializable {
 	@OneToMany(mappedBy = "projet")
 	private List<Publication> publications = new ArrayList<Publication>();
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "projets")
 	private List<Partenaire> partenaires = new ArrayList<Partenaire>();
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();
 
