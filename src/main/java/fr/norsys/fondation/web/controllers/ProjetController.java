@@ -17,12 +17,12 @@ public class ProjetController {
 	@Autowired
 	ProjetService projetService;
 
-	@RequestMapping(value = { "/", "/projet" })
+	@RequestMapping(value = "/administrateur/")
 	public List<Projet> listeDesProjets() {
 		return this.projetService.findAllProjets();
 	}
 
-	@RequestMapping(value = "/projet", method = RequestMethod.GET)
+	@RequestMapping(value = "/administrateur/projet", method = RequestMethod.GET)
 	public Projet projetParId(@RequestParam int idProjet) {
 		return this.projetService.findProjetById(idProjet);
 	}

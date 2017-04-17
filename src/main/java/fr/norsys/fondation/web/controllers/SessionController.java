@@ -16,7 +16,7 @@ public class SessionController {
 	@Autowired
 	CollaborateurService collaborateurService;
 
-	@RequestMapping("/user/loggedUser")
+	@RequestMapping("/loggedUser")
 	public Collaborateur getLoggedUser(Principal principal) throws SQLException {
 		Collaborateur collaborateur = this.collaborateurService.findCollaborateurByName(principal.getName());
 		return collaborateur;

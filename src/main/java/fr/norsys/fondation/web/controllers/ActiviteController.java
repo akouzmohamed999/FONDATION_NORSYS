@@ -17,7 +17,7 @@ public class ActiviteController {
 	@Autowired
 	ActiviteService activiteService;
 
-	@RequestMapping(value = "/activite", method = RequestMethod.GET)
+	@RequestMapping(value = "/collaborateur/activite", method = RequestMethod.GET)
 	public List<Activite> findComposanteByIdProjet(@RequestParam int idComposante) {
 		return this.activiteService.findActivitiesByComposante(idComposante);
 	}
