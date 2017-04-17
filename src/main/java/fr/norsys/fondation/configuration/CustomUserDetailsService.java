@@ -32,10 +32,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) {
+	public UserDetails loadUserByUsername(String email) {
 
-		this.user = this.collaborateurService.findCollaborateurByName(username);
-
+		this.user = this.collaborateurService.findCollaborateurByEmail(email);
+		System.out.println("777777" + email);
+		System.out.println("44444444" + this.user);
 		List<GrantedAuthority> authorities = this.buildUserAuthority(this.user,
 				Arrays.asList(this.user.getClass().getSimpleName()));
 		return this.buildUserForAuthentication(this.user, authorities);
@@ -52,6 +53,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private List<GrantedAuthority> buildUserAuthority(fr.norsys.fondation.entities.Collaborateur user,
 			Collection<String> userRoles) {
 
+		System.out.println("+++++++++++++++++" + user + "///////" + userRoles);
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 		// Build user's authorities
 		for (String userRole : userRoles) {

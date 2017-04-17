@@ -25,4 +25,9 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 		return this.collaborateurRepository.findAll();
 	}
 
+	@Override
+	public Collaborateur findCollaborateurByEmail(String email) {
+		return this.collaborateurRepository.findOneByEmail(email);
+	}
+
 }

@@ -11,6 +11,8 @@ public interface CollaborateurService {
 
 	Collaborateur findCollaborateurByName(String string);
 
+	Collaborateur findCollaborateurByEmail(String email);
+
 	List<Collaborateur> findAllCollaborateur();
 
 }
