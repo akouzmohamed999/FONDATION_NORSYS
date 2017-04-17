@@ -11,8 +11,6 @@ import java.nio.charset.Charset;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-import fr.norsys.fondation.controller.projet.AProjetControllerTest;
-
 public class FindAllProjetControllerTest extends AProjetControllerTest {
 
 	@Test
@@ -23,5 +21,4 @@ public class FindAllProjetControllerTest extends AProjetControllerTest {
 				.andExpect(jsonPath("$[0].idProjet", is(1))).andExpect(jsonPath("$[0].intitule", is("intituleProjet1")))
 				.andExpect(jsonPath("$[0].description", is("descriptionProjet1")));
 	}
-
 }

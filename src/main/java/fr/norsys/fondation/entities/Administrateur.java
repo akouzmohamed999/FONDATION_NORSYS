@@ -28,8 +28,9 @@ public class Administrateur extends Collaborateur {
 	}
 
 	public Administrateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
-		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, dateNaissance, lieuNaissance);
+			String numeroTelephone, String email, String password, Date dateNaissance, String lieuNaissance) {
+		super(idCollaborateur, cIN, nom, prenom, adresse, numeroTelephone, email, password, dateNaissance,
+				lieuNaissance);
 	}
 
 	public List<Projet> getProjets() {

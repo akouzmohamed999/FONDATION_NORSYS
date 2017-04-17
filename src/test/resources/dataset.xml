@@ -1,28 +1,28 @@
 <dataset>
 	
 	<COLLABORATEUR ID_COLLABORATEUR="1" CIN="A1111" NOM="nomAdministrateur1" PRENOM="prenomAdministrateur1" ADRESSE="adresseAdministrateur1"
-	 TYPE_COLLABORATEUR="Administrateur"/>
+	 TYPE_COLLABORATEUR="Administrateur" EMAIL="admin@norsys.fr" PASSWORD="admin"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="2" CIN="R1111" NOM="nomResponsable1" PRENOM="prenomResponsable1" ADRESSE="adresseResponsable1"
-	 TYPE_COLLABORATEUR="Responsable"/>
+	 TYPE_COLLABORATEUR="Responsable"  EMAIL="responsable1@norsys.fr" PASSWORD="responsable1"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="3" CIN="C1111" NOM="nomCollaborateur1" PRENOM="prenomCollaborateur1" ADRESSE="adresseCollaborateur1"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur1@norsys.fr" PASSWORD="collaborateur1"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="4" CIN="C2222" NOM="nomCollaborateur2" PRENOM="prenomCollaborateur2" ADRESSE="adresseCollaborateur2"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur2@norsys.fr" PASSWORD="collaborateur2"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="5" CIN="C3333" NOM="nomCollaborateur3" PRENOM="prenomCollaborateur3" ADRESSE="adresseCollaborateur3"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur3@norsys.fr" PASSWORD="collaborateur3"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="6" CIN="C4444" NOM="nomCollaborateur4" PRENOM="prenomCollaborateur4" ADRESSE="adresseCollaborateur4"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur4@norsys.fr" PASSWORD="collaborateur4"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="7" CIN="C5555" NOM="nomCollaborateur5" PRENOM="prenomCollaborateur5" ADRESSE="adresseCollaborateur5"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur5@norsys.fr" PASSWORD="collaborateur5"/>
 	 
 	 <COLLABORATEUR ID_COLLABORATEUR="8" CIN="C6666" NOM="nomCollaborateur6" PRENOM="prenomCollaborateur6" ADRESSE="adresseCollaborateur6"
-	 TYPE_COLLABORATEUR="Collaborateur"/>
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur6@norsys.fr" PASSWORD="collaborateur6"/>
 	 
 	 <PARTENAIRE ID_PARTENAIRE="1" ADRESSE="AdressePartenaire1" EMAIL="EmailPartenaire1" NOM="Partenaire1" NUMERO_TELEPHONE="06060606" TYPE="ASSOCIATION"/>
 	 

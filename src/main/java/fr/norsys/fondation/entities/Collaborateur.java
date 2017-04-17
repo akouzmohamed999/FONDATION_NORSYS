@@ -34,32 +34,34 @@ public class Collaborateur implements Serializable {
 	@Id
 	@Column(name = "ID_COLLABORATEUR")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCollaborateur;
+	protected int idCollaborateur;
 	@Column(name = "CIN")
-	private String CIN;
+	protected String CIN;
 	@Column(name = "NOM")
-	private String nom;
+	protected String nom;
 	@Column(name = "PRENOM")
-	private String prenom;
+	protected String prenom;
 	@Column(name = "ADRESSE")
-	private String adresse;
+	protected String adresse;
 	@Column(name = "NUMERO_TELEPHONE")
-	private String numeroTelephone;
+	protected String numeroTelephone;
 	@Column(name = "EMAIL")
-	private String email;
+	protected String email;
+	@Column(name = "PASSWORD")
+	protected String password;
 	@Column(name = "DATE_NAISSANCE")
-	private Date dateNaissance;
+	protected Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
-	private String lieuNaissance;
+	protected String lieuNaissance;
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "collaborateurs")
-	private List<Activite> activites = new ArrayList<Activite>();
+	protected final List<Activite> activites = new ArrayList<Activite>();
 
 	public Collaborateur() {
 	}
 
 	public Collaborateur(int idCollaborateur, String cIN, String nom, String prenom, String adresse,
-			String numeroTelephone, String email, Date dateNaissance, String lieuNaissance) {
+			String numeroTelephone, String email, String password, Date dateNaissance, String lieuNaissance) {
 		super();
 		this.idCollaborateur = idCollaborateur;
 		this.CIN = cIN;
@@ -68,6 +70,7 @@ public class Collaborateur implements Serializable {
 		this.adresse = adresse;
 		this.numeroTelephone = numeroTelephone;
 		this.email = email;
+		this.password = password;
 		this.dateNaissance = dateNaissance;
 		this.lieuNaissance = lieuNaissance;
 	}
@@ -128,6 +131,14 @@ public class Collaborateur implements Serializable {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Date getDateNaissance() {
 		return this.dateNaissance;
 	}
@@ -148,10 +159,6 @@ public class Collaborateur implements Serializable {
 		return this.activites;
 	}
 
-	public void setActivites(List<Activite> activites) {
-		this.activites = activites;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -164,6 +171,7 @@ public class Collaborateur implements Serializable {
 		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
 		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
 		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
+		result = prime * result + (this.password == null ? 0 : this.password.hashCode());
 		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
 		return result;
 	}
@@ -232,6 +240,13 @@ public class Collaborateur implements Serializable {
 		} else if (!this.numeroTelephone.equals(other.numeroTelephone)) {
 			return false;
 		}
+		if (this.password == null) {
+			if (other.password != null) {
+				return false;
+			}
+		} else if (!this.password.equals(other.password)) {
+			return false;
+		}
 		if (this.prenom == null) {
 			if (other.prenom != null) {
 				return false;
@@ -246,8 +261,8 @@ public class Collaborateur implements Serializable {
 	public String toString() {
 		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
 				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
-				+ ", email=" + this.email + ", dateNaissance=" + this.dateNaissance + ", lieuNaissance="
-				+ this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
+				+ ", email=" + this.email + ", password= " + this.password + ", dateNaissance=" + this.dateNaissance
+				+ ", lieuNaissance=" + this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
 	}
 
 }

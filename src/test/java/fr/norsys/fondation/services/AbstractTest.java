@@ -70,12 +70,6 @@ public abstract class AbstractTest {
 		LocalDate lDateFinProjet1 = LocalDate.of(2017, 03, 16);
 		Date dateFinProjet1 = Date.valueOf(lDateFinProjet1);
 
-		LocalDate lDateDebutProjetAjoute = LocalDate.of(2017, 06, 06);
-		Date dateDebutProjetAjoute = Date.valueOf(lDateDebutProjetAjoute);
-
-		LocalDate lDateFinProjetAjoute = LocalDate.of(2017, 06, 16);
-		Date dateFinProjetAjoute = Date.valueOf(lDateFinProjetAjoute);
-
 		LocalDate lDateDebutActivite1 = LocalDate.of(2017, 03, 12);
 		Date dateDebutActivite1 = Date.valueOf(lDateDebutActivite1);
 
@@ -89,22 +83,22 @@ public abstract class AbstractTest {
 		Date dateDebutActiviteAjoute = Date.valueOf(lDateDebutActiviteAjoute);
 
 		this.administrateur1 = new Administrateur(1, "A1111", "nomAdministrateur1", "prenomAdministrateur1",
-				"adresseAdministrateur1", null, null, null, null);
+				"adresseAdministrateur1", null, "admin@norsys.fr", "admin", null, null);
 
 		this.responsableProjet1 = new Responsable(2, "R1111", "nomResponsable1", "prenomResponsable1",
-				"adresseResponsable1", null, null, null, null, null);
+				"adresseResponsable1", null, "responsable1@norsys.fr", "responsable1", null, null);
 		this.collaborateur1 = new Collaborateur(3, "C1111", "nomCollaborateur1", "prenomCollaborateur1",
-				"adresseCollaborateur1", null, null, null, null);
+				"adresseCollaborateur1", null, "collaborateur1@norsys.fr", "collaborateur1", null, null);
 		this.collaborateur2 = new Collaborateur(4, "C2222", "nomCollaborateur2", "prenomCollaborateur2",
-				"adresseCollaborateur2", null, null, null, null);
+				"adresseCollaborateur2", null, "collaborateur2@norsys.fr", "collaborateur2", null, null);
 		this.collaborateur3 = new Collaborateur(5, "C3333", "nomCollaborateur3", "prenomCollaborateur3",
-				"adresseCollaborateur3", null, null, null, null);
+				"adresseCollaborateur3", null, "collaborateur3@norsys.fr", "collaborateur3", null, null);
 		this.collaborateur4 = new Collaborateur(6, "C4444", "nomCollaborateur4", "prenomCollaborateur4",
-				"adresseCollaborateur4", null, null, null, null);
+				"adresseCollaborateur4", null, "collaborateur4@norsys.fr", "collaborateur4", null, null);
 		this.collaborateur5 = new Collaborateur(7, "C5555", "nomCollaborateur5", "prenomCollaborateur5",
-				"adresseCollaborateur5", null, null, null, null);
+				"adresseCollaborateur5", null, "collaborateur5@norsys.fr", "collaborateur5", null, null);
 		this.collaborateur6 = new Collaborateur(8, "C6666", "nomCollaborateur6", "prenomCollaborateur6",
-				"adresseCollaborateur6", null, null, null, null);
+				"adresseCollaborateur6", null, "collaborateur6@norsys.fr", "collaborateur6", null, null);
 
 		this.partenaire1Projet1 = new Partenaire(1, "Partenaire1", "ASSOCIATION", "AdressePartenaire1",
 				"EmailPartenaire1", "06060606");
@@ -153,10 +147,6 @@ public abstract class AbstractTest {
 		this.collaborateur4.getActivites().add(this.activite2Composante1Projet1EnCours);
 		this.collaborateur5.getActivites().add(this.activite2Composante1Projet1EnCours);
 
-		// ---------------------------------ADDEDPORJET----------------------------------
-
-		this.projetAAjoute = new Projet(2, "intituleProjetAjoute", "descriptionProjetAjoute", dateDebutProjetAjoute,
-				dateFinProjetAjoute, this.administrateur1, this.responsableProjet1, null);
 	}
 
 }
