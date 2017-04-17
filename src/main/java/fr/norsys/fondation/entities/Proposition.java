@@ -14,12 +14,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PROPOSITION")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idProposition")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idProposition")
 public class Proposition implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -48,6 +48,7 @@ public class Proposition implements Serializable {
 	private String typeSoutien;
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = PorteurProjet.class)
 	@JoinColumn(name = "ID_PORTEUR_PROJET")
+	@JsonManagedReference
 	private PorteurProjet porteurProjet;
 	@Lob
 	@Column(name = "ANNEXE")

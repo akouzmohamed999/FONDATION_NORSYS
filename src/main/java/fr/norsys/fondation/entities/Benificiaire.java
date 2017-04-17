@@ -15,12 +15,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "BENIFICIAIRE")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idBenificiaire")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idBenificiaire")
 public class Benificiaire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -48,6 +48,7 @@ public class Benificiaire implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "benificiaires")
+	@JsonBackReference
 	private List<Activite> activites = new ArrayList<Activite>();
 
 	public Benificiaire() {

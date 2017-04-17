@@ -26,8 +26,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/collaborateur/**").access("hasRole('Collaborateur')")
-				.antMatchers("/administrateur/**").access("hasRole('Administrateur')").and().csrf().disable();
+		http.authorizeRequests().antMatchers("/collaborateur/**")
+				.access("hasAnyRole('Collaborateur','Responsable','Administrateur')").antMatchers("/responsable/**")
+				.access("hasAnyRole('Responsable','Administrateur')").antMatchers("/administrateur/**")
+				.access("hasRole('Administrateur')").and().csrf().disable();
 	}
 
 }

@@ -16,12 +16,13 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "COMPOSANTE")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idComposante")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idComposante")
 public class Composante {
 
 	@Id
@@ -34,14 +35,17 @@ public class Composante {
 
 	@ManyToOne
 	@JoinColumn(name = "ID_THEMATIQUE")
+	@JsonBackReference
 	private Thematique thematique;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
+	@JsonBackReference
 	private Projet projet;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "composante")
+	@JsonManagedReference
 	private List<Activite> activites = new ArrayList<Activite>();
 
 	public Composante() {

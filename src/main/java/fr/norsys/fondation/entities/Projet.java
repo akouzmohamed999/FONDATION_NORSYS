@@ -22,12 +22,12 @@ import javax.validation.constraints.Null;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PROJET")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idProjet")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idProjet")
 public class Projet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -47,30 +47,37 @@ public class Projet implements Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
+	@JsonManagedReference
 	private Administrateur administrateur;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonManagedReference
 	private List<Composante> composantes = new ArrayList<Composante>();
 
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
+	@JsonManagedReference
 	private Responsable responsable;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonManagedReference
 	private List<Publication> publications = new ArrayList<Publication>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "projets")
+	@JsonManagedReference
 	private List<Partenaire> partenaires = new ArrayList<Partenaire>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonManagedReference
 	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonManagedReference
 	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();
 
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
