@@ -33,4 +33,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
+	// @Bean
+	// public CorsFilter corsFilter() {
+	// UrlBasedCorsConfigurationSource source = new
+	// UrlBasedCorsConfigurationSource();
+	// CorsConfiguration config = new CorsConfiguration();
+	// config.setAllowCredentials(true);
+	// config.addAllowedOrigin("http://localhost:4200");
+	// config.addAllowedHeader("*");
+	// config.addAllowedMethod("GET");
+	// config.addAllowedMethod("POST");
+	// source.registerCorsConfiguration("/**", config);
+	// return new CorsFilter(source);
+	// }
+
+	// @Bean
+	// public WebMvcConfigurer corsConfigurer() {
+	// return new WebMvcConfigurerAdapter() {
+	// @Override
+	// public void addCorsMappings(CorsRegistry registry) {
+	// registry.addMapping("/oauth/token").allowedOrigins("http://localhost:4200");
+	// }
+	// };
+	// }
+
 }

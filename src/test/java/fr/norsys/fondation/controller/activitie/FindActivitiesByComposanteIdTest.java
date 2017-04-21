@@ -15,11 +15,10 @@ public class FindActivitiesByComposanteIdTest extends AActiviteControllerTest {
 
 	@Test
 	public void shouldReturnJsonWithComposantesOfProjet1() throws Exception {
-		this.mockMvc.perform(get("/activite").param("idComposante", "1")).andExpect(status().isOk())
+		this.mockMvc.perform(get("/collaborateur/activite").param("idComposante", "1")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
 				.andExpect(jsonPath("$[0].idActivite", is(1)))
-				.andExpect(jsonPath("$[0].intitule", is("intituleActivite1")))
-				.andExpect(jsonPath("$[0].composante.idComposante", is(1)));
+				.andExpect(jsonPath("$[0].intitule", is("intituleActivite1")));
 	}
 }

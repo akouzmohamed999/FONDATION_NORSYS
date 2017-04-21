@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 @Configuration
 @EnableAuthorizationServer
-@Order(1)
+@Order(2)
 public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
@@ -47,4 +47,5 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 	public TokenStore tokenStore() {
 		return new InMemoryTokenStore();
 	}
+
 }
