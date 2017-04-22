@@ -2,7 +2,6 @@ package fr.norsys.fondation.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,22 +11,26 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-@Order(2)
+@Order(1)
 public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
 	@Qualifier("authenticationManagerBean")
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
+	@Qualifier("memoryToken")
+	TokenStore tokenStore;
+
+	@Autowired
+	private CorsFilter corsFilter;
+
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-
-		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
-
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		security.addTokenEndpointAuthenticationFilter(this.corsFilter);
 	}
 
 	@Override
@@ -39,13 +42,7 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-
-		endpoints.tokenStore(this.tokenStore()).authenticationManager(this.authenticationManager);
-	}
-
-	@Bean(name = "memoryToken")
-	public TokenStore tokenStore() {
-		return new InMemoryTokenStore();
+		endpoints.tokenStore(this.tokenStore).authenticationManager(this.authenticationManager);
 	}
 
 }

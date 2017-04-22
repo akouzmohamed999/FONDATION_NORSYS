@@ -1,7 +1,7 @@
 package fr.norsys.fondation.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 @Configuration
@@ -18,24 +19,24 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
-	@Qualifier("memoryToken")
-	TokenStore tokenStore;
-
-	@Autowired
 	private CorsFilter corsFilter;
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		resources.tokenStore(this.tokenStore);
+		resources.tokenStore(this.tokenStore());
 	}
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.addFilterBefore(this.corsFilter, ChannelProcessingFilter.class);
-		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
-				.antMatchers("/collaborateur/**").access("hasAnyRole('Collaborateur','Responsable','Administrateur')")
-				.antMatchers("/responsable/**").access("hasAnyRole('Responsable','Administrateur')")
-				.antMatchers("/administrateur/**").access("hasRole('Administrateur')").and().csrf().disable();
+		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "*").permitAll().antMatchers("/collaborateur/**")
+				.access("hasAnyRole('Collaborateur','Responsable','Administrateur')").antMatchers("/responsable/**")
+				.access("hasAnyRole('Responsable','Administrateur')").antMatchers("/administrateur/**")
+				.access("hasRole('Administrateur')").and().csrf().disable();
 	}
 
+	@Bean(name = "memoryToken")
+	public TokenStore tokenStore() {
+		return new InMemoryTokenStore();
+	}
 }
