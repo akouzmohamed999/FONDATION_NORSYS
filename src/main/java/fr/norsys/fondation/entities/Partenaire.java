@@ -16,12 +16,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "PARTENAIRE")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idPartenaire")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idPartenaire")
 public class Partenaire {
 
 	@Id
@@ -49,7 +49,6 @@ public class Partenaire {
 	@JoinTable(name = "PARTENAIRE_PROJET", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_PARTENAIRE", name = "ID_PARTENAIRE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_PROJET", name = "ID_PROJET") })
-	@JsonBackReference
 	private List<Projet> projets = new ArrayList<Projet>();
 
 	public Partenaire() {

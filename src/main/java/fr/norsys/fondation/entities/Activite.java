@@ -20,13 +20,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "ACTIVITE")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idActivite")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idActivite")
 public class Activite implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -47,11 +46,9 @@ public class Activite implements Serializable {
 	private String lieu;
 	@ManyToOne(targetEntity = Collaborateur.class)
 	@JoinColumn(name = "ID_ANIMATEUR")
-	@JsonManagedReference
 	private Collaborateur animateurTerrain;
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Composante.class)
 	@JoinColumn(name = "ID_COMPOSANTE")
-	@JsonBackReference
 	private Composante composante;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -59,7 +56,6 @@ public class Activite implements Serializable {
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") })
-	@JsonManagedReference
 	private List<Collaborateur> collaborateurs = new ArrayList<Collaborateur>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -67,7 +63,6 @@ public class Activite implements Serializable {
 	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
 					@JoinColumn(referencedColumnName = "ID_BENIFICIAIRE", name = "ID_BENIFICIAIRE") })
-	@JsonManagedReference
 	private List<Benificiaire> benificiaires = new ArrayList<Benificiaire>();
 
 	public Activite() {

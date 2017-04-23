@@ -13,12 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "PUBLICATION")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idPublication")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idPublication")
 public class Publication {
 
 	@Id
@@ -39,7 +39,6 @@ public class Publication {
 
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
-	@JsonBackReference
 	private Projet projet;
 
 	public Publication() {
