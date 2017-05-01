@@ -17,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "PUBLICATION")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idPublication")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Publication {
 
 	@Id

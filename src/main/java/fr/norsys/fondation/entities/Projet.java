@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +25,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PROJET")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idProjet")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Projet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -45,32 +44,32 @@ public class Projet implements Serializable {
 	@Column(name = "DATE_FIN")
 	private Date dateFin;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Administrateur.class)
+	@ManyToOne(targetEntity = Administrateur.class)
 	@JoinColumn(name = "ID_ADMINISTRATEUR")
 	@JsonManagedReference
 	private Administrateur administrateur;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	@JsonManagedReference
 	private List<Composante> composantes = new ArrayList<Composante>();
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
+	@ManyToOne(targetEntity = Responsable.class)
 	@JoinColumn(name = "ID_RESPONSABLE")
 	@JsonManagedReference
 	private Responsable responsable;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	@JsonManagedReference
 	private List<Publication> publications = new ArrayList<Publication>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "projets")
 	@JsonManagedReference
 	private List<Partenaire> partenaires = new ArrayList<Partenaire>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	@JsonManagedReference
 	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
@@ -80,7 +79,7 @@ public class Projet implements Serializable {
 	@JsonManagedReference
 	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();
 
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
+	@OneToOne(targetEntity = Proposition.class)
 	@JoinColumn(name = "ID_PROPOSITION")
 	@Null
 	private Proposition proposition;

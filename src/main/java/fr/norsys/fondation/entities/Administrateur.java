@@ -7,20 +7,17 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@administraturidCollaborateur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Administrateur extends Collaborateur {
 
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "administrateur")
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@JsonBackReference
 	private List<Projet> projets = new ArrayList<Projet>();
 

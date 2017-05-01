@@ -13,8 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RENDEZ_VOUS")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idRendezVous")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class RendezVous {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

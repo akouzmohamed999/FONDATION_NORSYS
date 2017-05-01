@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "RAPPORT")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idRapport")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class RapportProjet {
 
 	@Id

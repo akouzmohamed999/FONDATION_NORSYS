@@ -7,19 +7,16 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@responsableidCollaborateur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Responsable extends Collaborateur {
 
 	private static final long serialVersionUID = 1L;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "responsable")
 	@JsonBackReference
 	private List<Projet> projets = new ArrayList<Projet>();

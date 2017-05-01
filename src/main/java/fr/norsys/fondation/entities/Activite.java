@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,16 +16,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "ACTIVITE")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idActivite")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Activite implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -49,12 +45,12 @@ public class Activite implements Serializable {
 	@JoinColumn(name = "ID_ANIMATEUR")
 	@JsonManagedReference
 	private Collaborateur animateurTerrain;
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Composante.class)
+	@ManyToOne(targetEntity = Composante.class)
 	@JoinColumn(name = "ID_COMPOSANTE")
 	@JsonBackReference
 	private Composante composante;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
@@ -62,7 +58,7 @@ public class Activite implements Serializable {
 	@JsonManagedReference
 	private List<Collaborateur> collaborateurs = new ArrayList<Collaborateur>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
 			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {

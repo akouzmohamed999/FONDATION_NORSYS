@@ -16,17 +16,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "COLLABORATEUR")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE_COLLABORATEUR")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idCollaborateur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Collaborateur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,7 +50,7 @@ public class Collaborateur implements Serializable {
 	protected Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
 	protected String lieuNaissance;
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "collaborateurs")
 	@JsonBackReference
 	protected final List<Activite> activites = new ArrayList<Activite>();

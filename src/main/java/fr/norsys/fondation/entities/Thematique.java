@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,16 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "THEMATIQUE")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idThematique")
-public class Thematique {
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+public class Thematique implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,6 @@ public class Thematique {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "thematique")
 	@JsonManagedReference
 	private List<Composante> composantes = new ArrayList<Composante>();

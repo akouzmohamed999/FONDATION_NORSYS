@@ -15,7 +15,7 @@ public class FindAllProjetControllerTest extends AProjetControllerTest {
 
 	@Test
 	public void shouldReturnJsonWith2Projets() throws Exception {
-		this.mockMvc.perform(get("/")).andExpect(status().isOk())
+		this.mockMvc.perform(get("/administrateur/")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
 				.andExpect(jsonPath("$[0].idProjet", is(1))).andExpect(jsonPath("$[0].intitule", is("intituleProjet1")))

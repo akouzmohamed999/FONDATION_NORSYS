@@ -11,15 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "PORTEUR_PROJET")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idPorteur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class PorteurProjet {
 
 	@Id
@@ -35,7 +32,7 @@ public class PorteurProjet {
 	@Column(name = "NUMERO_TELEPHONE")
 	private String numeroTelephone;
 	@OneToMany(mappedBy = "porteurProjet")
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@JsonBackReference
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 

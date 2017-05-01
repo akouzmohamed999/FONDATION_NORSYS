@@ -1,5 +1,6 @@
 package fr.norsys.fondation.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "COMPOSANTE")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idComposante")
-public class Composante {
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+public class Composante implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Composante {
 	@Column(name = "INTITULE")
 	private String intitule;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = Thematique.class)
 	@JoinColumn(name = "ID_THEMATIQUE")
 	@JsonBackReference
 	private Thematique thematique;
@@ -43,7 +43,7 @@ public class Composante {
 	@JsonBackReference
 	private Projet projet;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "composante")
 	@JsonManagedReference
 	private List<Activite> activites = new ArrayList<Activite>();

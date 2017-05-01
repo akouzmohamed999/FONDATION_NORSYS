@@ -29,10 +29,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.addFilterBefore(this.corsFilter, ChannelProcessingFilter.class);
-		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "*").permitAll().antMatchers("/collaborateur/**")
-				.access("hasAnyRole('Collaborateur','Responsable','Administrateur')").antMatchers("/responsable/**")
-				.access("hasAnyRole('Responsable','Administrateur')").antMatchers("/administrateur/**")
-				.access("hasRole('Administrateur')").and().csrf().disable();
+		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
+				.antMatchers("/collaborateur/**").access("hasAnyRole('Collaborateur','Responsable','Administrateur')")
+				.antMatchers("/responsable/**").access("hasAnyRole('Responsable','Administrateur')")
+				.antMatchers("/administrateur/**").access("hasRole('Administrateur')").and().csrf().disable();
 	}
 
 	@Bean(name = "memoryToken")

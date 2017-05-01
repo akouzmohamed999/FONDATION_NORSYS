@@ -5,7 +5,6 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PROPOSITION")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
-// property = "@idProposition")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
+// @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class Proposition implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +45,7 @@ public class Proposition implements Serializable {
 	private String budgetPrevisionnel;
 	@Column(name = "TYPE_SOUTIEN")
 	private String typeSoutien;
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = PorteurProjet.class)
+	@ManyToOne(targetEntity = PorteurProjet.class)
 	@JoinColumn(name = "ID_PORTEUR_PROJET")
 	@JsonManagedReference
 	private PorteurProjet porteurProjet;
