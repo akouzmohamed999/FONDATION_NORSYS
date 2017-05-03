@@ -1,61 +1,87 @@
 <dataset>
 	
-	<COLLABORATEUR ID_COLLABORATEUR="1" CIN="A1111" NOM="nomAdministrateur1" PRENOM="prenomAdministrateur1" ADRESSE="adresseAdministrateur1"
-	 TYPE_COLLABORATEUR="Administrateur" EMAIL="admin@norsys.fr" PASSWORD="admin"/>
+	<COLLABORATEUR ID_COLLABORATEUR="1" CIN="A1111" NOM="Messadi" PRENOM="Ahmed" ADRESSE="Daoudiate imm3 Marrakech"
+	 TYPE_COLLABORATEUR="Administrateur" EMAIL="Messadi@norsys.fr" PASSWORD="admin"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="2" CIN="R1111" NOM="nomResponsable1" PRENOM="prenomResponsable1" ADRESSE="adresseResponsable1"
-	 TYPE_COLLABORATEUR="Responsable"  EMAIL="responsable1@norsys.fr" PASSWORD="responsable1"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="2" CIN="R1111" NOM="Elkhaily" PRENOM="Morad" ADRESSE="Saada App 4 Imm 34 Marrakech"
+	 TYPE_COLLABORATEUR="Responsable"  EMAIL="Elkhaily@norsys.fr" PASSWORD="responsable1"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="3" CIN="C1111" NOM="nomCollaborateur1" PRENOM="prenomCollaborateur1" ADRESSE="adresseCollaborateur1"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur1@norsys.fr" PASSWORD="collaborateur1"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="3" CIN="C1111" NOM="Bennareg" PRENOM="Samir" ADRESSE="Agadir Elmassira"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Bennareg@norsys.fr" PASSWORD="collaborateur1"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="4" CIN="C2222" NOM="nomCollaborateur2" PRENOM="prenomCollaborateur2" ADRESSE="adresseCollaborateur2"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur2@norsys.fr" PASSWORD="collaborateur2"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="4" CIN="C2222" NOM="Benchrifa" PRENOM="Bader" ADRESSE="Elmassira 2 Marrakech"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Benchrifa@norsys.fr" PASSWORD="collaborateur2"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="5" CIN="C3333" NOM="nomCollaborateur3" PRENOM="prenomCollaborateur3" ADRESSE="adresseCollaborateur3"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur3@norsys.fr" PASSWORD="collaborateur3"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="5" CIN="C3333" NOM="Elghazi" PRENOM="Jabrane" ADRESSE="Elbadii Marrakech"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Elghazi@norsys.fr" PASSWORD="collaborateur3"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="6" CIN="C4444" NOM="nomCollaborateur4" PRENOM="prenomCollaborateur4" ADRESSE="adresseCollaborateur4"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur4@norsys.fr" PASSWORD="collaborateur4"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="6" CIN="C4444" NOM="Elhouch" PRENOM="Mohammed" ADRESSE="Elaazouzia Marrakech"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Elhouch@norsys.fr" PASSWORD="collaborateur4"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="7" CIN="C5555" NOM="nomCollaborateur5" PRENOM="prenomCollaborateur5" ADRESSE="adresseCollaborateur5"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur5@norsys.fr" PASSWORD="collaborateur5"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="7" CIN="C5555" NOM="Moustakim" PRENOM="Anas" ADRESSE="Sokoma App23 Marrakech"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Moustakim@norsys.fr" PASSWORD="collaborateur5"/>
 	 
-	 <COLLABORATEUR ID_COLLABORATEUR="8" CIN="C6666" NOM="nomCollaborateur6" PRENOM="prenomCollaborateur6" ADRESSE="adresseCollaborateur6"
-	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="collaborateur6@norsys.fr" PASSWORD="collaborateur6"/>
+	 <COLLABORATEUR ID_COLLABORATEUR="8" CIN="C6666" NOM="Bentajri" PRENOM="Adil" ADRESSE="Massira Marrakech"
+	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Bentajri@norsys.fr" PASSWORD="collaborateur6"/>
 	 
-	 <PARTENAIRE ID_PARTENAIRE="1" ADRESSE="AdressePartenaire1" EMAIL="EmailPartenaire1" NOM="Partenaire1" NUMERO_TELEPHONE="06060606" TYPE="ASSOCIATION"/>
+	 <PARTENAIRE ID_PARTENAIRE="1" ADRESSE="al afaq marrakech" EMAIL="jamil@gmail.com" NOM="Jamil" NUMERO_TELEPHONE="0604563423" TYPE="Individue"/>
 	 
-	 <PARTENAIRE ID_PARTENAIRE="2" ADRESSE="AdressePartenaire2" EMAIL="EmailPartenaire2" NOM="Partenaire2" NUMERO_TELEPHONE="06060606" TYPE="ASSOCIATION"/>
+	 <PARTENAIRE ID_PARTENAIRE="2" ADRESSE="Geliz Imm3 APP34 Marrakech" EMAIL="annasim@gmail.com" NOM="Assosiation Annasim" NUMERO_TELEPHONE="05248888" TYPE="ASSOCIATION"/>
 	  
-	 <BENIFICIAIRE ID_BENIFICIAIRE="1" CIN="B1111" ADRESSE="adresseBenificiaire1" NOM="nomBenificiaire1" PRENOM="prenomBenificiaire1"
-	 PAYS="paysBenificiaire1" VILLE="villeBenificiaire1"/>
+	 <BENIFICIAIRE ID_BENIFICIAIRE="1" CIN="B1111" ADRESSE="sidi abade Marrakech" NOM="Elkadouri" PRENOM="Taha"
+	 PAYS="Maroc" VILLE="Marrakech"/>
 	 
-	  <BENIFICIAIRE ID_BENIFICIAIRE="2" CIN="B2222" ADRESSE="adresseBenificiaire2" NOM="nomBenificiaire2" PRENOM="prenomBenificiaire2"
-	 PAYS="paysBenificiaire2" VILLE="villeBenificiaire2"/> 
+	  <BENIFICIAIRE ID_BENIFICIAIRE="2" CIN="B2222" ADRESSE="chrifia Marrakech" NOM="Bouaali" PRENOM="Khalid"
+	 PAYS="Maroc" VILLE="Marrakech"/> 
 	 
-	 <PROJET ID_PROJET="1" INTITULE="intituleProjet1" DESCRIPTION="descriptionProjet1" 
+	 <PROJET ID_PROJET="1" INTITULE="Agriculture" DESCRIPTION="La culture des terres agricoles" 
 	 DATE_DEBUT="2017-03-11" DATE_FIN="2017-03-16"  ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
+	 
+	 <PROJET ID_PROJET="2" INTITULE="Santé" DESCRIPTION="Effectué une companie de santé composée de plussieurs medecins généralistes" 
+	 DATE_DEBUT="2017-06-11" DATE_FIN="2017-06-16"  ID_ADMINISTRATEUR="1" ID_RESPONSABLE="2"/>
 	 
 	 <PARTENAIRE_PROJET ID_PARTENAIRE="1" ID_PROJET="1" />
 	 
 	 <PARTENAIRE_PROJET ID_PARTENAIRE="2" ID_PROJET="1" />
 	 
-	 <THEMATIQUE ID_THEMATIQUE="1" DESCRIPTION="descriptionThmatique1" INTITULE="Sensibilisation" />
+	 <PARTENAIRE_PROJET ID_PARTENAIRE="1" ID_PROJET="2" />
 	 
-	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="descriptionThmatique2" INTITULE="Agriculture" />
+	 <PARTENAIRE_PROJET ID_PARTENAIRE="2" ID_PROJET="2" />
 	 
-	 <COMPOSANTE ID_COMPOSANTE="1" INTITULE="intituleComposante1" ID_PROJET="1" ID_THEMATIQUE="1" />
+	 <THEMATIQUE ID_THEMATIQUE="1" DESCRIPTION="la mise en place d'un système d'irrigation sophistiqué" INTITULE="Agriculture" />
+	 
+	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="companie sanitaire pour les démunies" INTITULE="santé" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="1" INTITULE="Irrigation" ID_PROJET="1" ID_THEMATIQUE="1" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="2" INTITULE="Culture et sécheresse" ID_PROJET="1" ID_THEMATIQUE="2" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="3" INTITULE="culture" ID_PROJET="1" ID_THEMATIQUE="1" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="4" INTITULE="Santé" ID_PROJET="2" ID_THEMATIQUE="1" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="5" INTITULE="sensibilisation" ID_PROJET="2" ID_THEMATIQUE="2" />
+	 
+	 <COMPOSANTE ID_COMPOSANTE="6" INTITULE="sensibilisation " ID_PROJET="2" ID_THEMATIQUE="1" />
 	
 	 
-	 <ACTIVITE ID_ACTIVITE="1" INTITULE="intituleActivite1" DATE_ACTIVITE="2017-03-12" DUREE_ACTIVITE="dureeActivite1"
-	  ETAT="Termine" LIEU="lieuActivite1" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	 <ACTIVITE ID_ACTIVITE="1" INTITULE="démonstration de la téchnique" DATE_ACTIVITE="2017-03-12" DUREE_ACTIVITE="2h"
+	  ETAT="Termine" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
 	  
-	 <ACTIVITE ID_ACTIVITE="2" INTITULE="intituleActivite2" DATE_ACTIVITE="2017-03-13" DUREE_ACTIVITE="dureeActivite2"
-	  ETAT="En Cours" LIEU="lieuActivite2" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	 <ACTIVITE ID_ACTIVITE="2" INTITULE="traveaux pratique sur la technique" DATE_ACTIVITE="2017-03-13" DUREE_ACTIVITE="3h"
+	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
 	  
-	 <ACTIVITE ID_ACTIVITE="3" INTITULE="intituleActivite3" DATE_ACTIVITE="2017-03-14" DUREE_ACTIVITE="dureeActivite3"
+	 <ACTIVITE ID_ACTIVITE="3" INTITULE="la redémonstration" DATE_ACTIVITE="2017-03-14" DUREE_ACTIVITE="2h"
 	  ETAT="Annule" LIEU="lieuActivite3" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	  
+	  <ACTIVITE ID_ACTIVITE="4" INTITULE="sensibilisation sanitaire" DATE_ACTIVITE="2017-03-12" DUREE_ACTIVITE="1h"
+	  ETAT="Termine" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
+	  
+	 <ACTIVITE ID_ACTIVITE="5" INTITULE="consultation médicale" DATE_ACTIVITE="2017-03-13" DUREE_ACTIVITE="4h"
+	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
+	  
+	 <ACTIVITE ID_ACTIVITE="6" INTITULE="déstribution des médicaments" DATE_ACTIVITE="2017-03-14" DUREE_ACTIVITE="1h"
+	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
 	 	  
 	  
 	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="4" />
