@@ -18,15 +18,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Null;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PROJET")
 // @JsonIdentityInfo(generator = JSOGGenerator.class)
 // @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+// property = "id")
 public class Projet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -74,7 +73,7 @@ public class Projet implements Serializable {
 	@JsonManagedReference
 	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
+	// @LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
 	@JsonManagedReference
 	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();

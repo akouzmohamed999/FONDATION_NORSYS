@@ -31,4 +31,16 @@ public class ComposanteController {
 	public Thematique findThematiqueByIdComposante(@RequestParam int idComposante) {
 		return this.thematiqueService.findThematiqueByComposante(idComposante);
 	}
+
+	@RequestMapping(value = "/responsable/composanteById", method = RequestMethod.GET)
+	public Composante findComposanteByIdComposante(@RequestParam int idComposante) {
+		return this.composanteService.findComposanteById(idComposante);
+	}
+
+	// @RequestMapping(value = "/responsable/addComposante", method =
+	// RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public Composante addComposanteToProjet(@RequestBody Composante
+	// composante) {
+	// return this.composanteService.addComposante(composante);
+	// }
 }

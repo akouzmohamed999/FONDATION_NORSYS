@@ -48,9 +48,9 @@
 	 
 	 <PARTENAIRE_PROJET ID_PARTENAIRE="2" ID_PROJET="2" />
 	 
-	 <THEMATIQUE ID_THEMATIQUE="1" DESCRIPTION="descriptionThmatique1" INTITULE="Sensibilisation" />
+	 <THEMATIQUE ID_THEMATIQUE="1" DESCRIPTION="descriptionThmatique1" INTITULE="Agriculture" />
 	 
-	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="descriptionThmatique2" INTITULE="Agriculture" />
+	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="descriptionThmatique2" INTITULE="Sensibilisation" />
 	 
 	 <COMPOSANTE ID_COMPOSANTE="1" INTITULE="intituleComposante1" ID_PROJET="1" ID_THEMATIQUE="1" />
 	 
