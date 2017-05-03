@@ -10,17 +10,19 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@administraturidCollaborateur")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@administraturidCollaborateur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Administrateur extends Collaborateur {
 
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "administrateur")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonIgnore
 	private List<Projet> projets = new ArrayList<Projet>();
 
 	public Administrateur() {

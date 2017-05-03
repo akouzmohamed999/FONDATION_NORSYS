@@ -14,12 +14,13 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PORTEUR_PROJET")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idPorteur")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idPorteur")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class PorteurProjet {
 
 	@Id
@@ -36,6 +37,7 @@ public class PorteurProjet {
 	private String numeroTelephone;
 	@OneToMany(mappedBy = "porteurProjet")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonIgnore
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 
 	public PorteurProjet() {

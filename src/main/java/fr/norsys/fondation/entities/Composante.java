@@ -16,12 +16,13 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "COMPOSANTE")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idComposante")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idComposante")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Composante {
 
 	@Id
@@ -42,6 +43,7 @@ public class Composante {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "composante")
+	@JsonIgnore
 	private List<Activite> activites = new ArrayList<Activite>();
 
 	public Composante() {
@@ -52,7 +54,7 @@ public class Composante {
 		this.idComposante = idComposante;
 		this.intitule = intitule;
 		this.thematique = thematique;
-		thematique.getComposante().add(this);
+		thematique.getComposantes().add(this);
 		this.projet = projet;
 		projet.getComposantes().add(this);
 	}

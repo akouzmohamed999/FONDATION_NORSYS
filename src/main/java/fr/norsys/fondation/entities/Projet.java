@@ -22,12 +22,13 @@ import javax.validation.constraints.Null;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PROJET")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@idProjet")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+// property = "@idProjet")
+// @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Projet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,6 +52,7 @@ public class Projet implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonIgnore
 	private List<Composante> composantes = new ArrayList<Composante>();
 
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Responsable.class)
@@ -59,6 +61,7 @@ public class Projet implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonIgnore
 	private List<Publication> publications = new ArrayList<Publication>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -67,10 +70,12 @@ public class Projet implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonIgnore
 	private List<RapportProjet> rapports = new ArrayList<RapportProjet>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "projet")
+	@JsonIgnore
 	private List<BilanProjet> bilans = new ArrayList<BilanProjet>();
 
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Proposition.class)
