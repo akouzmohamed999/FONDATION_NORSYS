@@ -20,4 +20,9 @@ public class CollaborateurController {
 	public List<Collaborateur> findCollaborateurByComposanet(@RequestParam int idComposante) {
 		return this.collaborateurService.findColllaborateursByComposante(idComposante);
 	}
+
+	@RequestMapping(value = "/responsable/collaborateurs")
+	public List<Collaborateur> findAllCollaborateurs() {
+		return this.collaborateurService.findAllCollaborateur();
+	}
 }

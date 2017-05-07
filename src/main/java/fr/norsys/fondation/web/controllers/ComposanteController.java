@@ -21,4 +21,10 @@ public class ComposanteController {
 	public List<Composante> findComposanteByIdProjet(@RequestParam int idProjet) {
 		return this.composanteService.findCompetitionsByIdProjet(idProjet);
 	}
+
+	@RequestMapping(value = "/responsable/composanteById", method = RequestMethod.GET)
+	public Composante findComposanteById(@RequestParam int idComposante) {
+		return this.composanteService.findComposanteById(idComposante);
+	}
+
 }
