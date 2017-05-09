@@ -21,4 +21,6 @@ public interface ComposanteService {
 
 	List<Composante> findComposanteByThematique(int idThematique);
 
+	void deleteComposante(Composante composante);
+
 }

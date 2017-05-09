@@ -31,7 +31,21 @@ public class ComposanteController {
 
 	@RequestMapping(value = "/responsable/addComposante", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Composante addComponsante(@RequestBody Composante composante) {
+		System.out.println("LA COMPOSANTE A AJOUTE EST : " + composante);
 		return this.composanteService.addComposante(composante);
+	}
+
+	@RequestMapping(value = "/responsable/updateComposante", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Composante updateComponsante(@RequestBody Composante composante) {
+		System.out.println("LA COMPOSANTE MiSE A JOUR EST : " + composante);
+		return this.composanteService.updateComposante(composante);
+	}
+
+	@RequestMapping(value = "/responsable/deleteComposante", method = RequestMethod.DELETE)
+	public void deleteComponsante(@RequestParam int idComposante) {
+		Composante composante = this.composanteService.findComposanteById(idComposante);
+		System.out.println("LA COMPOSANTE SUPPRIME EST : " + composante);
+		this.composanteService.deleteComposante(composante);
 	}
 
 }

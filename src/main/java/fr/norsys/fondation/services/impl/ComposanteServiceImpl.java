@@ -54,4 +54,9 @@ public class ComposanteServiceImpl implements ComposanteService {
 		return this.ComposanteRepository.findByThematique(this.thematiqueRepository.findByIdThematique(idThematique));
 	}
 
+	@Override
+	public void deleteComposante(Composante composante) {
+		this.ComposanteRepository.delete(composante);
+	}
+
 }
