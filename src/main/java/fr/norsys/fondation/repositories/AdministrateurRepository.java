@@ -6,4 +6,5 @@ import fr.norsys.fondation.entities.Administrateur;
 
 public interface AdministrateurRepository extends JpaRepository<Administrateur, Integer> {
 
+	Administrateur findOneByIdCollaborateur(int idCollaborateur);
 }
