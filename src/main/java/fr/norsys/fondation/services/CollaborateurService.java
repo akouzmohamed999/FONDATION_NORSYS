@@ -16,4 +16,6 @@ public interface CollaborateurService {
 	List<Collaborateur> findAllCollaborateur();
 
 	List<Collaborateur> findColllaborateursByComposante(int idComposante);
+
+	Collaborateur updateCollaborateur(Collaborateur collaborateur);
 }

@@ -49,4 +49,9 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 		collaborateurs.addAll(set);
 		return collaborateurs;
 	}
+
+	@Override
+	public Collaborateur updateCollaborateur(Collaborateur collaborateur) {
+		return this.collaborateurRepository.saveAndFlush(collaborateur);
+	}
 }
