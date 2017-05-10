@@ -9,4 +9,5 @@ public interface BenificiaireService {
 
 	Benificiaire updateBenificiare(Benificiaire benificiaire);
 
+	Benificiaire addBenificiaire(Benificiaire benificiaire);
 }

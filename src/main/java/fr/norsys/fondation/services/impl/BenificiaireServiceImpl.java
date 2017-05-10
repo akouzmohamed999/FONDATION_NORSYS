@@ -18,4 +18,9 @@ public class BenificiaireServiceImpl implements BenificiaireService {
 		return this.benificiaireRepository.saveAndFlush(benificiaire);
 	}
 
+	@Override
+	public Benificiaire addBenificiaire(Benificiaire benificiaire) {
+		return this.benificiaireRepository.save(benificiaire);
+	}
+
 }

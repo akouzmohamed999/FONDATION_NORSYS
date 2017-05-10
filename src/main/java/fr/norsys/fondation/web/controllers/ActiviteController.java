@@ -71,7 +71,7 @@ public class ActiviteController {
 		return storedActivite;
 	}
 
-	@RequestMapping(value = "/responsable/UpdateActivite", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/responsable/UpdateActivite", method = RequestMethod.DELETE)
 	public void deleteActivite(@RequestParam int idActivite) {
 		Activite deletedActivite = this.activiteService.findAcitiviteById(idActivite);
 		System.out.println("L'ACTIVITE Supprimée : " + deletedActivite);
