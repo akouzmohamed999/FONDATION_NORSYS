@@ -16,8 +16,8 @@ public class BenificiaireController {
 	@Autowired
 	BenificiaireService benificiaireService;
 
-	@RequestMapping(value = "/responsable/addBenificiaire", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Benificiaire findCollaborateurByComposanet(@RequestBody Benificiaire benificiaire) {
+	@RequestMapping(value = "/responsable/addBenificiaire", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Benificiaire addBenificiaire(@RequestBody Benificiaire benificiaire) {
 		return this.benificiaireService.addBenificiaire(benificiaire);
 	}
 }
