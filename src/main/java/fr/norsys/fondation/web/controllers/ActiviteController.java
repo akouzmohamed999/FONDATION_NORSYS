@@ -18,7 +18,13 @@ public class ActiviteController {
 	ActiviteService activiteService;
 
 	@RequestMapping(value = "/collaborateur/activite", method = RequestMethod.GET)
-	public List<Activite> findComposanteByIdProjet(@RequestParam int idComposante) {
+	public List<Activite> findActivitiesByIdComposante(@RequestParam int idComposante) {
 		return this.activiteService.findActivitiesByComposante(idComposante);
 	}
+
+	@RequestMapping(value = "/collaborateur/activiteById", method = RequestMethod.GET)
+	public Activite findActivityById(@RequestParam int idActivite) {
+		return this.activiteService.findAcitiviteById(idActivite);
+	}
+
 }
