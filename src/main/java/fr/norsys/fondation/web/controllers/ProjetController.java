@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.norsys.fondation.entities.Partenaire;
 import fr.norsys.fondation.entities.Projet;
+import fr.norsys.fondation.services.PartenaireService;
 import fr.norsys.fondation.services.ProjetService;
 
 @RestController
@@ -18,6 +20,9 @@ public class ProjetController {
 
 	@Autowired
 	ProjetService projetService;
+
+	@Autowired
+	PartenaireService partenaireService;
 
 	@RequestMapping(value = "/administrateur/")
 	public List<Projet> listeDesProjets() {
@@ -32,6 +37,11 @@ public class ProjetController {
 	@RequestMapping(value = "/responsable/addProjet", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Projet addProjet(@RequestBody Projet projet) {
 		System.out.println("LE PROJET AJOUTE : " + projet);
-		return this.projetService.addProjet(projet);
+		Projet storedProject = this.projetService.addProjet(projet);
+		for (Partenaire partenaire : projet.getPartenaires()) {
+			partenaire.getProjets().add(projet);
+			this.partenaireService.updatePartenaire(partenaire);
+		}
+		return storedProject;
 	}
 }

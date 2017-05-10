@@ -10,4 +10,6 @@ import fr.norsys.fondation.entities.Partenaire;
 public interface PartenaireService {
 
 	List<Partenaire> findAllPartenaires();
+
+	Partenaire updatePartenaire(Partenaire partenaire);
 }

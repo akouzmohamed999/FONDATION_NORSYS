@@ -291,7 +291,7 @@ public class Projet implements Serializable {
 		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
 				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + ", administrateur="
 				+ this.administrateur + ", composantes number=" + this.composantes.size() + ", responsable="
-				+ this.responsable + ", proposition=" + this.proposition + "]";
+				+ this.responsable + ", proposition=" + this.proposition + ",partenaires = " + this.partenaires + "]";
 	}
 
 }
