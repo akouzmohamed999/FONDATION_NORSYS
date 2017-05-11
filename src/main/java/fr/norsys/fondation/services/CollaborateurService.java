@@ -10,6 +10,8 @@ import fr.norsys.fondation.entities.Collaborateur;
 public interface CollaborateurService {
 
 	Collaborateur findCollaborateurByName(String string);
+	
+	Collaborateur findCollaborateurByIdCollaborateur(int idCollaborateur);
 
 	Collaborateur findCollaborateurByEmail(String email);
 
@@ -18,4 +20,8 @@ public interface CollaborateurService {
 	List<Collaborateur> findColllaborateursByComposante(int idComposante);
 
 	Collaborateur updateCollaborateur(Collaborateur collaborateur);
+	
+	Collaborateur AddCollaborateur(Collaborateur collaborateur);
+	
+	void  DeleteCollaborateur(Collaborateur collaborateur);
 }

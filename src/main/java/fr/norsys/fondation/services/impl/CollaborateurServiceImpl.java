@@ -54,4 +54,21 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	public Collaborateur updateCollaborateur(Collaborateur collaborateur) {
 		return this.collaborateurRepository.saveAndFlush(collaborateur);
 	}
+
+	@Override
+	public Collaborateur findCollaborateurByIdCollaborateur(int idCollaborateur) {
+		return this.collaborateurRepository.findOneByIdCollaborateur(idCollaborateur);
+	}
+
+	@Override
+	public Collaborateur AddCollaborateur(Collaborateur collaborateur) {
+		return this.collaborateurRepository.save(collaborateur);
+		
+	}
+
+	@Override
+	public void DeleteCollaborateur(Collaborateur collaborateur) {
+		this.collaborateurRepository.delete(collaborateur);
+		
+	}
 }
