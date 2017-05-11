@@ -6,4 +6,5 @@ import fr.norsys.fondation.entities.Partenaire;
 
 public interface PartenaireRepository extends JpaRepository<Partenaire, Integer> {
 
+	Partenaire findOneByIdPartenaire(int idPartenaire);
 }

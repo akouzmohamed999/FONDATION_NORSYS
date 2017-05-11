@@ -25,4 +25,20 @@ public class PartenaireServiceImpl implements PartenaireService {
 		return this.partenaireRepository.saveAndFlush(partenaire);
 	}
 
+	@Override
+	public Partenaire addPartenaire(Partenaire partenaire) {
+		return this.partenaireRepository.save(partenaire);
+	}
+
+	@Override
+	public Partenaire findPartenaireById(int idPartenaire) {
+		return this.partenaireRepository.findOneByIdPartenaire(idPartenaire);
+	}
+
+	@Override
+	public void deletePartenaire(Partenaire partenaire) {
+		this.partenaireRepository.delete(partenaire);
+
+	}
+
 }
