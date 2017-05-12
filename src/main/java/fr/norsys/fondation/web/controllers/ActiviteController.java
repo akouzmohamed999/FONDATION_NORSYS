@@ -55,7 +55,7 @@ public class ActiviteController {
 		return storedActivite;
 	}
 
-	@RequestMapping(value = "/responsable/UpdateActivite", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/responsable/updateActivite", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Activite UpdateActivite(@RequestBody Activite activite) {
 		System.out.println("L'ACTIVITE MODIFIE : " + activite);
 		Activite storedActivite = this.activiteService.addActivite(activite);
@@ -71,11 +71,18 @@ public class ActiviteController {
 		return storedActivite;
 	}
 
-	@RequestMapping(value = "/responsable/UpdateActivite", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/responsable/deleteActivite", method = RequestMethod.DELETE)
 	public void deleteActivite(@RequestParam int idActivite) {
-		Activite deletedActivite = this.activiteService.findAcitiviteById(idActivite);
-		System.out.println("L'ACTIVITE Supprimée : " + deletedActivite);
-		this.activiteService.removeActivite(deletedActivite);
+		Activite activite = this.activiteService.findAcitiviteById(idActivite);
+		
+		for (Benificiaire benificiaire : activite.getBenificiaires()) {
+			System.out.println("FFFFF "+benificiaire);
+			benificiaire.getActivites().remove(activite);
+			this.benificiaireService.updateBenificaire(benificiaire);
+		}
+		
+		System.out.println("L'ACTIVITE Supprimée : " + activite);
+		this.activiteService.removeActivite(activite);
 	}
 
 }
