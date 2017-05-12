@@ -1,5 +1,7 @@
 package fr.norsys.fondation.web.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,4 +22,10 @@ public class BenificiaireController {
 	public Benificiaire addBenificiaire(@RequestBody Benificiaire benificiaire) {
 		return this.benificiaireService.addBenificiaire(benificiaire);
 	}
+
+	@RequestMapping(value = "/responsable/benificiaires")
+	public List<Benificiaire> findAllBenificiaires() {
+		return this.benificiaireService.findAllBenficiaires();
+	}
+
 }

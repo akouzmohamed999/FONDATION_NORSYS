@@ -1,5 +1,7 @@
 package fr.norsys.fondation.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class BenificiaireServiceImpl implements BenificiaireService {
 	@Override
 	public Benificiaire addBenificiaire(Benificiaire benificiaire) {
 		return this.benificiaireRepository.save(benificiaire);
+	}
+
+	@Override
+	public List<Benificiaire> findAllBenficiaires() {
+		return this.benificiaireRepository.findAll();
 	}
 
 }
