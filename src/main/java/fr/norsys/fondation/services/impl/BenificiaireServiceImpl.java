@@ -30,4 +30,22 @@ public class BenificiaireServiceImpl implements BenificiaireService {
 		return this.benificiaireRepository.findAll();
 	}
 
+	@Override
+	public Benificiaire findOneByIdBenificiare(int idBenificiaire) {
+		return this.benificiaireRepository.findOneByIdBenificiaire(idBenificiaire);
+	}
+
+	@Override
+	public Benificiaire updateBenificaire(Benificiaire benificiaire) {
+
+		return this.benificiaireRepository.saveAndFlush(benificiaire);
+
+	}
+
+	@Override
+	public void deleteBenificiaire(Benificiaire benificiaire) {
+
+		this.benificiaireRepository.delete(benificiaire);
+	}
+
 }

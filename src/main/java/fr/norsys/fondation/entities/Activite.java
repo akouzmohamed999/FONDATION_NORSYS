@@ -58,10 +58,7 @@ public class Activite implements Serializable {
 	private List<Collaborateur> collaborateurs = new ArrayList<Collaborateur>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany
-	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
-			@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") }, inverseJoinColumns = {
-					@JoinColumn(referencedColumnName = "ID_BENIFICIAIRE", name = "ID_BENIFICIAIRE") })
+	@ManyToMany(mappedBy = "activites")
 	private List<Benificiaire> benificiaires = new ArrayList<Benificiaire>();
 
 	public Activite() {

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -48,7 +50,10 @@ public class Benificiaire implements Serializable {
 	private String numeroTelephone;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany(mappedBy = "benificiaires")
+	@ManyToMany
+	@JoinTable(name = "BENIFICIAIRE_ACTIVITE", joinColumns = {
+			@JoinColumn(referencedColumnName = "ID_BENIFICIAIRE", name = "ID_BENIFICIAIRE") }, inverseJoinColumns = {
+					@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") })
 	@JsonIgnore
 	private List<Activite> activites = new ArrayList<Activite>();
 
