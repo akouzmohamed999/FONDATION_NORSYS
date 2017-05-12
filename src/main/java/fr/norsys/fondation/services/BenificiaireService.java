@@ -14,4 +14,10 @@ public interface BenificiaireService {
 	Benificiaire addBenificiaire(Benificiaire benificiaire);
 
 	List<Benificiaire> findAllBenficiaires();
+
+	Benificiaire findOneByIdBenificiare(int idBenificiaire);
+
+	Benificiaire updateBenificaire(Benificiaire benificiaire);
+
+	void deleteBenificiaire(Benificiaire benificiaire);
 }
