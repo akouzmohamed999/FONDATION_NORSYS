@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
+import fr.norsys.fondation.entities.Benificiaire;
 import fr.norsys.fondation.repositories.ActiviteRepository;
+import fr.norsys.fondation.repositories.BenificiaireRepository;
 import fr.norsys.fondation.repositories.CollaborateurRepository;
 import fr.norsys.fondation.repositories.ComposanteRepository;
 import fr.norsys.fondation.services.ActiviteService;
@@ -23,6 +25,9 @@ public class ActiviteServiceImpl implements ActiviteService {
 
 	@Autowired
 	private CollaborateurRepository CollaborateurRepository;
+
+	@Autowired
+	private BenificiaireRepository benificiaireRepository;
 
 	@Override
 	public List<Activite> findAllActivities() {
@@ -73,7 +78,21 @@ public class ActiviteServiceImpl implements ActiviteService {
 
 	@Override
 	public void removeActivite(Activite activite) {
+
+		for (Benificiaire benificiaire : activite.getBenificiaires()) {
+			System.out.println("FFFFF " + benificiaire);
+			benificiaire.getActivites().remove(activite);
+			this.benificiaireRepository.saveAndFlush(benificiaire);
+		}
+
+		activite.getBenificiaires().removeAll(activite.getBenificiaires());
+		this.activiteRepository.saveAndFlush(activite);
 		this.activiteRepository.delete(activite);
+
+		for (Benificiaire benificiaire : activite.getBenificiaires()) {
+			System.out.println("FFFFF " + benificiaire);
+			this.benificiaireRepository.delete(benificiaire);
+		}
 	}
 
 }

@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Composante;
 import fr.norsys.fondation.repositories.ComposanteRepository;
 import fr.norsys.fondation.repositories.ProjetRepository;
 import fr.norsys.fondation.repositories.ThematiqueRepository;
+import fr.norsys.fondation.services.ActiviteService;
 import fr.norsys.fondation.services.ComposanteService;
 
 @Service
@@ -22,6 +24,9 @@ public class ComposanteServiceImpl implements ComposanteService {
 
 	@Autowired
 	ThematiqueRepository thematiqueRepository;
+
+	@Autowired
+	ActiviteService activiteservice;
 
 	@Override
 	public Composante findComposanteById(int idComposante) {
@@ -56,7 +61,17 @@ public class ComposanteServiceImpl implements ComposanteService {
 
 	@Override
 	public void deleteComposante(Composante composante) {
+
+		for (Activite activite : composante.getActivites()) {
+			activite.setComposante(null);
+			this.activiteservice.updateActiviteEtat(activite);
+		}
+
 		this.ComposanteRepository.delete(composante);
+
+		for (Activite activite : composante.getActivites()) {
+			this.activiteservice.removeActivite(activite);
+		}
 	}
 
 }

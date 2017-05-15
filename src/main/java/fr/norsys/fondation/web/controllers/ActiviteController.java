@@ -74,13 +74,6 @@ public class ActiviteController {
 	@RequestMapping(value = "/responsable/deleteActivite", method = RequestMethod.DELETE)
 	public void deleteActivite(@RequestParam int idActivite) {
 		Activite activite = this.activiteService.findAcitiviteById(idActivite);
-		
-		for (Benificiaire benificiaire : activite.getBenificiaires()) {
-			System.out.println("FFFFF "+benificiaire);
-			benificiaire.getActivites().remove(activite);
-			this.benificiaireService.updateBenificaire(benificiaire);
-		}
-		
 		System.out.println("L'ACTIVITE Supprimée : " + activite);
 		this.activiteService.removeActivite(activite);
 	}
