@@ -16,5 +16,5 @@ public interface CollaborateurRepository extends JpaRepository<Collaborateur, In
 	Collaborateur findOneByEmail(String email);
 
 	List<Collaborateur> findByActivites(Activite activite);
-
+	
 }

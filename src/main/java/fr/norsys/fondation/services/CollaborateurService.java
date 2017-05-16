@@ -3,7 +3,6 @@ package fr.norsys.fondation.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import fr.norsys.fondation.entities.Collaborateur;
 
 @Service
@@ -15,6 +14,8 @@ public interface CollaborateurService {
 
 	Collaborateur findCollaborateurByEmail(String email);
 
+	void deleteCollaborateur(Collaborateur collaborateur);
+	
 	List<Collaborateur> findAllCollaborateur();
 
 	List<Collaborateur> findColllaborateursByComposante(int idComposante);
@@ -24,4 +25,5 @@ public interface CollaborateurService {
 	Collaborateur AddCollaborateur(Collaborateur collaborateur);
 	
 	void  DeleteCollaborateur(Collaborateur collaborateur);
+
 }

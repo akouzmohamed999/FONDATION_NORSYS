@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Collaborateur;
+import fr.norsys.fondation.repositories.AdministrateurRepository;
 import fr.norsys.fondation.repositories.CollaborateurRepository;
+import fr.norsys.fondation.repositories.ResponsableRepository;
 import fr.norsys.fondation.services.ActiviteService;
 import fr.norsys.fondation.services.CollaborateurService;
 
@@ -22,6 +24,12 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Autowired
 	ActiviteService activiteService;
+	
+	@Autowired
+	AdministrateurRepository administrateurRepository;
+	
+	@Autowired
+	ResponsableRepository responsableRepository;
 
 	@Override
 	public Collaborateur findCollaborateurByName(String nom) {
@@ -30,8 +38,12 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public List<Collaborateur> findAllCollaborateur() {
-		return this.collaborateurRepository.findAll();
+		List<Collaborateur> collaborateurs=this.collaborateurRepository.findAll();
+		collaborateurs.removeAll(this.administrateurRepository.findAll());
+		collaborateurs.removeAll(this.responsableRepository.findAll());
+		return collaborateurs;
 	}
+	
 
 	@Override
 	public Collaborateur findCollaborateurByEmail(String email) {
@@ -52,6 +64,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public Collaborateur updateCollaborateur(Collaborateur collaborateur) {
+		System.out.println("FFFFFFFF "+collaborateur.getClass().getSimpleName());
 		return this.collaborateurRepository.saveAndFlush(collaborateur);
 	}
 
@@ -71,4 +84,13 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 		this.collaborateurRepository.delete(collaborateur);
 		
 	}
+
+	@Override
+	public void deleteCollaborateur(Collaborateur collaborateur) {
+		this.collaborateurRepository.delete(collaborateur);
+		
+	}
+
+
+
 }

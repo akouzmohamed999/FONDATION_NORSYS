@@ -30,20 +30,27 @@ public class CollaborateurController {
 
 	@Autowired
 	AdministrateurService administrateurService;
-
-	@RequestMapping(value = "/responsable/collaborateur")
+	
+	@RequestMapping(value = "/administrateur/collaborateur")
 	public List<Collaborateur> findCollaborateurByComposanet(@RequestParam int idComposante) {
 		return this.collaborateurService.findColllaborateursByComposante(idComposante);
 	}
-
-	@RequestMapping(value = "/responsable/collaborateurs")
-	public List<Collaborateur> findAllCollaborateurs() {
-		return this.collaborateurService.findAllCollaborateur();
+	@RequestMapping(value = "/administrateur/collaborateurById")
+	public Collaborateur findCollaborateurByIdCollaborateur(@RequestParam int idCollaborateur) {
+		return this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
 	}
 
-	@RequestMapping(value = "/responsable/responsables")
+	
+	@RequestMapping(value = "/administrateur/Collaborateurs")
+	public List<Collaborateur> findCollaborateurs() {
+		return this.collaborateurService.findAllCollaborateur();
+	}
+	
+
+	@RequestMapping(value = "/administrateur/responsables")
 	public List<Responsable> findAllResponsables() {
 		return this.responsableService.findAllResponsables();
+		
 	}
 
 	@RequestMapping(value = "/administrateur/adminById")
