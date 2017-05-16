@@ -1,12 +1,15 @@
 package fr.norsys.fondation.web.controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class RapportController {
+
+	FTPClient ftpClient = new FTPClient();
+	String filename = "data.txt";
 
 	// Save the uploaded file to this folder
 	private static String UPLOADED_FOLDER = "/home/mohamed/Bureau/fondation/shares/";
@@ -31,10 +37,20 @@ public class RapportController {
 		}
 
 		try {
+			this.ftpClient.connect("localhost");
+			this.ftpClient.login("admin", "admin");
 
-			this.saveUploadedFiles(Arrays.asList(uploadfile));
+			File convFile = new File(uploadfile.getOriginalFilename());
+			uploadfile.transferTo(convFile);
+			InputStream targetStream = new FileInputStream(convFile);
 
-		} catch (IOException e) {
+			// Store file to server
+			this.ftpClient.changeWorkingDirectory("/Rapports");
+			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
+			this.ftpClient.logout();
+			// this.saveUploadedFiles(Arrays.asList(uploadfile));
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
