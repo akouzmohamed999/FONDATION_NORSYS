@@ -90,4 +90,13 @@ public class RapportController {
 		return this.rapportProjetService.addRapportProjet(rapportProjet);
 	}
 
+	@RequestMapping(value = "/responsable/rapportsProjetByProjet")
+	public List<RapportProjet> findRapportProjetById(@RequestParam int idProjet) {
+		return this.rapportProjetService.findRapportByIdProjet(idProjet);
+	}
+
+	@RequestMapping(value = "/responsable/rapports")
+	public List<RapportProjet> findAllRapportProjet() {
+		return this.rapportProjetService.findAllRapportProjets();
+	}
 }
