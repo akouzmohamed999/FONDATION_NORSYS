@@ -1,17 +1,13 @@
 package fr.norsys.fondation.entities;
 
-import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "BILAN")
@@ -28,10 +24,8 @@ public class BilanProjet {
 	private String intitule;
 	@Column(name = "TYPE")
 	private String type;
-	@Transient
-	@Lob
 	@Column(name = "FICHIER_BILAN")
-	private byte[] fichierBilan;
+	private String fichierBilan;
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
@@ -63,11 +57,11 @@ public class BilanProjet {
 		this.type = type;
 	}
 
-	public byte[] getFichierBilan() {
+	public String getFichierBilan() {
 		return this.fichierBilan;
 	}
 
-	public void setFichierBilan(byte[] fichierBilan) {
+	public void setFichierBilan(String fichierBilan) {
 		this.fichierBilan = fichierBilan;
 	}
 
@@ -83,7 +77,7 @@ public class BilanProjet {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(this.fichierBilan);
+		result = prime * result + (this.fichierBilan == null ? 0 : this.fichierBilan.hashCode());
 		result = prime * result + this.idBilan;
 		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
 		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
@@ -103,7 +97,11 @@ public class BilanProjet {
 			return false;
 		}
 		BilanProjet other = (BilanProjet) obj;
-		if (!Arrays.equals(this.fichierBilan, other.fichierBilan)) {
+		if (this.fichierBilan == null) {
+			if (other.fichierBilan != null) {
+				return false;
+			}
+		} else if (!this.fichierBilan.equals(other.fichierBilan)) {
 			return false;
 		}
 		if (this.idBilan != other.idBilan) {
@@ -136,7 +134,7 @@ public class BilanProjet {
 	@Override
 	public String toString() {
 		return "BilanProjet [idBilan=" + this.idBilan + ", intitule=" + this.intitule + ", type=" + this.type
-				+ ", fichierBilan=" + Arrays.toString(this.fichierBilan) + ", projet=" + this.projet + "]";
+				+ ", fichierBilan=" + this.fichierBilan + ", projet=" + this.projet + "]";
 	}
 
 }

@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -48,9 +47,8 @@ public class Proposition implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = PorteurProjet.class)
 	@JoinColumn(name = "ID_PORTEUR_PROJET")
 	private PorteurProjet porteurProjet;
-	@Lob
 	@Column(name = "ANNEXE")
-	private byte[] Annexe;
+	private String Annexe;
 
 	public Proposition() {
 	}
@@ -160,11 +158,11 @@ public class Proposition implements Serializable {
 		this.porteurProjet = porteurProjet;
 	}
 
-	public byte[] getAnnexe() {
+	public String getAnnexe() {
 		return this.Annexe;
 	}
 
-	public void setAnnexe(byte[] annexe) {
+	public void setAnnexe(String annexe) {
 		this.Annexe = annexe;
 	}
 

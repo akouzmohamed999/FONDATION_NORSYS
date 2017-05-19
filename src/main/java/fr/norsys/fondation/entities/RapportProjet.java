@@ -25,9 +25,8 @@ public class RapportProjet {
 	private String intitule;
 	@Column(name = "TYPE")
 	private String type;
-	@Transient
 	@Column(name = "FICHIER_RAPPORT")
-	private byte[] fichierRapport;
+	private String fichierRapport;
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
 	private Projet projet;
@@ -35,7 +34,7 @@ public class RapportProjet {
 	public RapportProjet() {
 	}
 
-	public RapportProjet(int idRapport, String intitule, String type, byte[] fichierRapport, Projet projet) {
+	public RapportProjet(int idRapport, String intitule, String type, String fichierRapport, Projet projet) {
 		super();
 		this.idRapport = idRapport;
 		this.intitule = intitule;
@@ -68,11 +67,11 @@ public class RapportProjet {
 		this.type = type;
 	}
 
-	public byte[] getFichierRapport() {
+	public String getFichierRapport() {
 		return this.fichierRapport;
 	}
 
-	public void setFichierRapport(byte[] fichierRapport) {
+	public void setFichierRapport(String fichierRapport) {
 		this.fichierRapport = fichierRapport;
 	}
 
