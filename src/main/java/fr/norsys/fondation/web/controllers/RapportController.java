@@ -9,6 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -32,7 +35,6 @@ public class RapportController {
 	RapportProjetService rapportProjetService;
 
 	FTPClient ftpClient = new FTPClient();
-	String filename = "data.txt";
 
 	// Save the uploaded file to this folder
 	private static String UPLOADED_FOLDER = "/home/mohamed/Bureau/fondation/shares/";
@@ -99,4 +101,27 @@ public class RapportController {
 	public List<RapportProjet> findAllRapportProjet() {
 		return this.rapportProjetService.findAllRapportProjets();
 	}
+
+	@RequestMapping(value = "/responsable/downloadRapport")
+	public void retrieveDocument(@RequestParam String file, HttpServletResponse response) throws IOException {
+
+		response.setContentType("APPLICATION_OCTET_STREAM");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		response.setHeader("Content-Disposition", "attachment; filename=" + file);
+
+		this.ftpClient.connect("localhost");
+		this.ftpClient.login("admin", "admin");
+
+		this.ftpClient.changeWorkingDirectory("/Rapports");
+		InputStream in = this.ftpClient.retrieveFileStream(file);
+		try {
+			IOUtils.copy(in, response.getOutputStream());
+			in.close();
+			response.flushBuffer();
+			response.setStatus(HttpServletResponse.SC_OK);
+		} catch (Exception e) {
+
+		}
+	}
+
 }
