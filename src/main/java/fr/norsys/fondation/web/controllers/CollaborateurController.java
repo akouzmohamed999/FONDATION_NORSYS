@@ -46,6 +46,10 @@ public class CollaborateurController {
 		return this.collaborateurService.findAllCollaborateur();
 	}
 	
+	@RequestMapping(value = "/administrateur/administrateurs")
+	public List<Administrateur> findAllAdministrateur() {
+		return this.administrateurService.findAllAdministrateur();
+	}
 
 	@RequestMapping(value = "/administrateur/responsables")
 	public List<Responsable> findAllResponsables() {
