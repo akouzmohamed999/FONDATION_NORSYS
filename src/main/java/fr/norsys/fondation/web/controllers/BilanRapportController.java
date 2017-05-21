@@ -22,18 +22,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.norsys.fondation.entities.RapportProjet;
-import fr.norsys.fondation.services.RapportProjetService;
+import fr.norsys.fondation.entities.BilanProjet;
+import fr.norsys.fondation.services.BilanProjetService;
 
 @RestController
-public class RapportController {
+public class BilanRapportController {
 
 	@Autowired
-	RapportProjetService rapportProjetService;
+	BilanProjetService bilanProjetService;
 
 	FTPClient ftpClient = new FTPClient();
 
-	@PostMapping("/responsable/addFichierRapport")
+	@PostMapping("/responsable/addFichierBilan")
 	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) {
 
 		if (uploadfile.isEmpty()) {
@@ -49,7 +49,7 @@ public class RapportController {
 			InputStream targetStream = new FileInputStream(convFile);
 
 			// Store file to server
-			this.ftpClient.changeWorkingDirectory("/Rapports");
+			this.ftpClient.changeWorkingDirectory("/Bilans");
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
 
@@ -62,22 +62,22 @@ public class RapportController {
 
 	}
 
-	@RequestMapping(value = "/responsable/addRapport", method = RequestMethod.POST)
-	public RapportProjet addRapportProjet(@RequestBody RapportProjet rapportProjet) {
-		return this.rapportProjetService.addRapportProjet(rapportProjet);
+	@RequestMapping(value = "/responsable/addBilan", method = RequestMethod.POST)
+	public BilanProjet addBilanProjet(@RequestBody BilanProjet bilanProjet) {
+		return this.bilanProjetService.addBilanProjet(bilanProjet);
 	}
 
-	@RequestMapping(value = "/responsable/rapportsProjetByProjet")
-	public List<RapportProjet> findRapportProjetById(@RequestParam int idProjet) {
-		return this.rapportProjetService.findRapportByIdProjet(idProjet);
+	@RequestMapping(value = "/responsable/bilansProjetByProjet")
+	public List<BilanProjet> findRapportProjetById(@RequestParam int idProjet) {
+		return this.bilanProjetService.findAllBilansByIdProjet(idProjet);
 	}
 
-	@RequestMapping(value = "/responsable/rapports")
-	public List<RapportProjet> findAllRapportProjet() {
-		return this.rapportProjetService.findAllRapportProjets();
+	@RequestMapping(value = "/responsable/bilans")
+	public List<BilanProjet> findAllBilanProjet() {
+		return this.bilanProjetService.findAllBilans();
 	}
 
-	@RequestMapping(value = "/responsable/downloadRapport")
+	@RequestMapping(value = "/responsable/downloadBilan")
 	public void retrieveDocument(@RequestParam String file, HttpServletResponse response) throws IOException {
 
 		response.setContentType("APPLICATION_OCTET_STREAM");
@@ -87,7 +87,7 @@ public class RapportController {
 		this.ftpClient.connect("localhost");
 		this.ftpClient.login("admin", "admin");
 
-		this.ftpClient.changeWorkingDirectory("/Rapports");
+		this.ftpClient.changeWorkingDirectory("/Bilans");
 		InputStream in = this.ftpClient.retrieveFileStream(file);
 		try {
 			IOUtils.copy(in, response.getOutputStream());
