@@ -49,6 +49,8 @@ public class Proposition implements Serializable {
 	private PorteurProjet porteurProjet;
 	@Column(name = "ANNEXE")
 	private String Annexe;
+	@Column(name = "ETAT")
+	private String etat;
 
 	public Proposition() {
 	}
@@ -164,6 +166,14 @@ public class Proposition implements Serializable {
 
 	public void setAnnexe(String annexe) {
 		this.Annexe = annexe;
+	}
+
+	public String getEtat() {
+		return this.etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 
 	@Override

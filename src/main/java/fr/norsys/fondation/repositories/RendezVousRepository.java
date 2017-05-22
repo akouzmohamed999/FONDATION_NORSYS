@@ -6,4 +6,6 @@ import fr.norsys.fondation.entities.RendezVous;
 
 public interface RendezVousRepository extends JpaRepository<RendezVous, Integer> {
 
+	RendezVous findOneByIdRendezVous(int idRendezVous);
+
 }
