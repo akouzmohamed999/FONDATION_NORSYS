@@ -15,7 +15,7 @@ public class ThematiqueController {
 	@Autowired
 	ThematiqueService thematiqueSerivce;
 
-	@RequestMapping("/responsable/thematiques")
+	@RequestMapping("/public/thematiques")
 	public List<Thematique> findAllThematiques() {
 		return this.thematiqueSerivce.findAllThematiques();
 	}

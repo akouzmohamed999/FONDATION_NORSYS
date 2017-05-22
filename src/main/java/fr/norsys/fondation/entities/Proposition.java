@@ -26,8 +26,9 @@ public class Proposition implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_PROPOSITION")
 	private int idProposition;
-	@Column(name = "THEMATIQUE")
-	private String thematique;
+	@ManyToOne
+	@JoinColumn(name = "ID_THEMATIQUE")
+	private Thematique thematique;
 	@Column(name = "OBJECTIF")
 	private String objectif;
 	@Column(name = "TYPE_ACTION")
@@ -55,37 +56,12 @@ public class Proposition implements Serializable {
 	public Proposition() {
 	}
 
-	public Proposition(int idProposition, String thematique, String objectif, String typeAction, Date datePrevision,
-			String populationCible, String zoneGeographiqe, String dureeAction, String budgetPrevisionnel,
-			String typeSoutien, PorteurProjet porteurProjet) {
-		super();
-		this.idProposition = idProposition;
-		this.thematique = thematique;
-		this.objectif = objectif;
-		this.typeAction = typeAction;
-		this.datePrevision = datePrevision;
-		this.populationCible = populationCible;
-		this.zoneGeographiqe = zoneGeographiqe;
-		this.dureeAction = dureeAction;
-		this.budgetPrevisionnel = budgetPrevisionnel;
-		this.typeSoutien = typeSoutien;
-		this.porteurProjet = porteurProjet;
-	}
-
 	public int getIdProposition() {
 		return this.idProposition;
 	}
 
 	public void setIdProposition(int idProposition) {
 		this.idProposition = idProposition;
-	}
-
-	public String getThematique() {
-		return this.thematique;
-	}
-
-	public void setThematique(String thematique) {
-		this.thematique = thematique;
 	}
 
 	public String getObjectif() {
@@ -174,6 +150,14 @@ public class Proposition implements Serializable {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+
+	public Thematique getThematique() {
+		return this.thematique;
+	}
+
+	public void setThematique(Thematique thematique) {
+		this.thematique = thematique;
 	}
 
 	@Override
