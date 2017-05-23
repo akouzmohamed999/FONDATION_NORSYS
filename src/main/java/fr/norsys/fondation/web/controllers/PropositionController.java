@@ -36,7 +36,7 @@ public class PropositionController {
 		return this.propositionService.addProposition(proposition);
 	}
 
-	@RequestMapping(value = "/administrateur/projetById")
+	@RequestMapping(value = "/administrateur/propositionById")
 	public Proposition findpropositionById(@RequestParam int idProposition) {
 		return this.propositionService.findPropositionById(idProposition);
 	}
