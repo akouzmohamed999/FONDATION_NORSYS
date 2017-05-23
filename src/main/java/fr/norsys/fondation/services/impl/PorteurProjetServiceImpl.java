@@ -18,4 +18,9 @@ public class PorteurProjetServiceImpl implements PorteurProjetService {
 		return this.porteurProjetRepository.save(porteurProjet);
 	}
 
+	@Override
+	public PorteurProjet findPorteurProjetById(int idPorteurProjet) {
+		return this.porteurProjetRepository.findOneByIdPorteur(idPorteurProjet);
+	}
+
 }

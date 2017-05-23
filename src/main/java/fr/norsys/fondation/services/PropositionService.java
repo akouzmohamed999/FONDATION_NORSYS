@@ -20,4 +20,6 @@ public interface PropositionService {
 	void deleteProposition(Proposition proposition);
 
 	Proposition findPropositionById(int idProposition);
+
+	Proposition updateProposition(Proposition proposition);
 }

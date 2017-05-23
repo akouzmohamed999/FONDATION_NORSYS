@@ -8,4 +8,6 @@ import fr.norsys.fondation.entities.PorteurProjet;
 public interface PorteurProjetService {
 
 	PorteurProjet addPorteurProjet(PorteurProjet porteurProjet);
+
+	PorteurProjet findPorteurProjetById(int idPorteurProjet);
 }

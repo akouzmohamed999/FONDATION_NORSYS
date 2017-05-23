@@ -45,4 +45,9 @@ public class PropositionServiceImpl implements PropositionService {
 		return this.propositionRepository.findOneByIdProposition(idProposition);
 	}
 
+	@Override
+	public Proposition updateProposition(Proposition proposition) {
+		return this.propositionRepository.saveAndFlush(proposition);
+	}
+
 }
