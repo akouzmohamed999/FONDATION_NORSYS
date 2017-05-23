@@ -49,7 +49,7 @@ public class Proposition implements Serializable {
 	@JoinColumn(name = "ID_PORTEUR_PROJET")
 	private PorteurProjet porteurProjet;
 	@Column(name = "ANNEXE")
-	private String Annexe;
+	private String annexe;
 	@Column(name = "ETAT")
 	private String etat;
 
@@ -137,11 +137,11 @@ public class Proposition implements Serializable {
 	}
 
 	public String getAnnexe() {
-		return this.Annexe;
+		return this.annexe;
 	}
 
 	public void setAnnexe(String annexe) {
-		this.Annexe = annexe;
+		this.annexe = annexe;
 	}
 
 	public String getEtat() {

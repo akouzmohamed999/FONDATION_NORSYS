@@ -36,6 +36,11 @@ public class PropositionController {
 		return this.propositionService.addProposition(proposition);
 	}
 
+	@RequestMapping(value = "/administrateur/projetById")
+	public Proposition findpropositionById(@RequestParam int idProposition) {
+		return this.propositionService.findPropositionById(idProposition);
+	}
+
 	@RequestMapping(value = "/administrateur/propositions")
 	public List<Proposition> findAllProposition() {
 		return this.propositionService.findAllProposition();
