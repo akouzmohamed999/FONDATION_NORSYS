@@ -1,7 +1,7 @@
 package fr.norsys.fondation.entities;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "RENDEZ_VOUS")
@@ -21,8 +23,8 @@ public class RendezVous {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_RENDEZVOUS")
 	private int idRendezVous;
-	@Column(name = "DATE")
-	private Timestamp date;
+	@Column(name = "DATE_RENDEZVOUS")
+	private Date date;
 	@Column(name = "SUJET")
 	private String sujet;
 	@ManyToOne
@@ -35,7 +37,7 @@ public class RendezVous {
 	public RendezVous() {
 	}
 
-	public RendezVous(int idRendezVous, Timestamp date, String sujet, PorteurProjet porteurProjet,
+	public RendezVous(int idRendezVous, Date date, String sujet, PorteurProjet porteurProjet,
 			Administrateur administrateur) {
 		super();
 		this.idRendezVous = idRendezVous;
@@ -53,11 +55,11 @@ public class RendezVous {
 		this.idRendezVous = idRendezVous;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

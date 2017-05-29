@@ -78,4 +78,8 @@ public class ActiviteController {
 		this.activiteService.removeActivite(activite);
 	}
 
+	@RequestMapping(value = "/responsable/allActivites")
+	public List<Activite> findAllActivite() {
+		return this.activiteService.findAllActivities();
+	}
 }
