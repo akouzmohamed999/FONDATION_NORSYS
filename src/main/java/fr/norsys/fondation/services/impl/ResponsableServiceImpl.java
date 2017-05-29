@@ -20,4 +20,24 @@ public class ResponsableServiceImpl implements ResponsableService {
 		return this.responsableRepository.findAll();
 	}
 
+	@Override
+	public Responsable findResponsableById(int idResponsable) {
+		return this.responsableRepository.findOneByIdCollaborateur(idResponsable);
+	}
+
+	@Override
+	public Responsable addResponsable(Responsable responsable) {
+		return this.responsableRepository.save(responsable);
+	}
+
+	@Override
+	public Responsable updateResponsable(Responsable responsable) {
+		return this.responsableRepository.saveAndFlush(responsable);
+	}
+
+	@Override
+	public void deleteResponsable(Responsable responsable) {
+		this.responsableRepository.delete(responsable);	
+	}
+
 }

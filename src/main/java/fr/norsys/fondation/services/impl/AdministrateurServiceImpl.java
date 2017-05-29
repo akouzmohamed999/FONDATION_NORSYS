@@ -25,4 +25,20 @@ public class AdministrateurServiceImpl implements AdministrateurService {
 		return this.administrateurRepository.findOneByIdCollaborateur(IdAdministrateur);
 	}
 
+	@Override
+	public Administrateur addAdministrateur(Administrateur administrateur) {
+		return  this.administrateurRepository.save(administrateur);
+	}
+
+	@Override
+	public Administrateur updateAdministrateur(Administrateur administrateur) {
+		return this.administrateurRepository.saveAndFlush(administrateur); 
+		}
+
+	@Override
+	public void deleteAdministrateur(Administrateur administrateur) {
+		this.administrateurRepository.delete(administrateur);
+	}
+
+	
 }

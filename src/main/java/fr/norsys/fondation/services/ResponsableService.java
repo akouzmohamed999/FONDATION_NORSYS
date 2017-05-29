@@ -12,5 +12,11 @@ public interface ResponsableService {
 
 	List<Responsable> findAllResponsables();
 
+	Responsable findResponsableById(int idResponsable);
 	
+	Responsable addResponsable(Responsable responsable);
+	
+	Responsable updateResponsable(Responsable responsable);
+	
+	void deleteResponsable(Responsable responsable);
 }

@@ -14,4 +14,9 @@ public interface AdministrateurService {
 
 	Administrateur findAdministrateurById(int IdAdministrateur);
 	
+	Administrateur addAdministrateur(Administrateur administrateur);
+	
+	Administrateur updateAdministrateur(Administrateur administrateur);
+	
+	void deleteAdministrateur(Administrateur administrateur);
 }

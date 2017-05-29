@@ -17,6 +17,8 @@ public interface CollaborateurService {
 	void deleteCollaborateur(Collaborateur collaborateur);
 	
 	List<Collaborateur> findAllCollaborateur();
+	
+	List<Collaborateur> findCollaborateurs();
 
 	List<Collaborateur> findColllaborateursByComposante(int idComposante);
 

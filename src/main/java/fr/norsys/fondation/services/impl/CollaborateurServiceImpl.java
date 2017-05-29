@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
+import fr.norsys.fondation.entities.Administrateur;
 import fr.norsys.fondation.entities.Collaborateur;
+import fr.norsys.fondation.entities.Responsable;
 import fr.norsys.fondation.repositories.AdministrateurRepository;
 import fr.norsys.fondation.repositories.CollaborateurRepository;
 import fr.norsys.fondation.repositories.ResponsableRepository;
@@ -64,8 +66,26 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public Collaborateur updateCollaborateur(Collaborateur collaborateur) {
-		System.out.println("FFFFFFFF "+collaborateur.getClass().getSimpleName());
-		return this.collaborateurRepository.saveAndFlush(collaborateur);
+		if(this.administrateurRepository.findOneByIdCollaborateur(collaborateur.getIdCollaborateur()) != null){
+			Administrateur administrateur = this.administrateurRepository.findOneByIdCollaborateur(collaborateur.getIdCollaborateur());
+			administrateur.setNom(collaborateur.getNom());
+			administrateur.setPrenom(collaborateur.getPrenom());
+			administrateur.setAdresse(collaborateur.getAdresse());
+			administrateur.setCIN(collaborateur.getCIN());
+			administrateur.setAdresse(collaborateur.getNumeroTelephone());
+			administrateur.setLieuNaissance(collaborateur.getLieuNaissance());
+			administrateur.setPassword(collaborateur.getPassword());
+			administrateur.setEmail(collaborateur.getEmail());
+			administrateur.setDateNaissance(collaborateur.getDateNaissance());
+			return this.administrateurRepository.saveAndFlush(administrateur);
+		}else if(this.responsableRepository.findOneByIdCollaborateur(collaborateur.getIdCollaborateur()) != null){
+			Responsable responsable = this.responsableRepository.findOneByIdCollaborateur(collaborateur.getIdCollaborateur());
+			System.out.println(" RESPONSABLE : "+ responsable);
+			return this.responsableRepository.saveAndFlush(responsable);
+		}else{
+			return this.collaborateurRepository.saveAndFlush(collaborateur);	
+		}
+		
 	}
 
 	@Override
@@ -89,6 +109,11 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	public void deleteCollaborateur(Collaborateur collaborateur) {
 		this.collaborateurRepository.delete(collaborateur);
 		
+	}
+
+	@Override
+	public List<Collaborateur> findCollaborateurs() {
+		return this.collaborateurRepository.findAll();
 	}
 
 
