@@ -37,5 +37,10 @@ public class RendezVousController {
 	public void deleteRendezVous(@RequestParam int idRendezVous) {
 		this.rendezVousService.deleteRendezVous(this.rendezVousService.findRendezVousById(idRendezVous));
 	}
+	
+	@RequestMapping(value = "/administrateur/rendezVousById")
+	public RendezVous findRendezVousById(@RequestParam int idRendezVous) {
+		return this.rendezVousService.findRendezVousById(idRendezVous);
+	}
 
 }
