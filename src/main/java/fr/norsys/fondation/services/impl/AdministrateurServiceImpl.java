@@ -40,5 +40,10 @@ public class AdministrateurServiceImpl implements AdministrateurService {
 		this.administrateurRepository.delete(administrateur);
 	}
 
+	@Override
+	public Administrateur findAdministrateurByEmail(String email) {
+		return this.administrateurRepository.findOneByEmail(email);
+	}
+
 	
 }

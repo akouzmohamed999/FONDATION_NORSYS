@@ -66,7 +66,8 @@ public class ComposanteServiceImpl implements ComposanteService {
 			activite.setComposante(null);
 			this.activiteservice.updateActiviteEtat(activite);
 		}
-
+		composante.getActivites().removeAll(composante.getActivites());
+		this.ComposanteRepository.saveAndFlush(composante);
 		this.ComposanteRepository.delete(composante);
 
 		for (Activite activite : composante.getActivites()) {

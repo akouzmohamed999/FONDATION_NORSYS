@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -55,7 +57,10 @@ public class Collaborateur implements Serializable {
 	@Column(name = "LIEU_NAISSANCE")
 	protected String lieuNaissance;
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany(mappedBy = "collaborateurs")
+	@ManyToMany
+	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
+			@JoinColumn(referencedColumnName = "ID_COLLABORATEUR", name = "ID_COLLABORATEUR") }, inverseJoinColumns = {
+					@JoinColumn(referencedColumnName = "ID_ACTIVITE", name = "ID_ACTIVITE") })
 	@JsonIgnore
 	protected final List<Activite> activites = new ArrayList<Activite>();
 

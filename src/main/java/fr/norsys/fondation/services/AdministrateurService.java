@@ -14,6 +14,8 @@ public interface AdministrateurService {
 
 	Administrateur findAdministrateurById(int IdAdministrateur);
 	
+	Administrateur findAdministrateurByEmail(String email);
+	
 	Administrateur addAdministrateur(Administrateur administrateur);
 	
 	Administrateur updateAdministrateur(Administrateur administrateur);

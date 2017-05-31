@@ -1,5 +1,6 @@
 package fr.norsys.fondation.web.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,9 +79,10 @@ public class CollaborateurController {
 	}
 
 	@RequestMapping(value = "/administrateur/DeleteCollaborateur", method = RequestMethod.DELETE)
-	public void DeleteCollaborateur(@RequestParam int idCollaborateur) {
+	public void DeleteCollaborateur(@RequestParam int idCollaborateur,Principal prinipal) {
+		Administrateur administrateur = this.administrateurService.findAdministrateurByEmail(prinipal.getName());
 		Collaborateur collaborateur = this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
-		this.collaborateurService.DeleteCollaborateur(collaborateur);
+		this.collaborateurService.deleteCollaborateur(collaborateur,administrateur);
 	}
 
 }
