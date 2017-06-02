@@ -38,8 +38,8 @@ public class Activite implements Serializable {
 	private String intitule;
 	@Column(name = "DATE_ACTIVITE")
 	private Date dateActivite;
-	@Column(name = "DUREE_ACTIVITE")
-	private String dureeActivite;
+	@Column(name = "DATE_FIN")
+	private Date dateFin;
 	@Column(name = "ETAT")
 	private String etat;
 	@Column(name = "LIEU")
@@ -62,13 +62,13 @@ public class Activite implements Serializable {
 	public Activite() {
 	}
 
-	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
+	public Activite(int idActivite, String intitule, Date dateActivite, Date dateFin, String etat, String lieu,
 			Collaborateur animateurTerrain, Composante composante) {
 		super();
 		this.idActivite = idActivite;
 		this.intitule = intitule;
 		this.dateActivite = dateActivite;
-		this.dureeActivite = dureeActivite;
+		this.dateFin = dateFin;
 		this.etat = etat;
 		this.lieu = lieu;
 		this.animateurTerrain = animateurTerrain;
@@ -76,13 +76,13 @@ public class Activite implements Serializable {
 		composante.getActivites().add(this);
 	}
 
-	public Activite(int idActivite, String intitule, Date dateActivite, String dureeActivite, String etat, String lieu,
+	public Activite(int idActivite, String intitule, Date dateFin, String dureeActivite, String etat, String lieu,
 			Collaborateur animateurTerrain, Composante composante, List<Benificiaire> benificiaire) {
 		super();
 		this.idActivite = idActivite;
 		this.intitule = intitule;
 		this.dateActivite = dateActivite;
-		this.dureeActivite = dureeActivite;
+		this.dateFin = dateFin;
 		this.etat = etat;
 		this.lieu = lieu;
 		this.animateurTerrain = animateurTerrain;
@@ -115,12 +115,13 @@ public class Activite implements Serializable {
 		this.dateActivite = dateActivite;
 	}
 
-	public String getDureeActivite() {
-		return this.dureeActivite;
+
+	public Date getDateFin() {
+		return dateFin;
 	}
 
-	public void setDureeActivite(String dureeActivite) {
-		this.dureeActivite = dureeActivite;
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 	public String getEtat() {
@@ -178,7 +179,7 @@ public class Activite implements Serializable {
 		result = prime * result + (this.animateurTerrain == null ? 0 : this.animateurTerrain.hashCode());
 		result = prime * result + (this.composante == null ? 0 : this.composante.hashCode());
 		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
-		result = prime * result + (this.dureeActivite == null ? 0 : this.dureeActivite.hashCode());
+		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
 		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
 		result = prime * result + this.idActivite;
 		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
@@ -219,11 +220,11 @@ public class Activite implements Serializable {
 		} else if (!this.dateActivite.equals(other.dateActivite)) {
 			return false;
 		}
-		if (this.dureeActivite == null) {
-			if (other.dureeActivite != null) {
+		if (this.dateFin == null) {
+			if (other.dateFin != null) {
 				return false;
 			}
-		} else if (!this.dureeActivite.equals(other.dureeActivite)) {
+		} else if (!this.dateFin.equals(other.dateFin)) {
 			return false;
 		}
 		if (this.etat == null) {
@@ -256,7 +257,7 @@ public class Activite implements Serializable {
 	@Override
 	public String toString() {
 		return "Activite [idActivite=" + this.idActivite + ", intitule=" + this.intitule + ", dateActivite="
-				+ this.dateActivite + ", dureeActivite=" + this.dureeActivite + ", etat=" + this.etat + ", lieu="
+				+ this.dateActivite + ", dureeActivite=" + this.dateFin + ", etat=" + this.etat + ", lieu="
 				+ this.lieu + ", animateurTerrain=" + this.animateurTerrain + ", composante=" + this.composante
 				+ ", collaborateurs number=" + this.collaborateurs.size() + ", benificiaires number="
 				+ this.benificiaires.size() + "]";

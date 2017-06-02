@@ -133,12 +133,12 @@ public abstract class AbstractTest {
 				Arrays.asList(this.benificiaire1Activite1And2Projet1, this.benificiaire2Activite1And2Projet1));
 
 		this.activite3Composante1Projet1Annule = new Activite(3, "intituleActivite3", dateDebutActivite3,
-				"dureeActivite3", "Annule", "lieuActivite3", this.collaborateur1, this.composante1Projet1);
+				dateDebutActivite3, "Annule", "lieuActivite3", this.collaborateur1, this.composante1Projet1);
 
 		this.activite1Composante1Projet1Termine
 				.setCollaborateurs(Arrays.asList(this.collaborateur1, this.collaborateur2));
 
-		this.activteAAjoute = new Activite(1, "intituleActiviteAjoute", dateDebutActiviteAjoute, "dureeAcitiviteAjoute",
+		this.activteAAjoute = new Activite(1, "intituleActiviteAjoute", dateDebutActiviteAjoute, dateDebutActiviteAjoute,
 				"En Cours", "lieu Activite Ajoute", this.collaborateur1, this.composante1Projet1);
 
 		this.collaborateur2.getActivites().add(this.activite1Composante1Projet1Termine);
