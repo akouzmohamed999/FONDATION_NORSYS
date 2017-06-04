@@ -30,11 +30,13 @@ public class Publication {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
-
-	@Transient
+	
 	@Lob
 	@Column(name = "PHOTO")
 	private byte[] photo;
+	
+	@Column(name="VISIBLE")
+	private boolean visible;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_PROJET")
@@ -90,6 +92,14 @@ public class Publication {
 
 	public void setProjet(Projet projet) {
 		this.projet = projet;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	@Override
