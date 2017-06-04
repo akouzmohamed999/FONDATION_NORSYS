@@ -12,4 +12,6 @@ public interface PublicationRepository extends JpaRepository<Publication, Intege
 
 	Publication findOneByIdPublication(int idPublication);
 
+	Publication findOneByTitre(String titre);
+
 }

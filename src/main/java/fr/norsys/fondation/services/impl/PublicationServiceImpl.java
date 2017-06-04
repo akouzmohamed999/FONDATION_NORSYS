@@ -50,4 +50,9 @@ public class PublicationServiceImpl implements PublicationService{
 		return this.publicationRepository.findOneByIdPublication(idPublication);
 	}
 
+	@Override
+	public Publication findPublicationByTitre(String titre) {
+		return this.publicationRepository.findOneByTitre(titre);
+	}
+
 }

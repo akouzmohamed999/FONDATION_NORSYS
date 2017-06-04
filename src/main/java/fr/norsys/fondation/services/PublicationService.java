@@ -17,6 +17,8 @@ public interface PublicationService {
 	
 	Publication modifierPublication(Publication publication);
 	
+	Publication findPublicationByTitre(String titre);
+	
 	byte[] findPublicationImages(int idPublication);
 		
 	void deletePublication(Publication publication);
