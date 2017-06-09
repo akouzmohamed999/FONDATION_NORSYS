@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,6 +32,8 @@ public class PropositionController {
 
 	@Autowired
 	PropositionService propositionService;
+
+	private static final Logger logger = LoggerFactory.getLogger(PropositionController.class);
 
 	@RequestMapping(value = "/public/addProposition", method = RequestMethod.POST)
 	public Proposition addproposition(@RequestBody Proposition proposition) {
@@ -87,9 +91,9 @@ public class PropositionController {
 			this.ftpClient.changeWorkingDirectory("/Propositions");
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
-
+			targetStream.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info("ERREUR DEPUIS Proposition Upload file controller " + e);
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
@@ -115,7 +119,7 @@ public class PropositionController {
 			response.flushBuffer();
 			response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
-
+			logger.info("ERREUE DEPUIS DOWNLOAD PROPOSITION ANNEXE CONTROLLER " + e);
 		}
 	}
 

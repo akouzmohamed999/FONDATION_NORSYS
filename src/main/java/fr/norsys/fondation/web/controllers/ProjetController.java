@@ -36,7 +36,6 @@ public class ProjetController {
 
 	@RequestMapping(value = "/responsable/addProjet", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Projet addProjet(@RequestBody Projet projet) {
-		System.out.println("LE PROJET AJOUTE : " + projet);
 		Projet storedProject = this.projetService.addProjet(projet);
 		for (Partenaire partenaire : projet.getPartenaires()) {
 			partenaire.getProjets().add(projet);

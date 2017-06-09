@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,8 @@ import fr.norsys.fondation.services.BilanProjetService;
 
 @RestController
 public class BilanRapportController {
+
+	Logger logger = LoggerFactory.getLogger(BilanRapportController.class);
 
 	@Autowired
 	BilanProjetService bilanProjetService;
@@ -52,9 +56,9 @@ public class BilanRapportController {
 			this.ftpClient.changeWorkingDirectory("/Bilans");
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
-
+			targetStream.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			this.logger.info("ERREUR DEPUIS BILANS RAPPORT " + e);
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
@@ -95,7 +99,7 @@ public class BilanRapportController {
 			response.flushBuffer();
 			response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
-
+			this.logger.info("ERREUR DEPUIS BILANS RAPPORT " + e);
 		}
 	}
 

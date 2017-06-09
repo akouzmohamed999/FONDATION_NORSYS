@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,8 @@ import fr.norsys.fondation.services.RapportProjetService;
 
 @RestController
 public class RapportController {
+
+	Logger logger = LoggerFactory.getLogger(RapportController.class);
 
 	@Autowired
 	RapportProjetService rapportProjetService;
@@ -47,8 +51,8 @@ public class RapportController {
 
 			File convFile = new File(uploadfile.getOriginalFilename());
 			uploadfile.transferTo(convFile);
-			
-			System.out.println("UPLOAD FILE  : "+convFile);
+
+			System.out.println("UPLOAD FILE  : " + convFile);
 			InputStream targetStream = new FileInputStream(convFile);
 
 			// Store file to server
@@ -57,8 +61,10 @@ public class RapportController {
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
 
+			targetStream.close();
+
 		} catch (Exception e) {
-			e.printStackTrace();
+			this.logger.info("ERREUR DEPUIS RAPPORT CONTROLLER " + e);
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
@@ -99,7 +105,7 @@ public class RapportController {
 			response.flushBuffer();
 			response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
-
+			this.logger.info("ERREUR DEPUIS RAPPORT CONTROLLER " + e);
 		}
 	}
 
