@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -46,9 +47,12 @@ public class RapportController {
 
 			File convFile = new File(uploadfile.getOriginalFilename());
 			uploadfile.transferTo(convFile);
+			
+			System.out.println("UPLOAD FILE  : "+convFile);
 			InputStream targetStream = new FileInputStream(convFile);
 
 			// Store file to server
+			this.ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 			this.ftpClient.changeWorkingDirectory("/Rapports");
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();

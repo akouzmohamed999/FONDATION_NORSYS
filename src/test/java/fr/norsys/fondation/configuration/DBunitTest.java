@@ -36,7 +36,7 @@ public class DBunitTest {
 	}
 
 	private IDataSet readDataSet() throws Exception {
-		return new FlatXmlDataSetBuilder().build(new File(this.resourceDirectory + "/dataset.xml"));
+		return new FlatXmlDataSetBuilder().build(new File(this.resourceDirectory + "/dataSetTest.xml"));
 	}
 
 	private void cleanlyInsert(IDataSet dataSet) throws Exception {

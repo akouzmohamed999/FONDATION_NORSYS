@@ -24,12 +24,12 @@ public class ProjetController {
 	@Autowired
 	PartenaireService partenaireService;
 
-	@RequestMapping(value = "/administrateur/")
+	@RequestMapping(value = "/collaborateur/projets")
 	public List<Projet> listeDesProjets() {
 		return this.projetService.findAllProjets();
 	}
 
-	@RequestMapping(value = "/administrateur/projet", method = RequestMethod.GET)
+	@RequestMapping(value = "/collaborateur/projet", method = RequestMethod.GET)
 	public Projet projetParId(@RequestParam int idProjet) {
 		return this.projetService.findProjetById(idProjet);
 	}

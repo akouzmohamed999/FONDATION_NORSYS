@@ -19,7 +19,7 @@ public class ComposanteController {
 	@Autowired
 	ComposanteService composanteService;
 
-	@RequestMapping(value = "/administrateur/composante", method = RequestMethod.GET)
+	@RequestMapping(value = "/collaborateur/composante", method = RequestMethod.GET)
 	public List<Composante> findComposanteByIdProjet(@RequestParam int idProjet) {
 		return this.composanteService.findCompetitionsByIdProjet(idProjet);
 	}
