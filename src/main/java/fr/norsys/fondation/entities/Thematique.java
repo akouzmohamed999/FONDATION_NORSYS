@@ -81,52 +81,46 @@ public class Thematique {
 		this.composantes = composantes;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
-		result = prime * result + this.idThematique;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + idThematique;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Thematique other = (Thematique) obj;
-		if (this.description == null) {
-			if (other.description != null) {
+		if (description == null) {
+			if (other.description != null)
 				return false;
-			}
-		} else if (!this.description.equals(other.description)) {
+		} else if (!description.equals(other.description))
 			return false;
-		}
-		if (this.idThematique != other.idThematique) {
+		if (idThematique != other.idThematique)
 			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Thematique [idThematique=" + this.idThematique + ", intitule=" + this.intitule + ", description="
-				+ this.description + ", composantes number=" + this.composantes.size() + "]";
+		return "Thematique [idThematique=" + idThematique + ", intitule=" + intitule + ", description=" + description
+				+ "]";
 	}
 
+	
 }

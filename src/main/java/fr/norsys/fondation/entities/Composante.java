@@ -99,60 +99,54 @@ public class Composante {
 		this.activites = activites;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + this.idComposante;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		result = prime * result + (this.thematique == null ? 0 : this.thematique.hashCode());
+		result = prime * result + idComposante;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
+		result = prime * result + ((thematique == null) ? 0 : thematique.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Composante other = (Composante) obj;
-		if (this.idComposante != other.idComposante) {
+		if (idComposante != other.idComposante)
 			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
-		if (this.projet == null) {
-			if (other.projet != null) {
+		if (projet == null) {
+			if (other.projet != null)
 				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
+		} else if (!projet.equals(other.projet))
 			return false;
-		}
-		if (this.thematique == null) {
-			if (other.thematique != null) {
+		if (thematique == null) {
+			if (other.thematique != null)
 				return false;
-			}
-		} else if (!this.thematique.equals(other.thematique)) {
+		} else if (!thematique.equals(other.thematique))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Composante [idComposante=" + this.idComposante + ", intitule=" + this.intitule + ", thematique="
-				+ this.thematique + ", projet=" + this.projet + ", activites number=" + this.activites.size() + "]";
+		return "Composante [idComposante=" + idComposante + ", intitule=" + intitule + ", thematique=" + thematique
+				+ ", projet=" + projet + "]";
 	}
+
+	
 
 }

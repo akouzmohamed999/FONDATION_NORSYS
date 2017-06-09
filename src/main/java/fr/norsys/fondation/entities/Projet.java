@@ -204,94 +204,78 @@ public class Projet implements Serializable {
 		this.proposition = proposition;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
-		result = prime * result + (this.dateDebut == null ? 0 : this.dateDebut.hashCode());
-		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
-		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
-		result = prime * result + this.idProjet;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.proposition == null ? 0 : this.proposition.hashCode());
-		result = prime * result + (this.responsable == null ? 0 : this.responsable.hashCode());
+		result = prime * result + ((administrateur == null) ? 0 : administrateur.hashCode());
+		result = prime * result + ((dateDebut == null) ? 0 : dateDebut.hashCode());
+		result = prime * result + ((dateFin == null) ? 0 : dateFin.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + idProjet;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((proposition == null) ? 0 : proposition.hashCode());
+		result = prime * result + ((responsable == null) ? 0 : responsable.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Projet other = (Projet) obj;
-		if (this.administrateur == null) {
-			if (other.administrateur != null) {
+		if (administrateur == null) {
+			if (other.administrateur != null)
 				return false;
-			}
-		} else if (!this.administrateur.equals(other.administrateur)) {
+		} else if (!administrateur.equals(other.administrateur))
 			return false;
-		}
-		if (this.dateDebut == null) {
-			if (other.dateDebut != null) {
+		if (dateDebut == null) {
+			if (other.dateDebut != null)
 				return false;
-			}
-		} else if (!this.dateDebut.equals(other.dateDebut)) {
+		} else if (!dateDebut.equals(other.dateDebut))
 			return false;
-		}
-		if (this.dateFin == null) {
-			if (other.dateFin != null) {
+		if (dateFin == null) {
+			if (other.dateFin != null)
 				return false;
-			}
-		} else if (!this.dateFin.equals(other.dateFin)) {
+		} else if (!dateFin.equals(other.dateFin))
 			return false;
-		}
-		if (this.description == null) {
-			if (other.description != null) {
+		if (description == null) {
+			if (other.description != null)
 				return false;
-			}
-		} else if (!this.description.equals(other.description)) {
+		} else if (!description.equals(other.description))
 			return false;
-		}
-		if (this.idProjet != other.idProjet) {
+		if (idProjet != other.idProjet)
 			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
-		if (this.proposition == null) {
-			if (other.proposition != null) {
+		if (proposition == null) {
+			if (other.proposition != null)
 				return false;
-			}
-		} else if (!this.proposition.equals(other.proposition)) {
+		} else if (!proposition.equals(other.proposition))
 			return false;
-		}
-		if (this.responsable == null) {
-			if (other.responsable != null) {
+		if (responsable == null) {
+			if (other.responsable != null)
 				return false;
-			}
-		} else if (!this.responsable.equals(other.responsable)) {
+		} else if (!responsable.equals(other.responsable))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Projet [idProjet=" + this.idProjet + ", intitule=" + this.intitule + ", description=" + this.description
-				+ ", dateDebut=" + this.dateDebut + ", dateFin=" + this.dateFin + ", categorie=" + ", administrateur="
-				+ this.administrateur + ", composantes number=" + this.composantes.size() + ", responsable="
-				+ this.responsable + ", proposition=" + this.proposition + ",partenaires = " + this.partenaires + "]";
+		return "Projet [idProjet=" + idProjet + ", intitule=" + intitule + ", description=" + description
+				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", administrateur=" + administrateur
+				+ ", responsable=" + responsable + ", proposition=" + proposition + "]";
 	}
+
+	
 
 }

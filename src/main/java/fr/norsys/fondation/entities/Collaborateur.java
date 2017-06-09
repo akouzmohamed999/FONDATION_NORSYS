@@ -166,110 +166,90 @@ public class Collaborateur implements Serializable {
 		return this.activites;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
-		result = prime * result + (this.dateNaissance == null ? 0 : this.dateNaissance.hashCode());
-		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
-		result = prime * result + this.idCollaborateur;
-		result = prime * result + (this.lieuNaissance == null ? 0 : this.lieuNaissance.hashCode());
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
-		result = prime * result + (this.password == null ? 0 : this.password.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		result = prime * result + ((CIN == null) ? 0 : CIN.hashCode());
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + idCollaborateur;
+		result = prime * result + ((lieuNaissance == null) ? 0 : lieuNaissance.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((numeroTelephone == null) ? 0 : numeroTelephone.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Collaborateur other = (Collaborateur) obj;
-		if (this.CIN == null) {
-			if (other.CIN != null) {
+		if (CIN == null) {
+			if (other.CIN != null)
 				return false;
-			}
-		} else if (!this.CIN.equals(other.CIN)) {
+		} else if (!CIN.equals(other.CIN))
 			return false;
-		}
-		if (this.adresse == null) {
-			if (other.adresse != null) {
+		if (adresse == null) {
+			if (other.adresse != null)
 				return false;
-			}
-		} else if (!this.adresse.equals(other.adresse)) {
+		} else if (!adresse.equals(other.adresse))
 			return false;
-		}
-		if (this.dateNaissance == null) {
-			if (other.dateNaissance != null) {
+		if (dateNaissance == null) {
+			if (other.dateNaissance != null)
 				return false;
-			}
-		} else if (!this.dateNaissance.equals(other.dateNaissance)) {
+		} else if (!dateNaissance.equals(other.dateNaissance))
 			return false;
-		}
-		if (this.email == null) {
-			if (other.email != null) {
+		if (email == null) {
+			if (other.email != null)
 				return false;
-			}
-		} else if (!this.email.equals(other.email)) {
+		} else if (!email.equals(other.email))
 			return false;
-		}
-		if (this.idCollaborateur != other.idCollaborateur) {
+		if (idCollaborateur != other.idCollaborateur)
 			return false;
-		}
-		if (this.lieuNaissance == null) {
-			if (other.lieuNaissance != null) {
+		if (lieuNaissance == null) {
+			if (other.lieuNaissance != null)
 				return false;
-			}
-		} else if (!this.lieuNaissance.equals(other.lieuNaissance)) {
+		} else if (!lieuNaissance.equals(other.lieuNaissance))
 			return false;
-		}
-		if (this.nom == null) {
-			if (other.nom != null) {
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-			}
-		} else if (!this.nom.equals(other.nom)) {
+		} else if (!nom.equals(other.nom))
 			return false;
-		}
-		if (this.numeroTelephone == null) {
-			if (other.numeroTelephone != null) {
+		if (numeroTelephone == null) {
+			if (other.numeroTelephone != null)
 				return false;
-			}
-		} else if (!this.numeroTelephone.equals(other.numeroTelephone)) {
+		} else if (!numeroTelephone.equals(other.numeroTelephone))
 			return false;
-		}
-		if (this.password == null) {
-			if (other.password != null) {
+		if (password == null) {
+			if (other.password != null)
 				return false;
-			}
-		} else if (!this.password.equals(other.password)) {
+		} else if (!password.equals(other.password))
 			return false;
-		}
-		if (this.prenom == null) {
-			if (other.prenom != null) {
+		if (prenom == null) {
+			if (other.prenom != null)
 				return false;
-			}
-		} else if (!this.prenom.equals(other.prenom)) {
+		} else if (!prenom.equals(other.prenom))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Collaborateur [idCollaborateur=" + this.idCollaborateur + ", CIN=" + this.CIN + ", nom=" + this.nom
-				+ ", prenom=" + this.prenom + ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone
-				+ ", email=" + this.email + ", password= " + this.password + ", dateNaissance=" + this.dateNaissance
-				+ ", lieuNaissance=" + this.lieuNaissance + ", activites number=" + this.activites.size() + "]";
+		return "Collaborateur [idCollaborateur=" + idCollaborateur + ", CIN=" + CIN + ", nom=" + nom + ", prenom="
+				+ prenom + ", adresse=" + adresse + ", numeroTelephone=" + numeroTelephone + ", email=" + email
+				+ ", password=" + password + ", dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance
+				+ "]";
 	}
 
+	
 }

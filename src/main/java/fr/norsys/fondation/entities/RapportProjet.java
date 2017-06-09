@@ -83,60 +83,60 @@ public class RapportProjet {
 		this.projet = projet;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + this.idRapport;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		result = prime * result + (this.type == null ? 0 : this.type.hashCode());
+		result = prime * result + ((fichierRapport == null) ? 0 : fichierRapport.hashCode());
+		result = prime * result + idRapport;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		RapportProjet other = (RapportProjet) obj;
-		if (this.idRapport != other.idRapport) {
-			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (fichierRapport == null) {
+			if (other.fichierRapport != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!fichierRapport.equals(other.fichierRapport))
 			return false;
-		}
-		if (this.projet == null) {
-			if (other.projet != null) {
+		if (idRapport != other.idRapport)
+			return false;
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
-		if (this.type == null) {
-			if (other.type != null) {
+		if (projet == null) {
+			if (other.projet != null)
 				return false;
-			}
-		} else if (!this.type.equals(other.type)) {
+		} else if (!projet.equals(other.projet))
 			return false;
-		}
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "RapportProjet [idRapport=" + this.idRapport + ", intitule=" + this.intitule + ", type=" + this.type
-				+ ", projet=" + this.projet + "]";
+		return "RapportProjet [idRapport=" + idRapport + ", intitule=" + intitule + ", type=" + type
+				+ ", fichierRapport=" + fichierRapport + ", projet=" + projet + "]";
 	}
+
+	
 
 }

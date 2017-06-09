@@ -19,7 +19,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 public class PersistenceContext {
 
 	@Autowired
-	@Qualifier("DataSource")
+	//@Qualifier("DataSource")
 	DataSource dataSource;
 
 	@Bean

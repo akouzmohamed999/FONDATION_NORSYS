@@ -121,6 +121,10 @@ public abstract class AbstractTest {
 				this.administrateur1, this.responsableProjet1, null);
 
 		this.projet1.getPartenaires().addAll(Arrays.asList(this.partenaire1Projet1, this.partenaire2Projet1));
+		
+		this.partenaire1Projet1.getProjets().add(projet1);
+		
+		this.partenaire2Projet1.getProjets().add(projet1);
 
 		this.composante1Projet1 = new Composante(1, "intituleComposante1", this.ThematiqueSensiblisation, this.projet1);
 

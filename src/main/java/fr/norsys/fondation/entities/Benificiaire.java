@@ -167,98 +167,84 @@ public class Benificiaire implements Serializable {
 		this.activites = activites;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.CIN == null ? 0 : this.CIN.hashCode());
-		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
-		result = prime * result + this.age;
-		result = prime * result + this.idBenificiaire;
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
-		result = prime * result + (this.pays == null ? 0 : this.pays.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		result = prime * result + (this.ville == null ? 0 : this.ville.hashCode());
+		result = prime * result + ((CIN == null) ? 0 : CIN.hashCode());
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((age == null) ? 0 : age.hashCode());
+		result = prime * result + idBenificiaire;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((numeroTelephone == null) ? 0 : numeroTelephone.hashCode());
+		result = prime * result + ((pays == null) ? 0 : pays.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Benificiaire other = (Benificiaire) obj;
-		if (this.CIN == null) {
-			if (other.CIN != null) {
+		if (CIN == null) {
+			if (other.CIN != null)
 				return false;
-			}
-		} else if (!this.CIN.equals(other.CIN)) {
+		} else if (!CIN.equals(other.CIN))
 			return false;
-		}
-		if (this.adresse == null) {
-			if (other.adresse != null) {
+		if (adresse == null) {
+			if (other.adresse != null)
 				return false;
-			}
-		} else if (!this.adresse.equals(other.adresse)) {
+		} else if (!adresse.equals(other.adresse))
 			return false;
-		}
-		if (this.age != other.age) {
-			return false;
-		}
-		if (this.idBenificiaire != other.idBenificiaire) {
-			return false;
-		}
-		if (this.nom == null) {
-			if (other.nom != null) {
+		if (age == null) {
+			if (other.age != null)
 				return false;
-			}
-		} else if (!this.nom.equals(other.nom)) {
+		} else if (!age.equals(other.age))
 			return false;
-		}
-		if (this.numeroTelephone == null) {
-			if (other.numeroTelephone != null) {
+		if (idBenificiaire != other.idBenificiaire)
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-			}
-		} else if (!this.numeroTelephone.equals(other.numeroTelephone)) {
+		} else if (!nom.equals(other.nom))
 			return false;
-		}
-		if (this.pays == null) {
-			if (other.pays != null) {
+		if (numeroTelephone == null) {
+			if (other.numeroTelephone != null)
 				return false;
-			}
-		} else if (!this.pays.equals(other.pays)) {
+		} else if (!numeroTelephone.equals(other.numeroTelephone))
 			return false;
-		}
-		if (this.prenom == null) {
-			if (other.prenom != null) {
+		if (pays == null) {
+			if (other.pays != null)
 				return false;
-			}
-		} else if (!this.prenom.equals(other.prenom)) {
+		} else if (!pays.equals(other.pays))
 			return false;
-		}
-		if (this.ville == null) {
-			if (other.ville != null) {
+		if (prenom == null) {
+			if (other.prenom != null)
 				return false;
-			}
-		} else if (!this.ville.equals(other.ville)) {
+		} else if (!prenom.equals(other.prenom))
 			return false;
-		}
+		if (ville == null) {
+			if (other.ville != null)
+				return false;
+		} else if (!ville.equals(other.ville))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Benificiaire [idBenificiaire=" + this.idBenificiaire + ", nom=" + this.nom + ", prenom=" + this.prenom
-				+ ", CIN=" + this.CIN + ", age=" + this.age + ", pays=" + this.pays + ", ville=" + this.ville
-				+ ", adresse=" + this.adresse + ", numeroTelephone=" + this.numeroTelephone + ", activites number="
-				+ this.activites.size() + "]";
+		return "Benificiaire [idBenificiaire=" + idBenificiaire + ", nom=" + nom + ", prenom=" + prenom + ", CIN=" + CIN
+				+ ", age=" + age + ", pays=" + pays + ", ville=" + ville + ", adresse=" + adresse + ", numeroTelephone="
+				+ numeroTelephone + "]";
 	}
+
+	
 
 }

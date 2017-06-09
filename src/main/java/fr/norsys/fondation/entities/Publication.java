@@ -102,64 +102,59 @@ public class Publication {
 		this.visible = visible;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.description == null ? 0 : this.description.hashCode());
-		result = prime * result + this.idPublication;
-		result = prime * result + Arrays.hashCode(this.photo);
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		result = prime * result + (this.titre == null ? 0 : this.titre.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + idPublication;
+		result = prime * result + Arrays.hashCode(photo);
+		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
+		result = prime * result + ((titre == null) ? 0 : titre.hashCode());
+		result = prime * result + (visible ? 1231 : 1237);
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Publication other = (Publication) obj;
-		if (this.description == null) {
-			if (other.description != null) {
+		if (description == null) {
+			if (other.description != null)
 				return false;
-			}
-		} else if (!this.description.equals(other.description)) {
+		} else if (!description.equals(other.description))
 			return false;
-		}
-		if (this.idPublication != other.idPublication) {
+		if (idPublication != other.idPublication)
 			return false;
-		}
-		if (!Arrays.equals(this.photo, other.photo)) {
+		if (!Arrays.equals(photo, other.photo))
 			return false;
-		}
-		if (this.projet == null) {
-			if (other.projet != null) {
+		if (projet == null) {
+			if (other.projet != null)
 				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
+		} else if (!projet.equals(other.projet))
 			return false;
-		}
-		if (this.titre == null) {
-			if (other.titre != null) {
+		if (titre == null) {
+			if (other.titre != null)
 				return false;
-			}
-		} else if (!this.titre.equals(other.titre)) {
+		} else if (!titre.equals(other.titre))
 			return false;
-		}
+		if (visible != other.visible)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Publication [idPublication=" + this.idPublication + ", titre=" + this.titre + ", description="
-				+ this.description + ", projet=" + this.projet + "]";
+		return "Publication [idPublication=" + idPublication + ", titre=" + titre + ", description=" + description
+				+ ", photo=" + Arrays.toString(photo) + ", visible=" + visible + ", projet=" + projet + "]";
 	}
+
+	
 
 }

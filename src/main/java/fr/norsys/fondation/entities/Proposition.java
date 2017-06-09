@@ -160,111 +160,110 @@ public class Proposition implements Serializable {
 		this.thematique = thematique;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.budgetPrevisionnel == null ? 0 : this.budgetPrevisionnel.hashCode());
-		result = prime * result + (this.datePrevision == null ? 0 : this.datePrevision.hashCode());
-		result = prime * result + (this.dureeAction == null ? 0 : this.dureeAction.hashCode());
-		result = prime * result + this.idProposition;
-		result = prime * result + (this.objectif == null ? 0 : this.objectif.hashCode());
-		result = prime * result + (this.populationCible == null ? 0 : this.populationCible.hashCode());
-		result = prime * result + (this.thematique == null ? 0 : this.thematique.hashCode());
-		result = prime * result + (this.typeAction == null ? 0 : this.typeAction.hashCode());
-		result = prime * result + (this.typeSoutien == null ? 0 : this.typeSoutien.hashCode());
-		result = prime * result + (this.zoneGeographiqe == null ? 0 : this.zoneGeographiqe.hashCode());
+		result = prime * result + ((annexe == null) ? 0 : annexe.hashCode());
+		result = prime * result + ((budgetPrevisionnel == null) ? 0 : budgetPrevisionnel.hashCode());
+		result = prime * result + ((datePrevision == null) ? 0 : datePrevision.hashCode());
+		result = prime * result + ((dureeAction == null) ? 0 : dureeAction.hashCode());
+		result = prime * result + ((etat == null) ? 0 : etat.hashCode());
+		result = prime * result + idProposition;
+		result = prime * result + ((objectif == null) ? 0 : objectif.hashCode());
+		result = prime * result + ((populationCible == null) ? 0 : populationCible.hashCode());
+		result = prime * result + ((porteurProjet == null) ? 0 : porteurProjet.hashCode());
+		result = prime * result + ((thematique == null) ? 0 : thematique.hashCode());
+		result = prime * result + ((typeAction == null) ? 0 : typeAction.hashCode());
+		result = prime * result + ((typeSoutien == null) ? 0 : typeSoutien.hashCode());
+		result = prime * result + ((zoneGeographiqe == null) ? 0 : zoneGeographiqe.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Proposition other = (Proposition) obj;
-		if (this.budgetPrevisionnel == null) {
-			if (other.budgetPrevisionnel != null) {
+		if (annexe == null) {
+			if (other.annexe != null)
 				return false;
-			}
-		} else if (!this.budgetPrevisionnel.equals(other.budgetPrevisionnel)) {
+		} else if (!annexe.equals(other.annexe))
 			return false;
-		}
-		if (this.datePrevision == null) {
-			if (other.datePrevision != null) {
+		if (budgetPrevisionnel == null) {
+			if (other.budgetPrevisionnel != null)
 				return false;
-			}
-		} else if (!this.datePrevision.equals(other.datePrevision)) {
+		} else if (!budgetPrevisionnel.equals(other.budgetPrevisionnel))
 			return false;
-		}
-		if (this.dureeAction == null) {
-			if (other.dureeAction != null) {
+		if (datePrevision == null) {
+			if (other.datePrevision != null)
 				return false;
-			}
-		} else if (!this.dureeAction.equals(other.dureeAction)) {
+		} else if (!datePrevision.equals(other.datePrevision))
 			return false;
-		}
-		if (this.idProposition != other.idProposition) {
-			return false;
-		}
-		if (this.objectif == null) {
-			if (other.objectif != null) {
+		if (dureeAction == null) {
+			if (other.dureeAction != null)
 				return false;
-			}
-		} else if (!this.objectif.equals(other.objectif)) {
+		} else if (!dureeAction.equals(other.dureeAction))
 			return false;
-		}
-		if (this.populationCible == null) {
-			if (other.populationCible != null) {
+		if (etat == null) {
+			if (other.etat != null)
 				return false;
-			}
-		} else if (!this.populationCible.equals(other.populationCible)) {
+		} else if (!etat.equals(other.etat))
 			return false;
-		}
-		if (this.thematique == null) {
-			if (other.thematique != null) {
+		if (idProposition != other.idProposition)
+			return false;
+		if (objectif == null) {
+			if (other.objectif != null)
 				return false;
-			}
-		} else if (!this.thematique.equals(other.thematique)) {
+		} else if (!objectif.equals(other.objectif))
 			return false;
-		}
-		if (this.typeAction == null) {
-			if (other.typeAction != null) {
+		if (populationCible == null) {
+			if (other.populationCible != null)
 				return false;
-			}
-		} else if (!this.typeAction.equals(other.typeAction)) {
+		} else if (!populationCible.equals(other.populationCible))
 			return false;
-		}
-		if (this.typeSoutien == null) {
-			if (other.typeSoutien != null) {
+		if (porteurProjet == null) {
+			if (other.porteurProjet != null)
 				return false;
-			}
-		} else if (!this.typeSoutien.equals(other.typeSoutien)) {
+		} else if (!porteurProjet.equals(other.porteurProjet))
 			return false;
-		}
-		if (this.zoneGeographiqe == null) {
-			if (other.zoneGeographiqe != null) {
+		if (thematique == null) {
+			if (other.thematique != null)
 				return false;
-			}
-		} else if (!this.zoneGeographiqe.equals(other.zoneGeographiqe)) {
+		} else if (!thematique.equals(other.thematique))
 			return false;
-		}
+		if (typeAction == null) {
+			if (other.typeAction != null)
+				return false;
+		} else if (!typeAction.equals(other.typeAction))
+			return false;
+		if (typeSoutien == null) {
+			if (other.typeSoutien != null)
+				return false;
+		} else if (!typeSoutien.equals(other.typeSoutien))
+			return false;
+		if (zoneGeographiqe == null) {
+			if (other.zoneGeographiqe != null)
+				return false;
+		} else if (!zoneGeographiqe.equals(other.zoneGeographiqe))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Proposition [idProposition=" + this.idProposition + ", thematique=" + this.thematique + ", objectif="
-				+ this.objectif + ", typeAction=" + this.typeAction + ", datePrevision=" + this.datePrevision
-				+ ", populationCible=" + this.populationCible + ", zoneGeographiqe=" + this.zoneGeographiqe
-				+ ", dureeAction=" + this.dureeAction + ", budgetPrevisionnel=" + this.budgetPrevisionnel
-				+ ", typeSoutien=" + this.typeSoutien + "]";
+		return "Proposition [idProposition=" + idProposition + ", thematique=" + thematique + ", objectif=" + objectif
+				+ ", typeAction=" + typeAction + ", datePrevision=" + datePrevision + ", populationCible="
+				+ populationCible + ", zoneGeographiqe=" + zoneGeographiqe + ", dureeAction=" + dureeAction
+				+ ", budgetPrevisionnel=" + budgetPrevisionnel + ", typeSoutien=" + typeSoutien + ", porteurProjet="
+				+ porteurProjet + ", annexe=" + annexe + ", etat=" + etat + "]";
 	}
+
+	
 
 }

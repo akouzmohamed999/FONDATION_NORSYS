@@ -73,68 +73,59 @@ public class BilanProjet {
 		this.projet = projet;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.fichierBilan == null ? 0 : this.fichierBilan.hashCode());
-		result = prime * result + this.idBilan;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.projet == null ? 0 : this.projet.hashCode());
-		result = prime * result + (this.type == null ? 0 : this.type.hashCode());
+		result = prime * result + ((fichierBilan == null) ? 0 : fichierBilan.hashCode());
+		result = prime * result + idBilan;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		BilanProjet other = (BilanProjet) obj;
-		if (this.fichierBilan == null) {
-			if (other.fichierBilan != null) {
+		if (fichierBilan == null) {
+			if (other.fichierBilan != null)
 				return false;
-			}
-		} else if (!this.fichierBilan.equals(other.fichierBilan)) {
+		} else if (!fichierBilan.equals(other.fichierBilan))
 			return false;
-		}
-		if (this.idBilan != other.idBilan) {
+		if (idBilan != other.idBilan)
 			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
-		if (this.projet == null) {
-			if (other.projet != null) {
+		if (projet == null) {
+			if (other.projet != null)
 				return false;
-			}
-		} else if (!this.projet.equals(other.projet)) {
+		} else if (!projet.equals(other.projet))
 			return false;
-		}
-		if (this.type == null) {
-			if (other.type != null) {
+		if (type == null) {
+			if (other.type != null)
 				return false;
-			}
-		} else if (!this.type.equals(other.type)) {
+		} else if (!type.equals(other.type))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "BilanProjet [idBilan=" + this.idBilan + ", intitule=" + this.intitule + ", type=" + this.type
-				+ ", fichierBilan=" + this.fichierBilan + ", projet=" + this.projet + "]";
+		return "BilanProjet [idBilan=" + idBilan + ", intitule=" + intitule + ", type=" + type + ", fichierBilan="
+				+ fichierBilan + ", projet=" + projet + "]";
 	}
+
+	
 
 }

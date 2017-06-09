@@ -172,95 +172,79 @@ public class Activite implements Serializable {
 		this.benificiaires = benificiaires;
 	}
 
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.animateurTerrain == null ? 0 : this.animateurTerrain.hashCode());
-		result = prime * result + (this.composante == null ? 0 : this.composante.hashCode());
-		result = prime * result + (this.dateActivite == null ? 0 : this.dateActivite.hashCode());
-		result = prime * result + (this.dateFin == null ? 0 : this.dateFin.hashCode());
-		result = prime * result + (this.etat == null ? 0 : this.etat.hashCode());
-		result = prime * result + this.idActivite;
-		result = prime * result + (this.intitule == null ? 0 : this.intitule.hashCode());
-		result = prime * result + (this.lieu == null ? 0 : this.lieu.hashCode());
+		result = prime * result + ((animateurTerrain == null) ? 0 : animateurTerrain.hashCode());
+		result = prime * result + ((composante == null) ? 0 : composante.hashCode());
+		result = prime * result + ((dateActivite == null) ? 0 : dateActivite.hashCode());
+		result = prime * result + ((dateFin == null) ? 0 : dateFin.hashCode());
+		result = prime * result + ((etat == null) ? 0 : etat.hashCode());
+		result = prime * result + idActivite;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((lieu == null) ? 0 : lieu.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Activite other = (Activite) obj;
-		if (this.animateurTerrain == null) {
-			if (other.animateurTerrain != null) {
+		if (animateurTerrain == null) {
+			if (other.animateurTerrain != null)
 				return false;
-			}
-		} else if (!this.animateurTerrain.equals(other.animateurTerrain)) {
+		} else if (!animateurTerrain.equals(other.animateurTerrain))
 			return false;
-		}
-		if (this.composante == null) {
-			if (other.composante != null) {
+		if (composante == null) {
+			if (other.composante != null)
 				return false;
-			}
-		} else if (!this.composante.equals(other.composante)) {
+		} else if (!composante.equals(other.composante))
 			return false;
-		}
-		if (this.dateActivite == null) {
-			if (other.dateActivite != null) {
+		if (dateActivite == null) {
+			if (other.dateActivite != null)
 				return false;
-			}
-		} else if (!this.dateActivite.equals(other.dateActivite)) {
+		} else if (!dateActivite.equals(other.dateActivite))
 			return false;
-		}
-		if (this.dateFin == null) {
-			if (other.dateFin != null) {
+		if (dateFin == null) {
+			if (other.dateFin != null)
 				return false;
-			}
-		} else if (!this.dateFin.equals(other.dateFin)) {
+		} else if (!dateFin.equals(other.dateFin))
 			return false;
-		}
-		if (this.etat == null) {
-			if (other.etat != null) {
+		if (etat == null) {
+			if (other.etat != null)
 				return false;
-			}
-		} else if (!this.etat.equals(other.etat)) {
+		} else if (!etat.equals(other.etat))
 			return false;
-		}
-		if (this.idActivite != other.idActivite) {
+		if (idActivite != other.idActivite)
 			return false;
-		}
-		if (this.intitule == null) {
-			if (other.intitule != null) {
+		if (intitule == null) {
+			if (other.intitule != null)
 				return false;
-			}
-		} else if (!this.intitule.equals(other.intitule)) {
+		} else if (!intitule.equals(other.intitule))
 			return false;
-		}
-		if (this.lieu == null) {
-			if (other.lieu != null) {
+		if (lieu == null) {
+			if (other.lieu != null)
 				return false;
-			}
-		} else if (!this.lieu.equals(other.lieu)) {
+		} else if (!lieu.equals(other.lieu))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Activite [idActivite=" + this.idActivite + ", intitule=" + this.intitule + ", dateActivite="
-				+ this.dateActivite + ", dureeActivite=" + this.dateFin + ", etat=" + this.etat + ", lieu="
-				+ this.lieu + ", animateurTerrain=" + this.animateurTerrain + ", composante=" + this.composante
-				+ ", collaborateurs number=" + this.collaborateurs.size() + ", benificiaires number="
-				+ this.benificiaires.size() + "]";
+		return "Activite [idActivite=" + idActivite + ", intitule=" + intitule + ", dateActivite=" + dateActivite
+				+ ", dateFin=" + dateFin + ", etat=" + etat + ", lieu=" + lieu + ", animateurTerrain="
+				+ animateurTerrain + ", composante=" + composante + "]";
 	}
+
+	
 
 }

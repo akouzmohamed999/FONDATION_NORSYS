@@ -87,68 +87,59 @@ public class RendezVous {
 		this.administrateur = administrateur;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.administrateur == null ? 0 : this.administrateur.hashCode());
-		result = prime * result + (this.date == null ? 0 : this.date.hashCode());
-		result = prime * result + this.idRendezVous;
-		result = prime * result + (this.porteurProjet == null ? 0 : this.porteurProjet.hashCode());
-		result = prime * result + (this.sujet == null ? 0 : this.sujet.hashCode());
+		result = prime * result + ((administrateur == null) ? 0 : administrateur.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + idRendezVous;
+		result = prime * result + ((porteurProjet == null) ? 0 : porteurProjet.hashCode());
+		result = prime * result + ((sujet == null) ? 0 : sujet.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		RendezVous other = (RendezVous) obj;
-		if (this.administrateur == null) {
-			if (other.administrateur != null) {
+		if (administrateur == null) {
+			if (other.administrateur != null)
 				return false;
-			}
-		} else if (!this.administrateur.equals(other.administrateur)) {
+		} else if (!administrateur.equals(other.administrateur))
 			return false;
-		}
-		if (this.date == null) {
-			if (other.date != null) {
+		if (date == null) {
+			if (other.date != null)
 				return false;
-			}
-		} else if (!this.date.equals(other.date)) {
+		} else if (!date.equals(other.date))
 			return false;
-		}
-		if (this.idRendezVous != other.idRendezVous) {
+		if (idRendezVous != other.idRendezVous)
 			return false;
-		}
-		if (this.porteurProjet == null) {
-			if (other.porteurProjet != null) {
+		if (porteurProjet == null) {
+			if (other.porteurProjet != null)
 				return false;
-			}
-		} else if (!this.porteurProjet.equals(other.porteurProjet)) {
+		} else if (!porteurProjet.equals(other.porteurProjet))
 			return false;
-		}
-		if (this.sujet == null) {
-			if (other.sujet != null) {
+		if (sujet == null) {
+			if (other.sujet != null)
 				return false;
-			}
-		} else if (!this.sujet.equals(other.sujet)) {
+		} else if (!sujet.equals(other.sujet))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "RendezVous [idRendezVous=" + this.idRendezVous + ", date=" + this.date + ", sujet=" + this.sujet
-				+ ", porteurProjet=" + this.porteurProjet + ", administrateur=" + this.administrateur + "]";
+		return "RendezVous [idRendezVous=" + idRendezVous + ", date=" + date + ", sujet=" + sujet + ", porteurProjet="
+				+ porteurProjet + ", administrateur=" + administrateur + "]";
 	}
+
+	
 
 }

@@ -122,77 +122,66 @@ public class Partenaire {
 		this.projets = projets;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.adresse == null ? 0 : this.adresse.hashCode());
-		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
-		result = prime * result + this.idPartenaire;
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
-		result = prime * result + (this.type == null ? 0 : this.type.hashCode());
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + idPartenaire;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((numeroTelephone == null) ? 0 : numeroTelephone.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Partenaire other = (Partenaire) obj;
-		if (this.adresse == null) {
-			if (other.adresse != null) {
+		if (adresse == null) {
+			if (other.adresse != null)
 				return false;
-			}
-		} else if (!this.adresse.equals(other.adresse)) {
+		} else if (!adresse.equals(other.adresse))
 			return false;
-		}
-		if (this.email == null) {
-			if (other.email != null) {
+		if (email == null) {
+			if (other.email != null)
 				return false;
-			}
-		} else if (!this.email.equals(other.email)) {
+		} else if (!email.equals(other.email))
 			return false;
-		}
-		if (this.idPartenaire != other.idPartenaire) {
+		if (idPartenaire != other.idPartenaire)
 			return false;
-		}
-		if (this.nom == null) {
-			if (other.nom != null) {
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-			}
-		} else if (!this.nom.equals(other.nom)) {
+		} else if (!nom.equals(other.nom))
 			return false;
-		}
-		if (this.numeroTelephone == null) {
-			if (other.numeroTelephone != null) {
+		if (numeroTelephone == null) {
+			if (other.numeroTelephone != null)
 				return false;
-			}
-		} else if (!this.numeroTelephone.equals(other.numeroTelephone)) {
+		} else if (!numeroTelephone.equals(other.numeroTelephone))
 			return false;
-		}
-		if (this.type == null) {
-			if (other.type != null) {
+		if (type == null) {
+			if (other.type != null)
 				return false;
-			}
-		} else if (!this.type.equals(other.type)) {
+		} else if (!type.equals(other.type))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Partenaire [idPartenaire=" + this.idPartenaire + ", nom=" + this.nom + ", type=" + this.type
-				+ ", adresse=" + this.adresse + ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone
-				+ ", projets number=" + this.projets.size() + "]";
+		return "Partenaire [idPartenaire=" + idPartenaire + ", nom=" + nom + ", type=" + type + ", adresse=" + adresse
+				+ ", email=" + email + ", numeroTelephone=" + numeroTelephone + "]";
 	}
+
+	
 
 }

@@ -100,68 +100,59 @@ public class PorteurProjet {
 		this.propositions = propositions;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.email == null ? 0 : this.email.hashCode());
-		result = prime * result + this.idPorteur;
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.numeroTelephone == null ? 0 : this.numeroTelephone.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + idPorteur;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((numeroTelephone == null) ? 0 : numeroTelephone.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		PorteurProjet other = (PorteurProjet) obj;
-		if (this.email == null) {
-			if (other.email != null) {
+		if (email == null) {
+			if (other.email != null)
 				return false;
-			}
-		} else if (!this.email.equals(other.email)) {
+		} else if (!email.equals(other.email))
 			return false;
-		}
-		if (this.idPorteur != other.idPorteur) {
+		if (idPorteur != other.idPorteur)
 			return false;
-		}
-		if (this.nom == null) {
-			if (other.nom != null) {
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-			}
-		} else if (!this.nom.equals(other.nom)) {
+		} else if (!nom.equals(other.nom))
 			return false;
-		}
-		if (this.numeroTelephone == null) {
-			if (other.numeroTelephone != null) {
+		if (numeroTelephone == null) {
+			if (other.numeroTelephone != null)
 				return false;
-			}
-		} else if (!this.numeroTelephone.equals(other.numeroTelephone)) {
+		} else if (!numeroTelephone.equals(other.numeroTelephone))
 			return false;
-		}
-		if (this.prenom == null) {
-			if (other.prenom != null) {
+		if (prenom == null) {
+			if (other.prenom != null)
 				return false;
-			}
-		} else if (!this.prenom.equals(other.prenom)) {
+		} else if (!prenom.equals(other.prenom))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PorteurProjet [idPorteur=" + this.idPorteur + ", nom=" + this.nom + ", prenom=" + this.prenom
-				+ ", email=" + this.email + ", numeroTelephone=" + this.numeroTelephone + "]";
+		return "PorteurProjet [idPorteur=" + idPorteur + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
+				+ ", numeroTelephone=" + numeroTelephone + "]";
 	}
 
+	
 }

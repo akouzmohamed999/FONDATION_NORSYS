@@ -44,7 +44,10 @@ public class Responsable extends Collaborateur {
 
 	@Override
 	public String toString() {
-		return "Responsable [projets Number =" + this.projets.size() + "]";
+		return "Responsable [projets number=" + projets.size() + "]";
 	}
+
+	
+	
 
 }
