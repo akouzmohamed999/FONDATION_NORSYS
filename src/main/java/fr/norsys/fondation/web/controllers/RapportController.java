@@ -39,12 +39,13 @@ public class RapportController {
 	FTPClient ftpClient = new FTPClient();
 
 	@PostMapping("/responsable/addFichierRapport")
-	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) {
+	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) throws IOException {
 
 		if (uploadfile.isEmpty()) {
 			return new ResponseEntity("please select a file!", HttpStatus.OK);
 		}
 
+		InputStream targetStream = null;
 		try {
 			this.ftpClient.connect("localhost");
 			this.ftpClient.login("admin", "admin");
@@ -53,7 +54,7 @@ public class RapportController {
 			uploadfile.transferTo(convFile);
 
 			System.out.println("UPLOAD FILE  : " + convFile);
-			InputStream targetStream = new FileInputStream(convFile);
+			targetStream = new FileInputStream(convFile);
 
 			// Store file to server
 			this.ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
@@ -61,10 +62,10 @@ public class RapportController {
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
 
-			targetStream.close();
-
 		} catch (Exception e) {
 			this.logger.info("ERREUR DEPUIS RAPPORT CONTROLLER " + e);
+		} finally {
+			targetStream.close();
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
