@@ -38,27 +38,32 @@ public class BilanRapportController {
 	FTPClient ftpClient = new FTPClient();
 
 	@PostMapping("/responsable/addFichierBilan")
-	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) {
+	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile) throws IOException {
 
 		if (uploadfile.isEmpty()) {
 			return new ResponseEntity("please select a file!", HttpStatus.OK);
 		}
 
+		InputStream targetStream = null;
 		try {
 			this.ftpClient.connect("localhost");
 			this.ftpClient.login("admin", "admin");
 
 			File convFile = new File(uploadfile.getOriginalFilename());
 			uploadfile.transferTo(convFile);
-			InputStream targetStream = new FileInputStream(convFile);
+			targetStream = new FileInputStream(convFile);
 
 			// Store file to server
 			this.ftpClient.changeWorkingDirectory("/Bilans");
 			this.ftpClient.storeFile(uploadfile.getOriginalFilename(), targetStream);
 			this.ftpClient.logout();
-			targetStream.close();
+
 		} catch (Exception e) {
 			this.logger.info("ERREUR DEPUIS BILANS RAPPORT " + e);
+		} finally {
+			if (targetStream != null) {
+				targetStream.close();
+			}
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
