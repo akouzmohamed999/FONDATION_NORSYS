@@ -53,7 +53,6 @@ public class RapportController {
 			File convFile = new File(uploadfile.getOriginalFilename());
 			uploadfile.transferTo(convFile);
 
-			System.out.println("UPLOAD FILE  : " + convFile);
 			targetStream = new FileInputStream(convFile);
 
 			// Store file to server
@@ -65,7 +64,11 @@ public class RapportController {
 		} catch (Exception e) {
 			this.logger.info("ERREUR DEPUIS RAPPORT CONTROLLER " + e);
 		} finally {
-			targetStream.close();
+
+			if (targetStream != null) {
+				targetStream.close();
+			}
+
 		}
 
 		return new ResponseEntity("Successfully uploaded - " + uploadfile.getOriginalFilename(), new HttpHeaders(),
