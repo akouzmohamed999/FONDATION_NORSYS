@@ -10,7 +10,7 @@ import fr.norsys.fondation.services.AbstractTest;
 import fr.norsys.fondation.services.ProjetService;
 import fr.norsys.fondation.web.controllers.ActiviteController;
 
-public class AActiviteControllerTest extends AbstractTest {
+public abstract class AActiviteControllerTest extends AbstractTest {
 
 	@Autowired
 	ActiviteController activiteController;

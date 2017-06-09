@@ -88,11 +88,11 @@ public class RendezVous {
 	}
 
 	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((administrateur == null) ? 0 : administrateur.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + idRendezVous;
 		result = prime * result + ((porteurProjet == null) ? 0 : porteurProjet.hashCode());
@@ -109,11 +109,6 @@ public class RendezVous {
 		if (getClass() != obj.getClass())
 			return false;
 		RendezVous other = (RendezVous) obj;
-		if (administrateur == null) {
-			if (other.administrateur != null)
-				return false;
-		} else if (!administrateur.equals(other.administrateur))
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;

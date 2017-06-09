@@ -80,7 +80,6 @@ public class Thematique {
 	public void setComposantes(List<Composante> composantes) {
 		this.composantes = composantes;
 	}
-
 	
 	@Override
 	public int hashCode() {

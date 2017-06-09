@@ -105,10 +105,7 @@ public class Composante {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idComposante;
 		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
-		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
-		result = prime * result + ((thematique == null) ? 0 : thematique.hashCode());
 		return result;
 	}
 
@@ -121,22 +118,10 @@ public class Composante {
 		if (getClass() != obj.getClass())
 			return false;
 		Composante other = (Composante) obj;
-		if (idComposante != other.idComposante)
-			return false;
 		if (intitule == null) {
 			if (other.intitule != null)
 				return false;
 		} else if (!intitule.equals(other.intitule))
-			return false;
-		if (projet == null) {
-			if (other.projet != null)
-				return false;
-		} else if (!projet.equals(other.projet))
-			return false;
-		if (thematique == null) {
-			if (other.thematique != null)
-				return false;
-		} else if (!thematique.equals(other.thematique))
 			return false;
 		return true;
 	}

@@ -165,7 +165,6 @@ public class Collaborateur implements Serializable {
 	public List<Activite> getActivites() {
 		return this.activites;
 	}
-
 	
 	@Override
 	public int hashCode() {

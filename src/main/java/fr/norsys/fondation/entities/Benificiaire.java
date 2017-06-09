@@ -167,7 +167,6 @@ public class Benificiaire implements Serializable {
 		this.activites = activites;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

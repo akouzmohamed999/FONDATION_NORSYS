@@ -174,7 +174,6 @@ public class Proposition implements Serializable {
 		result = prime * result + ((objectif == null) ? 0 : objectif.hashCode());
 		result = prime * result + ((populationCible == null) ? 0 : populationCible.hashCode());
 		result = prime * result + ((porteurProjet == null) ? 0 : porteurProjet.hashCode());
-		result = prime * result + ((thematique == null) ? 0 : thematique.hashCode());
 		result = prime * result + ((typeAction == null) ? 0 : typeAction.hashCode());
 		result = prime * result + ((typeSoutien == null) ? 0 : typeSoutien.hashCode());
 		result = prime * result + ((zoneGeographiqe == null) ? 0 : zoneGeographiqe.hashCode());
@@ -231,11 +230,6 @@ public class Proposition implements Serializable {
 			if (other.porteurProjet != null)
 				return false;
 		} else if (!porteurProjet.equals(other.porteurProjet))
-			return false;
-		if (thematique == null) {
-			if (other.thematique != null)
-				return false;
-		} else if (!thematique.equals(other.thematique))
 			return false;
 		if (typeAction == null) {
 			if (other.typeAction != null)

@@ -81,7 +81,6 @@ public class BilanProjet {
 		result = prime * result + ((fichierBilan == null) ? 0 : fichierBilan.hashCode());
 		result = prime * result + idBilan;
 		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
-		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -106,11 +105,6 @@ public class BilanProjet {
 			if (other.intitule != null)
 				return false;
 		} else if (!intitule.equals(other.intitule))
-			return false;
-		if (projet == null) {
-			if (other.projet != null)
-				return false;
-		} else if (!projet.equals(other.projet))
 			return false;
 		if (type == null) {
 			if (other.type != null)

@@ -10,7 +10,7 @@ import fr.norsys.fondation.services.AbstractTest;
 import fr.norsys.fondation.services.ProjetService;
 import fr.norsys.fondation.web.controllers.ComposanteController;
 
-public class AComponsanteControllerTest extends AbstractTest {
+public abstract class AComponsanteControllerTest extends AbstractTest {
 
 	@Autowired
 	ComposanteController composanteController;

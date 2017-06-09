@@ -88,17 +88,17 @@ public abstract class AbstractTest {
 		this.responsableProjet1 = new Responsable(2, "R1111", "nomResponsable1", "prenomResponsable1",
 				"adresseResponsable1", null, "responsable1@norsys.fr", "responsable1", null, null);
 		this.collaborateur1 = new Collaborateur(3, "C1111", "nomCollaborateur1", "prenomCollaborateur1",
-				"adresseCollaborateur1", null, "collaborateur1@norsys.fr", "collaborateur1", null, null);
+				"adresseCollaborateur1", null, null,null, null, null);
 		this.collaborateur2 = new Collaborateur(4, "C2222", "nomCollaborateur2", "prenomCollaborateur2",
-				"adresseCollaborateur2", null, "collaborateur2@norsys.fr", "collaborateur2", null, null);
+				"adresseCollaborateur2", null, null,null, null, null);
 		this.collaborateur3 = new Collaborateur(5, "C3333", "nomCollaborateur3", "prenomCollaborateur3",
-				"adresseCollaborateur3", null, "collaborateur3@norsys.fr", "collaborateur3", null, null);
+				"adresseCollaborateur3", null,null,null, null, null);
 		this.collaborateur4 = new Collaborateur(6, "C4444", "nomCollaborateur4", "prenomCollaborateur4",
-				"adresseCollaborateur4", null, "collaborateur4@norsys.fr", "collaborateur4", null, null);
+				"adresseCollaborateur4", null,null,null, null, null);
 		this.collaborateur5 = new Collaborateur(7, "C5555", "nomCollaborateur5", "prenomCollaborateur5",
-				"adresseCollaborateur5", null, "collaborateur5@norsys.fr", "collaborateur5", null, null);
+				"adresseCollaborateur5", null, null,null, null, null);
 		this.collaborateur6 = new Collaborateur(8, "C6666", "nomCollaborateur6", "prenomCollaborateur6",
-				"adresseCollaborateur6", null, "collaborateur6@norsys.fr", "collaborateur6", null, null);
+				"adresseCollaborateur6", null, null,null, null, null);
 
 		this.partenaire1Projet1 = new Partenaire(1, "Partenaire1", "ASSOCIATION", "AdressePartenaire1",
 				"EmailPartenaire1", "06060606");
@@ -129,11 +129,11 @@ public abstract class AbstractTest {
 		this.composante1Projet1 = new Composante(1, "intituleComposante1", this.ThematiqueSensiblisation, this.projet1);
 
 		this.activite1Composante1Projet1Termine = new Activite(1, "intituleActivite1", dateDebutActivite1,
-				"dureeActivite1", "Termine", "lieuActivite1", this.collaborateur1, this.composante1Projet1,
+				dateDebutActivite1, "Termine", "lieuActivite1", this.collaborateur1, this.composante1Projet1,
 				Arrays.asList(this.benificiaire1Activite1And2Projet1, this.benificiaire2Activite1And2Projet1));
 
 		this.activite2Composante1Projet1EnCours = new Activite(2, "intituleActivite2", dateDebutActivite2,
-				"dureeActivite2", "En Cours", "lieuActivite2", this.collaborateur1, this.composante1Projet1,
+				dateDebutActivite2, "En Cours", "lieuActivite2", this.collaborateur1, this.composante1Projet1,
 				Arrays.asList(this.benificiaire1Activite1And2Projet1, this.benificiaire2Activite1And2Projet1));
 
 		this.activite3Composante1Projet1Annule = new Activite(3, "intituleActivite3", dateDebutActivite3,

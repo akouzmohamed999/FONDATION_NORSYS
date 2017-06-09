@@ -205,18 +205,16 @@ public class Projet implements Serializable {
 	}
 
 	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((administrateur == null) ? 0 : administrateur.hashCode());
 		result = prime * result + ((dateDebut == null) ? 0 : dateDebut.hashCode());
 		result = prime * result + ((dateFin == null) ? 0 : dateFin.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + idProjet;
 		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
-		result = prime * result + ((proposition == null) ? 0 : proposition.hashCode());
-		result = prime * result + ((responsable == null) ? 0 : responsable.hashCode());
 		return result;
 	}
 
@@ -229,11 +227,6 @@ public class Projet implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Projet other = (Projet) obj;
-		if (administrateur == null) {
-			if (other.administrateur != null)
-				return false;
-		} else if (!administrateur.equals(other.administrateur))
-			return false;
 		if (dateDebut == null) {
 			if (other.dateDebut != null)
 				return false;
@@ -255,16 +248,6 @@ public class Projet implements Serializable {
 			if (other.intitule != null)
 				return false;
 		} else if (!intitule.equals(other.intitule))
-			return false;
-		if (proposition == null) {
-			if (other.proposition != null)
-				return false;
-		} else if (!proposition.equals(other.proposition))
-			return false;
-		if (responsable == null) {
-			if (other.responsable != null)
-				return false;
-		} else if (!responsable.equals(other.responsable))
 			return false;
 		return true;
 	}

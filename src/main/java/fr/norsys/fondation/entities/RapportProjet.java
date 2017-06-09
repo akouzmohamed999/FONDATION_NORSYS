@@ -92,7 +92,6 @@ public class RapportProjet {
 		result = prime * result + ((fichierRapport == null) ? 0 : fichierRapport.hashCode());
 		result = prime * result + idRapport;
 		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
-		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -117,11 +116,6 @@ public class RapportProjet {
 			if (other.intitule != null)
 				return false;
 		} else if (!intitule.equals(other.intitule))
-			return false;
-		if (projet == null) {
-			if (other.projet != null)
-				return false;
-		} else if (!projet.equals(other.projet))
 			return false;
 		if (type == null) {
 			if (other.type != null)

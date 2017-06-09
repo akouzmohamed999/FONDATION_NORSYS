@@ -76,7 +76,7 @@ public class Activite implements Serializable {
 		composante.getActivites().add(this);
 	}
 
-	public Activite(int idActivite, String intitule, Date dateFin, String dureeActivite, String etat, String lieu,
+	public Activite(int idActivite, String intitule, Date dateActivite, Date dateFin, String etat, String lieu,
 			Collaborateur animateurTerrain, Composante composante, List<Benificiaire> benificiaire) {
 		super();
 		this.idActivite = idActivite;
@@ -174,12 +174,11 @@ public class Activite implements Serializable {
 
 	
 	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((animateurTerrain == null) ? 0 : animateurTerrain.hashCode());
-		result = prime * result + ((composante == null) ? 0 : composante.hashCode());
 		result = prime * result + ((dateActivite == null) ? 0 : dateActivite.hashCode());
 		result = prime * result + ((dateFin == null) ? 0 : dateFin.hashCode());
 		result = prime * result + ((etat == null) ? 0 : etat.hashCode());
@@ -198,16 +197,6 @@ public class Activite implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Activite other = (Activite) obj;
-		if (animateurTerrain == null) {
-			if (other.animateurTerrain != null)
-				return false;
-		} else if (!animateurTerrain.equals(other.animateurTerrain))
-			return false;
-		if (composante == null) {
-			if (other.composante != null)
-				return false;
-		} else if (!composante.equals(other.composante))
-			return false;
 		if (dateActivite == null) {
 			if (other.dateActivite != null)
 				return false;

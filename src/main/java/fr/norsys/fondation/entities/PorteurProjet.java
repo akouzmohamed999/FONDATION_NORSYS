@@ -101,7 +101,7 @@ public class PorteurProjet {
 	}
 
 	
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

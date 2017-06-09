@@ -15,7 +15,7 @@ public class FindComposanteByIdProjetControllerTest extends AComponsanteControll
 
 	@Test
 	public void shouldReturnJsonWithComposanteId1Projets() throws Exception {
-		this.mockMvc.perform(get("/composante").param("idProjet", "1")).andExpect(status().isOk())
+		this.mockMvc.perform(get("/collaborateur/composante").param("idProjet", "1")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
 				.andExpect(jsonPath("$[0].idComposante", is(1)))

@@ -103,6 +103,7 @@ public class Publication {
 	}
 
 	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,7 +111,6 @@ public class Publication {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + idPublication;
 		result = prime * result + Arrays.hashCode(photo);
-		result = prime * result + ((projet == null) ? 0 : projet.hashCode());
 		result = prime * result + ((titre == null) ? 0 : titre.hashCode());
 		result = prime * result + (visible ? 1231 : 1237);
 		return result;
@@ -133,11 +133,6 @@ public class Publication {
 		if (idPublication != other.idPublication)
 			return false;
 		if (!Arrays.equals(photo, other.photo))
-			return false;
-		if (projet == null) {
-			if (other.projet != null)
-				return false;
-		} else if (!projet.equals(other.projet))
 			return false;
 		if (titre == null) {
 			if (other.titre != null)
