@@ -15,7 +15,7 @@ public class FindCollaborateurOnlyControllerTest extends ACollaborateurControlle
 
 	@Test
 	public void shouldReturnJsonWith2Projets() throws Exception {
-		this.mockMvc.perform(get("/administrateur/administrateurs")).andExpect(status().isOk())
+		this.mockMvc.perform(get("/responsable/allCollaborateurs")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
 				.andExpect(jsonPath("$[0].idCollaborateur", is(1)));

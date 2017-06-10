@@ -25,6 +25,6 @@ public class AddProjetControllerTest extends AProjetControllerTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
-				.andExpect(jsonPath("idProjet", is(2))).andExpect(jsonPath("intitule", is("TEST")));
+				.andExpect(jsonPath("idProjet", is(3))).andExpect(jsonPath("intitule", is("TEST")));
 	}
 }

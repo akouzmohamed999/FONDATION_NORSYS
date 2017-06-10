@@ -5,7 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Test;
 
-public class DeleteCollaborateurControllerTest extends ACollaborateurControllerTest{
+public abstract class DeleteCollaborateurControllerTest extends ACollaborateurControllerTest{
 
 //	@Test
 //	public void shouldReturnJsonWithComposantesOfProjet1() throws Exception {

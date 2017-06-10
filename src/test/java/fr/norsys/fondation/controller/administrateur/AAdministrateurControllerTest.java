@@ -11,7 +11,7 @@ import fr.norsys.fondation.services.ProjetService;
 import fr.norsys.fondation.web.controllers.ActiviteController;
 import fr.norsys.fondation.web.controllers.AdministrateurController;
 
-public class AAdministrateurControllerTest extends AbstractTest{
+public abstract class AAdministrateurControllerTest extends AbstractTest{
 
 	
 	@Autowired
