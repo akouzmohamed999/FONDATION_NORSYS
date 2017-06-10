@@ -1,4 +1,4 @@
-package fr.norsys.fondation.controller.collaborateur;
+package fr.norsys.fondation.controller.composante;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -11,13 +11,13 @@ import java.nio.charset.Charset;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-public class FindAllCollaborateurControllerTest extends ACollaborateurControllerTest {
+public class FIndComposanteBYIdControllerTest extends AComponsanteControllerTest {
 
 	@Test
 	public void shouldReturnJsonWith2Projets() throws Exception {
-		this.mockMvc.perform(get("/responsable/collaborateurs")).andExpect(status().isOk())
+		this.mockMvc.perform(get("/responsable/composanteById").param("idComposante", "1")).andExpect(status().isOk())
 				.andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(),
 						MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
-				.andExpect(jsonPath("$[0].idCollaborateur", is(3)));
+				.andExpect(jsonPath("idComposante", is(1)));
 	}
 }
