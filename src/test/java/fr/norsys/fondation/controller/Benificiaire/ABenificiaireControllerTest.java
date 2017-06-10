@@ -8,11 +8,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import fr.norsys.fondation.services.AbstractTest;
 import fr.norsys.fondation.services.ProjetService;
-import fr.norsys.fondation.web.controllers.AdministrateurController;
 import fr.norsys.fondation.web.controllers.BenificiaireController;
 
-public class ABenificiaireControllerTest extends AbstractTest{
-	
+public abstract class ABenificiaireControllerTest extends AbstractTest {
+
 	@Autowired
 	BenificiaireController benificiaireController;
 

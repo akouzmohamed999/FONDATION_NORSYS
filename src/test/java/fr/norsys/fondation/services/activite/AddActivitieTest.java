@@ -8,6 +8,7 @@ public class AddActivitieTest extends AActiviteTest {
 
 	@Test
 	public void shouldReturnInsertedActivitie() {
-		assertThat(this.activiteService.addActivite(this.activteAAjoute)).isEqualTo(this.activteAAjoute);
+		assertThat(this.activiteService.addActivite(this.activteAAjoute).getIntitule())
+				.isEqualTo(this.activteAAjoute.getIntitule());
 	}
 }

@@ -22,6 +22,7 @@ public class AddProjetTest extends AProjectTest {
 
 		this.projetAAjoute = new Projet(2, "intituleProjetAjoute", "descriptionProjetAjoute", dateDebutProjetAjoute,
 				dateFinProjetAjoute, this.administrateur1, this.responsableProjet1, null);
-		assertThat(this.projectService.addProjet(this.projetAAjoute)).isEqualTo(this.projetAAjoute);
+		assertThat(this.projectService.addProjet(this.projetAAjoute).getIntitule())
+				.isEqualTo(this.projetAAjoute.getIntitule());
 	}
 }

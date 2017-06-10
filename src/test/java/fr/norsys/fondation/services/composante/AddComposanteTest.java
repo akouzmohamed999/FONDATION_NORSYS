@@ -12,6 +12,7 @@ public class AddComposanteTest extends AComposanteTest {
 	public void shouldAddComposante() {
 		Composante composanteAjoute = new Composante(2, "intituleComposante2", this.ThematiqueAgriculture,
 				this.projet1);
-		assertThat(this.composanteService.addComposante(composanteAjoute)).isEqualTo(composanteAjoute);
+		assertThat(this.composanteService.addComposante(composanteAjoute).getIntitule())
+				.isEqualTo(composanteAjoute.getIntitule());
 	}
 }

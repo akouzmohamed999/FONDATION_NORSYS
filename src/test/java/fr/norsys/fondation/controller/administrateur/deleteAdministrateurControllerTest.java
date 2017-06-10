@@ -5,10 +5,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Test;
 
-public class deleteAdministrateurControllerTest extends AAdministrateurControllerTest{
+public class deleteAdministrateurControllerTest extends AAdministrateurControllerTest {
 
 	@Test
 	public void shouldReturnJsonWithComposantesOfProjet1() throws Exception {
-		this.mockMvc.perform(delete("/administrateur/deleteAdministrateur").param("idCollaborateur", "1")).andExpect(status().isOk());
+		this.mockMvc.perform(delete("/administrateur/deleteAdministrateur").param("idAdministrateur", "1"))
+				.andExpect(status().isOk());
 	}
 }
