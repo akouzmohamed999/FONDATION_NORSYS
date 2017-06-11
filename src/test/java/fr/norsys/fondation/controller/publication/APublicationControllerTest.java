@@ -10,7 +10,7 @@ import fr.norsys.fondation.services.AbstractTest;
 import fr.norsys.fondation.services.ProjetService;
 import fr.norsys.fondation.web.controllers.PublicationController;
 
-public class APublicationControllerTest extends AbstractTest {
+public abstract class APublicationControllerTest extends AbstractTest {
 
 	@Autowired
 	PublicationController publicationController;

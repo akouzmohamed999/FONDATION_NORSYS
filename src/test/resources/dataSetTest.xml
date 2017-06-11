@@ -79,5 +79,7 @@
 	  <PROPOSITION ID_PROPOSITION="1" ID_THEMATIQUE="1" OBJECTIF="Un simple Objectif" ZONE_GEOGRAPHIQUE="Tafilalet"
 	   ID_PORTEUR_PROJET="1" ANNEXE="Nuts.scss" ETAT="NonVue"/>
 	   
+	   <PUBLICATION ID_PUBLICATION="1" TITRE="titrePublication1" />
+	   
 	  	  
 </dataset>

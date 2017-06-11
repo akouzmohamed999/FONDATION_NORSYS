@@ -9,6 +9,6 @@ public class FindAllVisiblePublicationControllerTest extends APublicationControl
 
 	@Test
 	public void shouldReturnJsonWith2Projets() throws Exception {
-		this.mockMvc.perform(get("/administrateur/publications")).andExpect(status().isOk());
+		this.mockMvc.perform(get("/public/visiblePublications")).andExpect(status().isOk());
 	}
 }
