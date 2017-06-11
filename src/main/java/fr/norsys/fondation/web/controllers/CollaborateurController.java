@@ -30,7 +30,7 @@ public class CollaborateurController {
 	@Autowired
 	AdministrateurService administrateurService;
 
-	@RequestMapping(value = "/responsable/collaborateur")
+	@RequestMapping(value = "/collaborateur/collaborateur")
 	public List<Collaborateur> findCollaborateurByComposanet(@RequestParam int idComposante) {
 		return this.collaborateurService.findColllaborateursByComposante(idComposante);
 	}
@@ -44,18 +44,16 @@ public class CollaborateurController {
 	public List<Collaborateur> findCollaborateurs() {
 		return this.collaborateurService.findAllCollaborateur();
 	}
-	
+
 	@RequestMapping(value = "/responsable/allCollaborateurs")
 	public List<Collaborateur> findCollaborateursOnly() {
 		return this.collaborateurService.findCollaborateurs();
 	}
-	
-	
+
 	@RequestMapping(value = "/administrateur/administrateurs")
 	public List<Administrateur> findAllAdministrateur() {
 		return this.administrateurService.findAllAdministrateur();
 	}
-
 
 	@RequestMapping(value = "/administrateur/responsables")
 	public List<Responsable> findAllResponsables() {
@@ -79,10 +77,10 @@ public class CollaborateurController {
 	}
 
 	@RequestMapping(value = "/administrateur/DeleteCollaborateur", method = RequestMethod.DELETE)
-	public void DeleteCollaborateur(@RequestParam int idCollaborateur,Principal prinipal) {
+	public void DeleteCollaborateur(@RequestParam int idCollaborateur, Principal prinipal) {
 		Administrateur administrateur = this.administrateurService.findAdministrateurByEmail(prinipal.getName());
 		Collaborateur collaborateur = this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
-		this.collaborateurService.deleteCollaborateur(collaborateur,administrateur);
+		this.collaborateurService.deleteCollaborateur(collaborateur, administrateur);
 	}
 
 }
