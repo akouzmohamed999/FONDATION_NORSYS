@@ -65,6 +65,11 @@ public class PropositionController {
 		return this.propositionService.addProposition(this.propositionService.findPropositionById(idProposition));
 	}
 
+	@RequestMapping(value = "/administrateur/updateProposition", method = RequestMethod.PUT)
+	public Proposition updateProposition(@RequestBody Proposition proposition) {
+		return this.propositionService.updateProposition(proposition);
+	}
+
 	FTPClient ftpClient = new FTPClient();
 
 	@PostMapping("/public/addFichierProposition")

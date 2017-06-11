@@ -15,11 +15,12 @@ import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.h2.tools.RunScript;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class DBunitTestRun {
 
-	private static final String PATH = "C:/Users/Mohamed/Stage/FONDATION_NORSYS/src/test/resources";
+	private static final String PATH = "/home/mohamed/workspace/FondationNorsys/src/test/resources";
 	private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
 	private static final String JDBC_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
 	private static final String USER = "root";
