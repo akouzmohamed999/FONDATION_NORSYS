@@ -9,7 +9,7 @@ public class DeletePublicationControllerTest extends APublicationControllerTest 
 
 	@Test
 	public void shouldReturnJsonWithComposantesOfProjet1() throws Exception {
-		this.mockMvc.perform(delete("/administrateur/deletePublication").param("IdPublication", "1"))
+		this.mockMvc.perform(delete("/administrateur/deletePublication").param("idPublication", "1"))
 				.andExpect(status().isOk());
 	}
 }

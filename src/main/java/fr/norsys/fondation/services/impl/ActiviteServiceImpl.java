@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.norsys.fondation.entities.Activite;
 import fr.norsys.fondation.entities.Benificiaire;
+import fr.norsys.fondation.entities.Collaborateur;
 import fr.norsys.fondation.repositories.ActiviteRepository;
 import fr.norsys.fondation.repositories.BenificiaireRepository;
 import fr.norsys.fondation.repositories.CollaborateurRepository;
@@ -80,9 +81,13 @@ public class ActiviteServiceImpl implements ActiviteService {
 	public void removeActivite(Activite activite) {
 
 		for (Benificiaire benificiaire : activite.getBenificiaires()) {
-			System.out.println("FFFFF " + benificiaire);
 			benificiaire.getActivites().remove(activite);
 			this.benificiaireRepository.saveAndFlush(benificiaire);
+		}
+		
+		for (Collaborateur collaborateur : activite.getCollaborateurs()) {
+			collaborateur.getActivites().remove(activite);
+			this.CollaborateurRepository.saveAndFlush(collaborateur);
 		}
 
 		activite.getBenificiaires().removeAll(activite.getBenificiaires());
@@ -90,7 +95,6 @@ public class ActiviteServiceImpl implements ActiviteService {
 		this.activiteRepository.delete(activite);
 
 		for (Benificiaire benificiaire : activite.getBenificiaires()) {
-			System.out.println("FFFFF " + benificiaire);
 			this.benificiaireRepository.delete(benificiaire);
 		}
 	}
