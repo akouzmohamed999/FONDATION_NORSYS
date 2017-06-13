@@ -19,12 +19,12 @@ public class BenificiaireController {
 	@Autowired
 	BenificiaireService benificiaireService;
 
-	@RequestMapping(value = "/responsable/addBenificiaire", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/collaborateur/addBenificiaire", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Benificiaire addBenificiaire(@RequestBody Benificiaire benificiaire) {
 		return this.benificiaireService.addBenificiaire(benificiaire);
 	}
 
-	@RequestMapping(value = "/responsable/benificiaires")
+	@RequestMapping(value = "/collaborateur/benificiaires")
 	public List<Benificiaire> findAllBenificiaires() {
 		return this.benificiaireService.findAllBenficiaires();
 	}

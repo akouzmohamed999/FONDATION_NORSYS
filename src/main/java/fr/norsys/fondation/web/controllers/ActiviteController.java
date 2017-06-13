@@ -55,7 +55,7 @@ public class ActiviteController {
 		return storedActivite;
 	}
 
-	@RequestMapping(value = "/responsable/updateActivite", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/collaborateur/updateActivite", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Activite UpdateActivite(@RequestBody Activite activite) {
 		System.out.println("L'ACTIVITE MODIFIE : " + activite);
 		Activite storedActivite = this.activiteService.addActivite(activite);

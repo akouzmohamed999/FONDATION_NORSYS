@@ -40,7 +40,7 @@ public class CollaborateurController {
 		return this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
 	}
 
-	@RequestMapping(value = "/responsable/collaborateurs")
+	@RequestMapping(value = "/collaborateur/collaborateurs")
 	public List<Collaborateur> findCollaborateurs() {
 		return this.collaborateurService.findAllCollaborateur();
 	}

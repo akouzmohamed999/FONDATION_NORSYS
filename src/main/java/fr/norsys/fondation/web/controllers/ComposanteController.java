@@ -24,7 +24,7 @@ public class ComposanteController {
 		return this.composanteService.findCompetitionsByIdProjet(idProjet);
 	}
 
-	@RequestMapping(value = "/responsable/composanteById", method = RequestMethod.GET)
+	@RequestMapping(value = "/collaborateur/composanteById", method = RequestMethod.GET)
 	public Composante findComposanteById(@RequestParam int idComposante) {
 		return this.composanteService.findComposanteById(idComposante);
 	}
@@ -34,7 +34,7 @@ public class ComposanteController {
 		return this.composanteService.addComposante(composante);
 	}
 
-	@RequestMapping(value = "/responsable/updateComposante", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/collaborateur/updateComposante", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Composante updateComponsante(@RequestBody Composante composante) {
 		return this.composanteService.updateComposante(composante);
 	}
