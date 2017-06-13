@@ -79,7 +79,7 @@ public class ActiviteServiceImpl implements ActiviteService {
 
 	@Override
 	public void removeActivite(Activite activite) {
-
+		
 		for (Benificiaire benificiaire : activite.getBenificiaires()) {
 			benificiaire.getActivites().remove(activite);
 			this.benificiaireRepository.saveAndFlush(benificiaire);
