@@ -15,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -56,6 +57,11 @@ public class Collaborateur implements Serializable {
 	protected Date dateNaissance;
 	@Column(name = "LIEU_NAISSANCE")
 	protected String lieuNaissance;
+	
+	@Lob
+	@Column(name = "PHOTO")
+	private byte[] photo;
+	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "COLLABORATEUR_ACTIVITE", joinColumns = {
@@ -166,6 +172,14 @@ public class Collaborateur implements Serializable {
 		return this.activites;
 	}
 	
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
