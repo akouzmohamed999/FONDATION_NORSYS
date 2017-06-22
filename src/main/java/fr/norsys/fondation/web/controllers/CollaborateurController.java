@@ -102,9 +102,20 @@ public class CollaborateurController {
 		}
 
 		try {
-			Collaborateur collaborateur = this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
-			collaborateur.setPhoto(uploadfile.getBytes());
-			this.collaborateurService.updateCollaborateur(collaborateur);
+			if(this.administrateurService.findAdministrateurById(idCollaborateur) != null){
+				Administrateur administrateur = this.administrateurService.findAdministrateurById(idCollaborateur);
+				administrateur.setPhoto(uploadfile.getBytes());
+				this.administrateurService.updateAdministrateur(administrateur);
+			}else if(this.responsableService.findResponsableById(idCollaborateur) != null){
+				Responsable responsable = this.responsableService.findResponsableById(idCollaborateur);
+				responsable.setPhoto(uploadfile.getBytes());
+				this.responsableService.updateResponsable(responsable);
+			}else{
+				Collaborateur collaborateur = this.collaborateurService.findCollaborateurByIdCollaborateur(idCollaborateur);
+				collaborateur.setPhoto(uploadfile.getBytes());
+				this.collaborateurService.updateCollaborateur(collaborateur);	
+			}
+			
 		} catch (Exception e) {
 			this.logger.info("ERREUR DEPUIS PUBLICATION CONTROLLER " + e);
 		}

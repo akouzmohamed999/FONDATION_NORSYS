@@ -24,9 +24,9 @@
 	 <COLLABORATEUR ID_COLLABORATEUR="8" CIN="C6666" NOM="Bentajri" PRENOM="Adil" ADRESSE="Massira Marrakech"
 	 TYPE_COLLABORATEUR="Collaborateur"  EMAIL="Bentajri@norsys.fr" PASSWORD="collaborateur6"/>
 	 
-	 <PARTENAIRE ID_PARTENAIRE="1" ADRESSE="al afaq marrakech" EMAIL="jamil@gmail.com" NOM="Jamil" NUMERO_TELEPHONE="0604563423" TYPE="Individue"/>
+	 <PARTENAIRE ID_PARTENAIRE="1" ADRESSE="al afaq marrakech" EMAIL="jamil@gmail.com" NOM="Fondation OCP" NUMERO_TELEPHONE="0604563423" TYPE="Fondation"/>
 	 
-	 <PARTENAIRE ID_PARTENAIRE="2" ADRESSE="Geliz Imm3 APP34 Marrakech" EMAIL="annasim@gmail.com" NOM="Assosiation Annasim" NUMERO_TELEPHONE="05248888" TYPE="ASSOCIATION"/>
+	 <PARTENAIRE ID_PARTENAIRE="2" ADRESSE="Geliz Imm3 APP34 Marrakech" EMAIL="annasim@gmail.com" NOM="Fondation Mohamed V" NUMERO_TELEPHONE="05248888" TYPE="ASSOCIATION"/>
 	  
 	 <BENIFICIAIRE ID_BENIFICIAIRE="1" CIN="B1111" ADRESSE="sidi abade Marrakech" NOM="Elkadouri" PRENOM="Taha"
 	 PAYS="Maroc" VILLE="Marrakech"/>
@@ -50,7 +50,11 @@
 	 
 	 <THEMATIQUE ID_THEMATIQUE="1" DESCRIPTION="la mise en place d'un système d'irrigation sophistiqué" INTITULE="Agriculture" />
 	 
-	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="companie sanitaire pour les démunies" INTITULE="santé" />
+	 <THEMATIQUE ID_THEMATIQUE="2" DESCRIPTION="companie sanitaire pour les démunies" INTITULE="Santé" />
+	 
+	 <THEMATIQUE ID_THEMATIQUE="3" DESCRIPTION="Soutenir et participer aux initiatives permettant l'accés à l'éducation pour tous" INTITULE="Education" />
+	 
+	 <THEMATIQUE ID_THEMATIQUE="4" DESCRIPTION="Permettre un meilleur accès à l'emploi aux personnes susceptibles d'être discriminées" INTITULE="Accès à l'emploi" />
 	 
 	 <COMPOSANTE ID_COMPOSANTE="1" INTITULE="Irrigation" ID_PROJET="1" ID_THEMATIQUE="1" />
 	 
@@ -65,23 +69,23 @@
 	 <COMPOSANTE ID_COMPOSANTE="6" INTITULE="sensibilisation " ID_PROJET="2" ID_THEMATIQUE="1" />
 	
 	 
-	 <ACTIVITE ID_ACTIVITE="1" INTITULE="démonstration de la téchnique" DATE_ACTIVITE="2017-03-12" DATE_FIN="2017-03-12"
-	  ETAT="Termine" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	 <ACTIVITE ID_ACTIVITE="1" INTITULE="démonstration d'une nouvelle technique d'irrigation" DATE_ACTIVITE="2017-03-12" DATE_FIN="2017-03-12"
+	  ETAT="Terminé" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
 	  
 	 <ACTIVITE ID_ACTIVITE="2" INTITULE="traveaux pratique sur la technique" DATE_ACTIVITE="2017-03-13" DATE_FIN="2017-03-13"
-	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	  ETAT="En Cours" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
 	  
 	 <ACTIVITE ID_ACTIVITE="3" INTITULE="la redémonstration" DATE_ACTIVITE="2017-03-14" DATE_FIN="2017-03-14"
-	  ETAT="Annule" LIEU="lieuActivite3" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
+	  ETAT="Annulé" LIEU="lieuActivite3" ID_ANIMATEUR="3" ID_COMPOSANTE="1" />
 	  
 	  <ACTIVITE ID_ACTIVITE="4" INTITULE="sensibilisation sanitaire" DATE_ACTIVITE="2017-03-12" DATE_FIN="2017-03-12"
 	  ETAT="Termine" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
 	  
 	 <ACTIVITE ID_ACTIVITE="5" INTITULE="consultation médicale" DATE_ACTIVITE="2017-03-13" DATE_FIN="2017-03-13"
-	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
+	  ETAT="En Cours" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
 	  
 	 <ACTIVITE ID_ACTIVITE="6" INTITULE="déstribution des médicaments" DATE_ACTIVITE="2017-03-14" DATE_FIN="2017-03-14"
-	  ETAT="En Cour" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
+	  ETAT="En Cours" LIEU="Marrakech" ID_ANIMATEUR="3" ID_COMPOSANTE="2" />
 	 	  
 	  
 	  <COLLABORATEUR_ACTIVITE ID_ACTIVITE="1" ID_COLLABORATEUR="4" />
@@ -100,10 +104,11 @@
 	   
 	  <BENIFICIAIRE_ACTIVITE ID_ACTIVITE="2" ID_BENIFICIAIRE="2" />
 	  
-	  <PORTEUR_PROJET ID_PORTEUR="1" NOM="AKOUZ" PRENOM="MOHAMED" />
+	  <PORTEUR_PROJET ID_PORTEUR="1" NOM="AKOUZ" PRENOM="MOHAMED" EMAIL="porteur.projet@norss" NUMERO_TELEPHONE="06148578"/>
 	  
 	  <PROPOSITION ID_PROPOSITION="1" ID_THEMATIQUE="1" OBJECTIF="Un simple Objectif" ZONE_GEOGRAPHIQUE="Tafilalet"
-	   ID_PORTEUR_PROJET="1" ANNEXE="Nuts.scss" ETAT="NonVue"/>
+	   ID_PORTEUR_PROJET="1" ANNEXE="annexe.pdf" ETAT="NonVue" POPULATION_CIBLE="Les jeunes agriculteur" DATE_PREVISION="2017-06-10" TYPE_SOUTIEN="Financier"
+	    BUDGET_PREVISIONNEL="10000.00 DH" DUREE_ACTION="deux semaines" TYPE_ACTION="OBSA"/>
  	   
 	  	  
 </dataset>
